@@ -43,27 +43,27 @@
 		D44E989A1459D67B00E76FBA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D44E989C1459D67B00E76FBA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D44E989E1459D67B00E76FBA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D44E98A21459D67B00E76FBA /* iDrank-Info.plist */ = {isa = PBXFileReference; path = "iDrank-Info.plist"; sourceTree = "<group>"; };
+		D44E98A21459D67B00E76FBA /* iDrank-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iDrank-Info.plist"; sourceTree = "<group>"; };
 		D44E98A41459D67B00E76FBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D44E98A61459D67B00E76FBA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D44E98A81459D67B00E76FBA /* iDrank-Prefix.pch */ = {isa = PBXFileReference; path = "iDrank-Prefix.pch"; sourceTree = "<group>"; };
-		D44E98A91459D67B00E76FBA /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		D44E98A81459D67B00E76FBA /* iDrank-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iDrank-Prefix.pch"; sourceTree = "<group>"; };
+		D44E98A91459D67B00E76FBA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D44E98AA1459D67B00E76FBA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D44E98AD1459D67B00E76FBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		D44E98B01459D67B00E76FBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		D44E98B21459D67B00E76FBA /* FirstViewController.h */ = {isa = PBXFileReference; path = FirstViewController.h; sourceTree = "<group>"; };
+		D44E98B21459D67B00E76FBA /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		D44E98B31459D67B00E76FBA /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		D44E98B51459D67B00E76FBA /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		D44E98B71459D67B00E76FBA /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		D44E98B91459D67B00E76FBA /* SecondViewController.h */ = {isa = PBXFileReference; path = SecondViewController.h; sourceTree = "<group>"; };
+		D44E98B91459D67B00E76FBA /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		D44E98BA1459D67B00E76FBA /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		D44E98BC1459D67B00E76FBA /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		D44E98BE1459D67B00E76FBA /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		D44E98C51459D67B00E76FBA /* iDrankTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iDrankTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44E98C61459D67B00E76FBA /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		D44E98CE1459D67B00E76FBA /* iDrankTests-Info.plist */ = {isa = PBXFileReference; path = "iDrankTests-Info.plist"; sourceTree = "<group>"; };
+		D44E98CE1459D67B00E76FBA /* iDrankTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iDrankTests-Info.plist"; sourceTree = "<group>"; };
 		D44E98D01459D67B00E76FBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D44E98D21459D67B00E76FBA /* iDrankTests.h */ = {isa = PBXFileReference; path = iDrankTests.h; sourceTree = "<group>"; };
+		D44E98D21459D67B00E76FBA /* iDrankTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iDrankTests.h; sourceTree = "<group>"; };
 		D44E98D31459D67B00E76FBA /* iDrankTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iDrankTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -465,6 +465,7 @@
 				D44E98D91459D67B00E76FBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D44E98DA1459D67B00E76FBA /* Build configuration list for PBXNativeTarget "iDrankTests" */ = {
 			isa = XCConfigurationList;
@@ -473,6 +474,7 @@
 				D44E98DC1459D67B00E76FBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

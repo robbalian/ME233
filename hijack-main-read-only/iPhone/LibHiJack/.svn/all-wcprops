@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/23/trunk/iPhone/LibHiJack
+END
+HiJack_Prefix.pch
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/22/trunk/iPhone/LibHiJack/HiJack_Prefix.pch
+END
+aurio_helper.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/22/trunk/iPhone/LibHiJack/aurio_helper.cpp
+END
+CAXException.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/22/trunk/iPhone/LibHiJack/CAXException.h
+END
+CADebugMacros.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/22/trunk/iPhone/LibHiJack/CADebugMacros.cpp
+END
+CAMath.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/22/trunk/iPhone/LibHiJack/CAMath.h
+END
+aurio_helper.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/22/trunk/iPhone/LibHiJack/aurio_helper.h
+END
+HiJackMgr.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/22/trunk/iPhone/LibHiJack/HiJackMgr.h
+END
+CADebugMacros.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/22/trunk/iPhone/LibHiJack/CADebugMacros.h
+END
+CAStreamBasicDescription.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/22/trunk/iPhone/LibHiJack/CAStreamBasicDescription.cpp
+END
+HiJackMgr.mm
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/22/trunk/iPhone/LibHiJack/HiJackMgr.mm
+END
+CAXException.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/22/trunk/iPhone/LibHiJack/CAXException.cpp
+END
+CAStreamBasicDescription.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/22/trunk/iPhone/LibHiJack/CAStreamBasicDescription.h
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/23/trunk/iPhone/LibHiJack/README
+END
