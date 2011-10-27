@@ -1,0 +1,480 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D44E989B1459D67B00E76FBA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44E989A1459D67B00E76FBA /* UIKit.framework */; };
+		D44E989D1459D67B00E76FBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44E989C1459D67B00E76FBA /* Foundation.framework */; };
+		D44E989F1459D67B00E76FBA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44E989E1459D67B00E76FBA /* CoreGraphics.framework */; };
+		D44E98A51459D67B00E76FBA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D44E98A31459D67B00E76FBA /* InfoPlist.strings */; };
+		D44E98A71459D67B00E76FBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D44E98A61459D67B00E76FBA /* main.m */; };
+		D44E98AB1459D67B00E76FBA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D44E98AA1459D67B00E76FBA /* AppDelegate.m */; };
+		D44E98AE1459D67B00E76FBA /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44E98AC1459D67B00E76FBA /* MainStoryboard_iPhone.storyboard */; };
+		D44E98B11459D67B00E76FBA /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44E98AF1459D67B00E76FBA /* MainStoryboard_iPad.storyboard */; };
+		D44E98B41459D67B00E76FBA /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44E98B31459D67B00E76FBA /* FirstViewController.m */; };
+		D44E98B61459D67B00E76FBA /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = D44E98B51459D67B00E76FBA /* first.png */; };
+		D44E98B81459D67B00E76FBA /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D44E98B71459D67B00E76FBA /* first@2x.png */; };
+		D44E98BB1459D67B00E76FBA /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44E98BA1459D67B00E76FBA /* SecondViewController.m */; };
+		D44E98BD1459D67B00E76FBA /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = D44E98BC1459D67B00E76FBA /* second.png */; };
+		D44E98BF1459D67B00E76FBA /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D44E98BE1459D67B00E76FBA /* second@2x.png */; };
+		D44E98C71459D67B00E76FBA /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44E98C61459D67B00E76FBA /* SenTestingKit.framework */; };
+		D44E98C81459D67B00E76FBA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44E989A1459D67B00E76FBA /* UIKit.framework */; };
+		D44E98C91459D67B00E76FBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44E989C1459D67B00E76FBA /* Foundation.framework */; };
+		D44E98D11459D67B00E76FBA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D44E98CF1459D67B00E76FBA /* InfoPlist.strings */; };
+		D44E98D41459D67B00E76FBA /* iDrankTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D44E98D31459D67B00E76FBA /* iDrankTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D44E98CA1459D67B00E76FBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D44E988D1459D67A00E76FBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D44E98951459D67B00E76FBA;
+			remoteInfo = iDrank;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D44E98961459D67B00E76FBA /* iDrank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDrank.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D44E989A1459D67B00E76FBA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D44E989C1459D67B00E76FBA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D44E989E1459D67B00E76FBA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D44E98A21459D67B00E76FBA /* iDrank-Info.plist */ = {isa = PBXFileReference; path = "iDrank-Info.plist"; sourceTree = "<group>"; };
+		D44E98A41459D67B00E76FBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D44E98A61459D67B00E76FBA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D44E98A81459D67B00E76FBA /* iDrank-Prefix.pch */ = {isa = PBXFileReference; path = "iDrank-Prefix.pch"; sourceTree = "<group>"; };
+		D44E98A91459D67B00E76FBA /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		D44E98AA1459D67B00E76FBA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D44E98AD1459D67B00E76FBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		D44E98B01459D67B00E76FBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		D44E98B21459D67B00E76FBA /* FirstViewController.h */ = {isa = PBXFileReference; path = FirstViewController.h; sourceTree = "<group>"; };
+		D44E98B31459D67B00E76FBA /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		D44E98B51459D67B00E76FBA /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		D44E98B71459D67B00E76FBA /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		D44E98B91459D67B00E76FBA /* SecondViewController.h */ = {isa = PBXFileReference; path = SecondViewController.h; sourceTree = "<group>"; };
+		D44E98BA1459D67B00E76FBA /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		D44E98BC1459D67B00E76FBA /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		D44E98BE1459D67B00E76FBA /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		D44E98C51459D67B00E76FBA /* iDrankTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iDrankTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D44E98C61459D67B00E76FBA /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		D44E98CE1459D67B00E76FBA /* iDrankTests-Info.plist */ = {isa = PBXFileReference; path = "iDrankTests-Info.plist"; sourceTree = "<group>"; };
+		D44E98D01459D67B00E76FBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D44E98D21459D67B00E76FBA /* iDrankTests.h */ = {isa = PBXFileReference; path = iDrankTests.h; sourceTree = "<group>"; };
+		D44E98D31459D67B00E76FBA /* iDrankTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iDrankTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D44E98931459D67B00E76FBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D44E989B1459D67B00E76FBA /* UIKit.framework in Frameworks */,
+				D44E989D1459D67B00E76FBA /* Foundation.framework in Frameworks */,
+				D44E989F1459D67B00E76FBA /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D44E98C11459D67B00E76FBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D44E98C71459D67B00E76FBA /* SenTestingKit.framework in Frameworks */,
+				D44E98C81459D67B00E76FBA /* UIKit.framework in Frameworks */,
+				D44E98C91459D67B00E76FBA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D44E988B1459D67A00E76FBA = {
+			isa = PBXGroup;
+			children = (
+				D44E98A01459D67B00E76FBA /* iDrank */,
+				D44E98CC1459D67B00E76FBA /* iDrankTests */,
+				D44E98991459D67B00E76FBA /* Frameworks */,
+				D44E98971459D67B00E76FBA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D44E98971459D67B00E76FBA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D44E98961459D67B00E76FBA /* iDrank.app */,
+				D44E98C51459D67B00E76FBA /* iDrankTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D44E98991459D67B00E76FBA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D44E989A1459D67B00E76FBA /* UIKit.framework */,
+				D44E989C1459D67B00E76FBA /* Foundation.framework */,
+				D44E989E1459D67B00E76FBA /* CoreGraphics.framework */,
+				D44E98C61459D67B00E76FBA /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D44E98A01459D67B00E76FBA /* iDrank */ = {
+			isa = PBXGroup;
+			children = (
+				D44E98A91459D67B00E76FBA /* AppDelegate.h */,
+				D44E98AA1459D67B00E76FBA /* AppDelegate.m */,
+				D44E98AC1459D67B00E76FBA /* MainStoryboard_iPhone.storyboard */,
+				D44E98AF1459D67B00E76FBA /* MainStoryboard_iPad.storyboard */,
+				D44E98B21459D67B00E76FBA /* FirstViewController.h */,
+				D44E98B31459D67B00E76FBA /* FirstViewController.m */,
+				D44E98B51459D67B00E76FBA /* first.png */,
+				D44E98B71459D67B00E76FBA /* first@2x.png */,
+				D44E98B91459D67B00E76FBA /* SecondViewController.h */,
+				D44E98BA1459D67B00E76FBA /* SecondViewController.m */,
+				D44E98BC1459D67B00E76FBA /* second.png */,
+				D44E98BE1459D67B00E76FBA /* second@2x.png */,
+				D44E98A11459D67B00E76FBA /* Supporting Files */,
+			);
+			path = iDrank;
+			sourceTree = "<group>";
+		};
+		D44E98A11459D67B00E76FBA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D44E98A21459D67B00E76FBA /* iDrank-Info.plist */,
+				D44E98A31459D67B00E76FBA /* InfoPlist.strings */,
+				D44E98A61459D67B00E76FBA /* main.m */,
+				D44E98A81459D67B00E76FBA /* iDrank-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D44E98CC1459D67B00E76FBA /* iDrankTests */ = {
+			isa = PBXGroup;
+			children = (
+				D44E98D21459D67B00E76FBA /* iDrankTests.h */,
+				D44E98D31459D67B00E76FBA /* iDrankTests.m */,
+				D44E98CD1459D67B00E76FBA /* Supporting Files */,
+			);
+			path = iDrankTests;
+			sourceTree = "<group>";
+		};
+		D44E98CD1459D67B00E76FBA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D44E98CE1459D67B00E76FBA /* iDrankTests-Info.plist */,
+				D44E98CF1459D67B00E76FBA /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D44E98951459D67B00E76FBA /* iDrank */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D44E98D71459D67B00E76FBA /* Build configuration list for PBXNativeTarget "iDrank" */;
+			buildPhases = (
+				D44E98921459D67B00E76FBA /* Sources */,
+				D44E98931459D67B00E76FBA /* Frameworks */,
+				D44E98941459D67B00E76FBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iDrank;
+			productName = iDrank;
+			productReference = D44E98961459D67B00E76FBA /* iDrank.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D44E98C41459D67B00E76FBA /* iDrankTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D44E98DA1459D67B00E76FBA /* Build configuration list for PBXNativeTarget "iDrankTests" */;
+			buildPhases = (
+				D44E98C01459D67B00E76FBA /* Sources */,
+				D44E98C11459D67B00E76FBA /* Frameworks */,
+				D44E98C21459D67B00E76FBA /* Resources */,
+				D44E98C31459D67B00E76FBA /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D44E98CB1459D67B00E76FBA /* PBXTargetDependency */,
+			);
+			name = iDrankTests;
+			productName = iDrankTests;
+			productReference = D44E98C51459D67B00E76FBA /* iDrankTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D44E988D1459D67A00E76FBA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = D44E98901459D67A00E76FBA /* Build configuration list for PBXProject "iDrank" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D44E988B1459D67A00E76FBA;
+			productRefGroup = D44E98971459D67B00E76FBA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D44E98951459D67B00E76FBA /* iDrank */,
+				D44E98C41459D67B00E76FBA /* iDrankTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D44E98941459D67B00E76FBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D44E98A51459D67B00E76FBA /* InfoPlist.strings in Resources */,
+				D44E98AE1459D67B00E76FBA /* MainStoryboard_iPhone.storyboard in Resources */,
+				D44E98B11459D67B00E76FBA /* MainStoryboard_iPad.storyboard in Resources */,
+				D44E98B61459D67B00E76FBA /* first.png in Resources */,
+				D44E98B81459D67B00E76FBA /* first@2x.png in Resources */,
+				D44E98BD1459D67B00E76FBA /* second.png in Resources */,
+				D44E98BF1459D67B00E76FBA /* second@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D44E98C21459D67B00E76FBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D44E98D11459D67B00E76FBA /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D44E98C31459D67B00E76FBA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D44E98921459D67B00E76FBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D44E98A71459D67B00E76FBA /* main.m in Sources */,
+				D44E98AB1459D67B00E76FBA /* AppDelegate.m in Sources */,
+				D44E98B41459D67B00E76FBA /* FirstViewController.m in Sources */,
+				D44E98BB1459D67B00E76FBA /* SecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D44E98C01459D67B00E76FBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D44E98D41459D67B00E76FBA /* iDrankTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D44E98CB1459D67B00E76FBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D44E98951459D67B00E76FBA /* iDrank */;
+			targetProxy = D44E98CA1459D67B00E76FBA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D44E98A31459D67B00E76FBA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D44E98A41459D67B00E76FBA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D44E98AC1459D67B00E76FBA /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D44E98AD1459D67B00E76FBA /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		D44E98AF1459D67B00E76FBA /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D44E98B01459D67B00E76FBA /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		D44E98CF1459D67B00E76FBA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D44E98D01459D67B00E76FBA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D44E98D51459D67B00E76FBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D44E98D61459D67B00E76FBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D44E98D81459D67B00E76FBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iDrank/iDrank-Prefix.pch";
+				INFOPLIST_FILE = "iDrank/iDrank-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D44E98D91459D67B00E76FBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iDrank/iDrank-Prefix.pch";
+				INFOPLIST_FILE = "iDrank/iDrank-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D44E98DB1459D67B00E76FBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iDrank.app/iDrank";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iDrank/iDrank-Prefix.pch";
+				INFOPLIST_FILE = "iDrankTests/iDrankTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		D44E98DC1459D67B00E76FBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iDrank.app/iDrank";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iDrank/iDrank-Prefix.pch";
+				INFOPLIST_FILE = "iDrankTests/iDrankTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D44E98901459D67A00E76FBA /* Build configuration list for PBXProject "iDrank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D44E98D51459D67B00E76FBA /* Debug */,
+				D44E98D61459D67B00E76FBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D44E98D71459D67B00E76FBA /* Build configuration list for PBXNativeTarget "iDrank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D44E98D81459D67B00E76FBA /* Debug */,
+				D44E98D91459D67B00E76FBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D44E98DA1459D67B00E76FBA /* Build configuration list for PBXNativeTarget "iDrankTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D44E98DB1459D67B00E76FBA /* Debug */,
+				D44E98DC1459D67B00E76FBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D44E988D1459D67A00E76FBA /* Project object */;
+}
