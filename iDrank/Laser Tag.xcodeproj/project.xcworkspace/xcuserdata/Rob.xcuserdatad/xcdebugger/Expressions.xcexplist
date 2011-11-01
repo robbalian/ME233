@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[BACController storeReading:]:BACController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "(int)((NSObject *)[(((&apos;BACController&apos; *) (self)))-&gt;readings objectAtIndex:0])">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
