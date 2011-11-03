@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>iDrank.xcscheme</key>
+		<key>Laser Tag.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>D44E98951459D67B00E76FBA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D44E98C41459D67B00E76FBA</key>
+		<key>1D6058900D05DD3D006BFB54</key>
 		<dict>
 			<key>primary</key>
 			<true/>
