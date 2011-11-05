@@ -13,6 +13,11 @@
 
 #define NO_DEVICE 1
 
+#define SIGNAL_SENSOR_POWER_ON 'a'
+#define SIGNAL_SENSOR_POWER_OFF 'b'
+#define SENSOR_WARMUP_SECONDS 10
+
+
 @implementation BACController
 
 BACController *instance;
@@ -31,16 +36,57 @@ BACController *instance;
         readings = [[NSMutableArray alloc] init];
         currentReading = [[[NSString alloc] init] retain];
         
+        //testing
+        [self setState:SENSOR_STATE_WARMING];
+    
     }
     return self;
+}
+
+
+-(void)warmTimerTick:(id)sender {
+    if (secondsTillWarm > 1) {
+        secondsTillWarm--;
+        [delegate warmupSecondsLeft:secondsTillWarm];
+    } else {
+        [warmTimer invalidate];
+        [self setState:SENSOR_STATE_READY];
+    }
+}
+
+-(void)setState:(int)state {
+    sensorState = state;
+    [delegate sensorStateChanged:state];
 }
 
 -(void)startWithDelegate:(id)del {
     //set delegate for callbacks
     delegate = del;
-    //turn on sensor
-    //start timer
+    if (sensorState != SENSOR_STATE_DISCONNECTED) {
+        [self sendCode:SIGNAL_SENSOR_POWER_ON];
+        //need some error checking to make sure it pings back
+        
+        secondsTillWarm = SENSOR_WARMUP_SECONDS;
+        warmTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(warmTimerTick:) userInfo:nil repeats:YES];
+    }
     
+    //if (sensor plugged in) {
+        //turn on sensor
+        //wait for ready
+        /* WAYS TO CHECK FOR READY
+         
+        //[delegate sensorStateChanged:SENSOR_STATE_WARMING
+         Temp sensor (iphone interprets temps and alcohol readings)
+         Start 15-30 second timer
+         Wait until values stabilize (this one might work)
+         
+         */
+    
+    //} else (if sensor isn't plugged in) {
+        
+        //[delegate sensorStateChanged:SENSOR_STATE_DISCONNECTED
+        
+    //}
     
     /*[NSTimer scheduledTimerWithTimeInterval:2.0f
      target:self
@@ -55,18 +101,8 @@ BACController *instance;
 }
 
 -(NSString *)storeReading:(char)c {
-    NSString *returnVal = @"";
-    if (c == 32) {
-        int num = [currentReading intValue];
-        [readings addObject:[NSNumber numberWithInt:num]];
-        returnVal = currentReading;
-        currentReading = @"";
-    } else {
-        returnVal = nil;
-        NSString *str = [currentReading stringByAppendingFormat:@"%c",c];
-        currentReading = str;
-        [currentReading retain];
-    }
+    NSString *returnVal = @"";    
+    [readings addObject:[NSNumber numberWithInt:(uint8_t)c]];
     [delegate bacChanged:[self getCurrentBAC]];
     return returnVal;
 }
@@ -76,27 +112,29 @@ BACController *instance;
     int numReadings = 0;
     for (int i=[readings count]-10; i<[readings count]; i++) {
         if (i < 0) continue;
-        total += [(NSNumber *)[readings objectAtIndex:i] intValue];
+        int reading = [(NSNumber *)[readings objectAtIndex:i] intValue];
+        total += reading;
         numReadings +=1;
     }
     double average = (double)total / numReadings;
-    double bac = (average-500)*.0008; 
+    double bac = (average-125)*.0011;
     
-    //return bac > 0 ? bac : 0;
-    return .4*(((double)(rand()%10))/10.0);
+        
+    return bac > 0 ? bac : 0;
+    //return .4*(((double)(rand()%10))/10.0);
 }
 
+
+//TEST CODE for no device
 -(void)testReceiveChar:(id)sender {
-    for (int i=0; i<3; i++) {
-        char c = rand() % 10 + '0';
+        char c = rand() % 155 + 100;
         [self receivedChar:c];
-    }
-    [self receivedChar:' '];
 }
 
 
 - (void) receivedChar:(char)input {
     [self storeReading:input];
+    NSLog(@"%d", (uint8_t)input);
 }
 
 - (void) sendCode:(char)code {
@@ -108,9 +146,6 @@ BACController *instance;
 		[[SoftModemTerminalAppDelegate getInstance].generator writeByte:0x04];
 	}
 }
-
-
-
 
 
 @end

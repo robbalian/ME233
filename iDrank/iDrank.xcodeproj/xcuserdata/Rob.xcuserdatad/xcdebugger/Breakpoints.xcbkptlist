@@ -8,20 +8,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Classes/BACController.m"
-         timestampString = "341880873.490192"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "66"
-         endingLineNumber = "66"
-         landmarkName = "-storeReading:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "Classes/MainViewController.m"
          timestampString = "341880675.673289"
          startingColumnNumber = "9223372036854775807"
@@ -32,17 +18,31 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/SoftModemTerminalAppDelegate.m"
+         timestampString = "342044880.171369"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "70"
+         endingLineNumber = "70"
+         landmarkName = "-inputIsAvailableChanged:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Classes/BACController.m"
-         timestampString = "341880873.490192"
+         filePath = "Classes/MainViewController.m"
+         timestampString = "342055164.089336"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
-         landmarkName = "-testReceiveChar:"
+         startingLineNumber = "85"
+         endingLineNumber = "85"
+         landmarkName = "-warmupSecondsLeft:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

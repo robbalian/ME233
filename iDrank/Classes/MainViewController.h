@@ -16,6 +16,10 @@
     
     BACController *sensorController;
     
+    IBOutlet UIActivityIndicatorView *warmupActivityIndicator;
+    IBOutlet UILabel *warmupTimeLabel;
+    IBOutlet UILabel *statusLabel;
+    
 }
 
 - (IBAction)showInfo;

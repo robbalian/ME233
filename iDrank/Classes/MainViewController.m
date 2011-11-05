@@ -12,7 +12,7 @@
 @implementation MainViewController
 
 
-#define BAC_MAX_MEASURED_VALUE .40
+#define BAC_MAX_MEASURED_VALUE .20
 #define BAC_BAR_HEIGHT 400.0
 #define BAC_THRESHOLD_GREEN 157.0
 #define BAC_THRESHOLD_YELLOW 225.0
@@ -72,6 +72,19 @@ char *message = (char *)@"Got it!";
 
 -(void)sensorStateChanged:(int)state {
     //update user instructions
+    if (state == SENSOR_STATE_READY) {
+        [warmupTimeLabel setHidden:YES];
+        [warmupActivityIndicator setHidden:YES];
+        [warmupActivityIndicator stopAnimating];
+        [statusLabel setText:@"Ready! Blow into the sensor"];
+    }
+}
+
+-(void)warmupSecondsLeft:(int)seconds {
+    [warmupTimeLabel setHidden:NO];
+    [warmupActivityIndicator setHidden:NO];
+    [warmupTimeLabel setText:[NSString stringWithFormat:@"%d", seconds]];
+    [warmupActivityIndicator startAnimating];
 }
 
 

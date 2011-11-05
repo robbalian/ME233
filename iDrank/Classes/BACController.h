@@ -11,8 +11,10 @@
 
 
 enum {
-    SENSOR_STATE_OFF = 0,
+    SENSOR_STATE_DISCONNECTED = 0,
+    SENSOR_STATE_OFF,
     SENSOR_STATE_WARMING,
+    SENSOR_STATE_CALCULATING,
     SENSOR_STATE_READY
 };
 
@@ -21,17 +23,26 @@ enum {
     NSString *currentReading;
     int sensorState;
     id delegate;
+    int secondsTillWarm;
+    NSTimer *warmTimer;
 }
 
+-(int)getSecondsUntilSensorWarmedUp;
 +(BACController*) getInstance;
 -(NSString *)storeReading:(char)c;
 -(double)getCurrentBAC;
+-(void)receivedChar:(char)input;
+-(void)sendCode:(char)code;
+-(void)setState:(int)state;
+
 
 @end
 
 
 @protocol BACControllerDelegate
 
+
+-(void)warmupSecondsLeft:(int)seconds;
 -(void)sensorStateChanged:(int)state;
 -(void)bacChanged:(double)bac;
 -(void)startWithDelegate:(id)del;

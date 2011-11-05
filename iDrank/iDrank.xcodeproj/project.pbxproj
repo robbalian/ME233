@@ -46,6 +46,18 @@
 		D42FDE671460964B00B7B7C5 /* bar_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D42FDE5D1460964B00B7B7C5 /* bar_red@2x.png */; };
 		D42FDE681460964B00B7B7C5 /* bar_yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D42FDE5E1460964B00B7B7C5 /* bar_yellow@2x.png */; };
 		D42FDE691460964B00B7B7C5 /* bar_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D42FDE5F1460964B00B7B7C5 /* bar_green@2x.png */; };
+		D462155E146203C500919C92 /* icon_fb.png in Resources */ = {isa = PBXBuildFile; fileRef = D4621558146203C500919C92 /* icon_fb.png */; };
+		D462155F146203C500919C92 /* icon_fb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4621559146203C500919C92 /* icon_fb@2x.png */; };
+		D4621560146203C500919C92 /* icon_sms.png in Resources */ = {isa = PBXBuildFile; fileRef = D462155A146203C500919C92 /* icon_sms.png */; };
+		D4621561146203C500919C92 /* icon_sms@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D462155B146203C500919C92 /* icon_sms@2x.png */; };
+		D4621562146203C500919C92 /* icon_twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = D462155C146203C500919C92 /* icon_twitter.png */; };
+		D4621563146203C500919C92 /* icon_twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D462155D146203C500919C92 /* icon_twitter@2x.png */; };
+		D4D0594014633AA7009D47AD /* background_beer.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0593C14633AA7009D47AD /* background_beer.png */; };
+		D4D0594114633AA7009D47AD /* background_beer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0593D14633AA7009D47AD /* background_beer@2x.png */; };
+		D4D0594214633AA7009D47AD /* message_box.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0593E14633AA7009D47AD /* message_box.png */; };
+		D4D0594314633AA7009D47AD /* message_box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0593F14633AA7009D47AD /* message_box@2x.png */; };
+		D4D0594C146346FE009D47AD /* icon_headphone_jack.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0594A146346FE009D47AD /* icon_headphone_jack.png */; };
+		D4D0594D146346FE009D47AD /* icon_headphone_jack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0594B146346FE009D47AD /* icon_headphone_jack@2x.png */; };
 		D4EEB285145FE7160037FDB8 /* BACController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4EEB284145FE7160037FDB8 /* BACController.m */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +84,7 @@
 		289233A80DB2D0DB0083E9F9 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
 		289233A90DB2D0DB0083E9F9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		32CA4F630368D1EE00C91783 /* Laser Tag_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Laser Tag_Prefix.pch"; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* iDrank_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iDrank_Prefix.pch; sourceTree = "<group>"; };
 		7000540611E5FD1200ED71EB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		702E1CF4118D265F00141E6A /* AudioQueueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioQueueObject.h; path = Classes/AudioQueueObject.h; sourceTree = "<group>"; };
 		702E1CF5118D265F00141E6A /* AudioQueueObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioQueueObject.m; path = Classes/AudioQueueObject.m; sourceTree = "<group>"; };
@@ -91,9 +103,9 @@
 		702E1D58118D287600141E6A /* CharReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharReceiver.h; path = Classes/CharReceiver.h; sourceTree = "<group>"; };
 		7061347A11F870BA00E36A4D /* FSKSerialGenerator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FSKSerialGenerator.mm; path = Classes/FSKSerialGenerator.mm; sourceTree = "<group>"; };
 		7061347C11F870DA00E36A4D /* FSKByteQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSKByteQueue.h; path = Classes/FSKByteQueue.h; sourceTree = "<group>"; };
-		70BA824C11BA507600005CF1 /* Laser Tag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Laser Tag.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		70BA824C11BA507600005CF1 /* iDrank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDrank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70D1A3A71192DE50009B9356 /* FSKModemConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSKModemConfig.h; path = Classes/FSKModemConfig.h; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* Laser Tag-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Laser Tag-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* iDrank-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iDrank-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		D42F7F01145F731B00770128 /* libHiJack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libHiJack.a; sourceTree = "<group>"; };
 		D42F7F02145F731B00770128 /* HiJackMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HiJackMgr.h; sourceTree = "<group>"; };
 		D42FDE561460964B00B7B7C5 /* bar_lower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar_lower.png; path = images/bar_lower.png; sourceTree = "<group>"; };
@@ -106,6 +118,18 @@
 		D42FDE5D1460964B00B7B7C5 /* bar_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bar_red@2x.png"; path = "images/bar_red@2x.png"; sourceTree = "<group>"; };
 		D42FDE5E1460964B00B7B7C5 /* bar_yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bar_yellow@2x.png"; path = "images/bar_yellow@2x.png"; sourceTree = "<group>"; };
 		D42FDE5F1460964B00B7B7C5 /* bar_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bar_green@2x.png"; path = "images/bar_green@2x.png"; sourceTree = "<group>"; };
+		D4621558146203C500919C92 /* icon_fb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_fb.png; path = images/icon_fb.png; sourceTree = "<group>"; };
+		D4621559146203C500919C92 /* icon_fb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_fb@2x.png"; path = "images/icon_fb@2x.png"; sourceTree = "<group>"; };
+		D462155A146203C500919C92 /* icon_sms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_sms.png; path = images/icon_sms.png; sourceTree = "<group>"; };
+		D462155B146203C500919C92 /* icon_sms@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_sms@2x.png"; path = "images/icon_sms@2x.png"; sourceTree = "<group>"; };
+		D462155C146203C500919C92 /* icon_twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_twitter.png; path = images/icon_twitter.png; sourceTree = "<group>"; };
+		D462155D146203C500919C92 /* icon_twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_twitter@2x.png"; path = "images/icon_twitter@2x.png"; sourceTree = "<group>"; };
+		D4D0593C14633AA7009D47AD /* background_beer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background_beer.png; path = images/background_beer.png; sourceTree = "<group>"; };
+		D4D0593D14633AA7009D47AD /* background_beer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background_beer@2x.png"; path = "images/background_beer@2x.png"; sourceTree = "<group>"; };
+		D4D0593E14633AA7009D47AD /* message_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = message_box.png; path = images/message_box.png; sourceTree = "<group>"; };
+		D4D0593F14633AA7009D47AD /* message_box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "message_box@2x.png"; path = "images/message_box@2x.png"; sourceTree = "<group>"; };
+		D4D0594A146346FE009D47AD /* icon_headphone_jack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_headphone_jack.png; path = images/icon_headphone_jack.png; sourceTree = "<group>"; };
+		D4D0594B146346FE009D47AD /* icon_headphone_jack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_headphone_jack@2x.png"; path = "images/icon_headphone_jack@2x.png"; sourceTree = "<group>"; };
 		D4EEB283145FE7160037FDB8 /* BACController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BACController.h; path = Classes/BACController.h; sourceTree = "<group>"; };
 		D4EEB284145FE7160037FDB8 /* BACController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BACController.m; path = Classes/BACController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,7 +164,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				70BA824C11BA507600005CF1 /* Laser Tag.app */,
+				70BA824C11BA507600005CF1 /* iDrank.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,6 +172,18 @@
 		22B0CE9E1250598D006E4256 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D4D0594A146346FE009D47AD /* icon_headphone_jack.png */,
+				D4D0594B146346FE009D47AD /* icon_headphone_jack@2x.png */,
+				D4D0593C14633AA7009D47AD /* background_beer.png */,
+				D4D0593D14633AA7009D47AD /* background_beer@2x.png */,
+				D4D0593E14633AA7009D47AD /* message_box.png */,
+				D4D0593F14633AA7009D47AD /* message_box@2x.png */,
+				D4621558146203C500919C92 /* icon_fb.png */,
+				D4621559146203C500919C92 /* icon_fb@2x.png */,
+				D462155A146203C500919C92 /* icon_sms.png */,
+				D462155B146203C500919C92 /* icon_sms@2x.png */,
+				D462155C146203C500919C92 /* icon_twitter.png */,
+				D462155D146203C500919C92 /* icon_twitter@2x.png */,
 				D42FDE561460964B00B7B7C5 /* bar_lower.png */,
 				D42FDE571460964B00B7B7C5 /* bar_green.png */,
 				D42FDE581460964B00B7B7C5 /* bar_red.png */,
@@ -212,7 +248,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* Laser Tag_Prefix.pch */,
+				32CA4F630368D1EE00C91783 /* iDrank_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -224,7 +260,7 @@
 				22B0CE9E1250598D006E4256 /* Images */,
 				280E754B0DD40C5E005A515E /* MainView.xib */,
 				280E754C0DD40C5E005A515E /* MainWindow.xib */,
-				8D1107310486CEB800E47090 /* Laser Tag-Info.plist */,
+				8D1107310486CEB800E47090 /* iDrank-Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -277,9 +313,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* Laser Tag */ = {
+		1D6058900D05DD3D006BFB54 /* iDrank */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Laser Tag" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "iDrank" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -289,9 +325,9 @@
 			);
 			dependencies = (
 			);
-			name = "Laser Tag";
+			name = iDrank;
 			productName = MultiTrigger;
-			productReference = 70BA824C11BA507600005CF1 /* Laser Tag.app */;
+			productReference = 70BA824C11BA507600005CF1 /* iDrank.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -302,7 +338,7 @@
 			attributes = {
 				LastUpgradeCheck = 0420;
 			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Laser Tag" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "iDrank" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -317,7 +353,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* Laser Tag */,
+				1D6058900D05DD3D006BFB54 /* iDrank */,
 			);
 		};
 /* End PBXProject section */
@@ -351,6 +387,18 @@
 				D42FDE671460964B00B7B7C5 /* bar_red@2x.png in Resources */,
 				D42FDE681460964B00B7B7C5 /* bar_yellow@2x.png in Resources */,
 				D42FDE691460964B00B7B7C5 /* bar_green@2x.png in Resources */,
+				D462155E146203C500919C92 /* icon_fb.png in Resources */,
+				D462155F146203C500919C92 /* icon_fb@2x.png in Resources */,
+				D4621560146203C500919C92 /* icon_sms.png in Resources */,
+				D4621561146203C500919C92 /* icon_sms@2x.png in Resources */,
+				D4621562146203C500919C92 /* icon_twitter.png in Resources */,
+				D4621563146203C500919C92 /* icon_twitter@2x.png in Resources */,
+				D4D0594014633AA7009D47AD /* background_beer.png in Resources */,
+				D4D0594114633AA7009D47AD /* background_beer@2x.png in Resources */,
+				D4D0594214633AA7009D47AD /* message_box.png in Resources */,
+				D4D0594314633AA7009D47AD /* message_box@2x.png in Resources */,
+				D4D0594C146346FE009D47AD /* icon_headphone_jack.png in Resources */,
+				D4D0594D146346FE009D47AD /* icon_headphone_jack@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,20 +429,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Timothy Moses (JP2T9P9CEW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Laser Tag_Prefix.pch";
-				INFOPLIST_FILE = "Laser Tag-Info.plist";
+				GCC_PREFIX_HEADER = iDrank_Prefix.pch;
+				INFOPLIST_FILE = "iDrank-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
-				PRODUCT_NAME = "Laser Tag";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "15FA5DC4-E253-4815-BCD7-D41472476480";
+				PRODUCT_NAME = iDrank;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -405,13 +453,13 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Laser Tag_Prefix.pch";
-				INFOPLIST_FILE = "Laser Tag-Info.plist";
+				GCC_PREFIX_HEADER = iDrank_Prefix.pch;
+				INFOPLIST_FILE = "iDrank-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
-				PRODUCT_NAME = "Laser Tag";
+				PRODUCT_NAME = iDrank;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -425,6 +473,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				PRODUCT_NAME = iDrank;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -438,6 +487,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = iDrank;
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -445,7 +495,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Laser Tag" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "iDrank" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
@@ -454,7 +504,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Laser Tag" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "iDrank" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
