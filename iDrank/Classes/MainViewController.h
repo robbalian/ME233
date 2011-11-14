@@ -22,8 +22,9 @@
     
 }
 
-- (IBAction)showInfo;
+-(IBAction)showInfo;
 -(void)updateUIForBAC;
-- (void)sendCode:(char)code;
+-(void)sendCode:(char)code;
+-(IBAction)writeTestCharPushed:(id)sender;
 
 @end

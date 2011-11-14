@@ -11,12 +11,13 @@
 #import "FSKSerialGenerator.h"
 #include <ctype.h>
 
-#define NO_DEVICE 1
+//#define NO_DEVICE 1
 
 #define SIGNAL_SENSOR_POWER_ON 'a'
 #define SIGNAL_SENSOR_POWER_OFF 'b'
 #define SENSOR_WARMUP_SECONDS 10
 
+#define TEST_CHAR 'z'
 
 @implementation BACController
 
@@ -43,6 +44,10 @@ BACController *instance;
     return self;
 }
 
+-(void)sendTestChar {
+    NSLog(@"sending test char: %c", TEST_CHAR);
+    [self sendCode:TEST_CHAR];
+}
 
 -(void)warmTimerTick:(id)sender {
     if (secondsTillWarm > 1) {

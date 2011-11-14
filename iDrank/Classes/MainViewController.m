@@ -38,7 +38,9 @@ char *message = (char *)@"Got it!";
     [sensorController startWithDelegate:self];
 }
 
-
+-(IBAction)writeTestCharPushed:(id)sender {
+    [sensorController sendTestChar];
+}
 
 
 -(void)updateUIForBAC {

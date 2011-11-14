@@ -34,6 +34,7 @@ enum {
 -(void)receivedChar:(char)input;
 -(void)sendCode:(char)code;
 -(void)setState:(int)state;
+-(void)sendTestChar;
 
 
 @end
