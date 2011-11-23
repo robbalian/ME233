@@ -26,5 +26,11 @@
 	<true/>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Crysta.ttf</string>
+	</array>
+	<key>UIStatusBarHidden</key>
+	<true/>
 </dict>
 </plist>

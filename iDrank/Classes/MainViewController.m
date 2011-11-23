@@ -34,8 +34,16 @@ char *message = (char *)@"Got it!";
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	sensorController = [BACController getInstance];
-    [sensorController startWithDelegate:self];
+    
+    measureVC = [[MeasureViewController alloc] init];
+    //readingsVC = [[ReadingsViewController alloc] init];
+    statusBar = [[StatusBar alloc] init];
+    
+    [statusBarView addSubview:statusBar.view];
+    
+    //initially make the MeasureVC the view in the tab
+    [tabView addSubview:measureVC.view];
+    [tabBar setSelectedItem:[[tabBar items] objectAtIndex:1]];
 }
 
 -(IBAction)writeTestCharPushed:(id)sender {
@@ -65,30 +73,35 @@ char *message = (char *)@"Got it!";
     }
 
 }
+// TAB BAR METHODS
 
-//## BAC CONTROLLER DELEGATE METHODS
-
--(void)bacChanged:(double)bac {
-    [self updateUIForBAC];
-}
-
--(void)sensorStateChanged:(int)state {
-    //update user instructions
-    if (state == SENSOR_STATE_READY) {
-        [warmupTimeLabel setHidden:YES];
-        [warmupActivityIndicator setHidden:YES];
-        [warmupActivityIndicator stopAnimating];
-        [statusLabel setText:@"Ready! Blow into the sensor"];
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    if (item.tag == currentTab) return;
+    currentTab = item.tag;
+    for (UIView *view in tabView.subviews) {
+        [view removeFromSuperview];
+    }
+    switch (item.tag) {
+        case 1:
+            //Logs
+            if (readingsVC == nil) readingsVC = [[ReadingsViewController alloc] init];
+            [tabView addSubview:readingsVC.view];
+            break;
+        case 2:
+            //Measure
+            if (measureVC == nil) measureVC = [[MeasureViewController alloc] init];
+            [tabView addSubview:measureVC.view];
+            break;
+        case 3:
+            //More/Prefs
+            if (prefsVC == nil) prefsVC = [[PrefsViewController alloc] init];
+            [tabView addSubview:prefsVC.view];
+            break;
+            
+        default:
+            break;
     }
 }
-
--(void)warmupSecondsLeft:(int)seconds {
-    [warmupTimeLabel setHidden:NO];
-    [warmupActivityIndicator setHidden:NO];
-    [warmupTimeLabel setText:[NSString stringWithFormat:@"%d", seconds]];
-    [warmupActivityIndicator startAnimating];
-}
-
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.

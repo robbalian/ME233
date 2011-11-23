@@ -6,10 +6,14 @@
 //  Copyright __MyCompanyName__ 2010. All rights reserved.
 //
 #import "BACController.h"
+#import "MeasureViewController.h"
+#import "StatusBar.h"
+#import "ReadingsViewController.h"
+#import "PrefsViewController.h"
 
-
-@interface MainViewController : UIViewController <UITextFieldDelegate, BACControllerDelegate> {
-	IBOutlet UITextView *textReceived;
+@interface MainViewController : UIViewController <UITextFieldDelegate, BACControllerDelegate, UITabBarDelegate> {
+	int currentTab;
+    IBOutlet UITextView *textReceived;
     IBOutlet UILabel *bacLabel;
 
     IBOutlet UIImageView *bacBarIV;
@@ -20,6 +24,16 @@
     IBOutlet UILabel *warmupTimeLabel;
     IBOutlet UILabel *statusLabel;
     
+    IBOutlet UITabBar *tabBar;
+    
+    ReadingsViewController *readingsVC;
+    PrefsViewController *prefsVC;
+    MeasureViewController *measureVC;
+    
+    StatusBar *statusBar;
+    
+    IBOutlet UIView *tabView;
+    IBOutlet UIView *statusBarView;
 }
 
 -(IBAction)showInfo;

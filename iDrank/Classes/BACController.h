@@ -9,13 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "CharReceiver.h"
 
+#define SENSOR_WARMUP_SECONDS 30
 
 enum {
     SENSOR_STATE_DISCONNECTED = 0,
-    SENSOR_STATE_OFF,
+    SENSOR_STATE_VERIFYING,
+    SENSOR_STATE_OFF, //CONNECTED >=2 
     SENSOR_STATE_WARMING,
-    SENSOR_STATE_CALCULATING,
-    SENSOR_STATE_READY
+    SENSOR_STATE_READY,
+    SENSOR_STATE_READING
 };
 
 @interface BACController : NSObject <CharReceiver>{
@@ -23,10 +25,11 @@ enum {
     NSString *currentReading;
     int sensorState;
     id delegate;
-    int secondsTillWarm;
+    double secondsTillWarm;
     NSTimer *warmTimer;
 }
 
+-(void)setDelegate:(id)del;
 -(int)getSecondsUntilSensorWarmedUp;
 +(BACController*) getInstance;
 -(NSString *)storeReading:(char)c;
@@ -35,7 +38,8 @@ enum {
 -(void)sendCode:(char)code;
 -(void)setState:(int)state;
 -(void)sendTestChar;
-
+-(void)verifySensor;
+-(void)sensorUnplugged;
 
 @end
 
@@ -43,7 +47,7 @@ enum {
 @protocol BACControllerDelegate
 
 
--(void)warmupSecondsLeft:(int)seconds;
+-(void)warmupSecondsLeft:(double)seconds;
 -(void)sensorStateChanged:(int)state;
 -(void)bacChanged:(double)bac;
 -(void)startWithDelegate:(id)del;

@@ -11,11 +11,17 @@
 #import "FSKSerialGenerator.h"
 #include <ctype.h>
 
-//#define NO_DEVICE 1
+#define NO_DEVICE 1
 
-#define SIGNAL_SENSOR_POWER_ON 'a'
-#define SIGNAL_SENSOR_POWER_OFF 'b'
-#define SENSOR_WARMUP_SECONDS 10
+#define SIGNAL_VERIFY_PING 'a'
+#define SIGNAL_VERIFY_ACK 'b'
+
+#define SIGNAL_ON_PING 'c'
+#define SIGNAL_ON_ACK 'd'
+
+#define SIGNAL_OFF_PING 'e'
+#define SIGNAL_OFF_ACK 'f'
+
 
 #define TEST_CHAR 'z'
 
@@ -38,7 +44,7 @@ BACController *instance;
         currentReading = [[[NSString alloc] init] retain];
         
         //testing
-        [self setState:SENSOR_STATE_WARMING];
+        //[self setState:SENSOR_STATE_WARMING];
     
     }
     return self;
@@ -50,8 +56,8 @@ BACController *instance;
 }
 
 -(void)warmTimerTick:(id)sender {
-    if (secondsTillWarm > 1) {
-        secondsTillWarm--;
+    if (secondsTillWarm >= 1) {
+        secondsTillWarm-= .5;
         [delegate warmupSecondsLeft:secondsTillWarm];
     } else {
         [warmTimer invalidate];
@@ -64,18 +70,40 @@ BACController *instance;
     [delegate sensorStateChanged:state];
 }
 
--(void)startWithDelegate:(id)del {
+-(void)startWarmupTimer {
+    secondsTillWarm = SENSOR_WARMUP_SECONDS;
+    warmTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(warmTimerTick:) userInfo:nil repeats:YES];
+}
+
+-(void)verifySensor {
+    NSLog(@"Verifying sensor");
+#ifdef NO_DEVICE
+    [self setState:SENSOR_STATE_WARMING];
+    [self startWarmupTimer];
+#else
+    [self sendCode:SIGNAL_VERIFY_PING];
+    [self setState:SENSOR_STATE_VERIFYING];
+#endif
+}
+
+-(void)sensorUnplugged {
+    [self setState:SENSOR_STATE_DISCONNECTED];
+    if ([warmTimer isValid]) [warmTimer invalidate]; 
+    NSLog(@"Sensor unplugged");
+}
+
+/*-(void)startWithDelegate:(id)del {
     //set delegate for callbacks
     delegate = del;
-    if (sensorState != SENSOR_STATE_DISCONNECTED) {
-        [self sendCode:SIGNAL_SENSOR_POWER_ON];
+    //if (sensorState >= SENSOR_STATE_OFF) {
+    //    [self sendCode:SIGNAL_SENSOR_POWER_ON];
         //need some error checking to make sure it pings back
         
         secondsTillWarm = SENSOR_WARMUP_SECONDS;
         warmTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(warmTimerTick:) userInfo:nil repeats:YES];
-    }
+    //}
     
-    //if (sensor plugged in) {
+    //if () {
         //turn on sensor
         //wait for ready
         /* WAYS TO CHECK FOR READY
@@ -98,11 +126,41 @@ BACController *instance;
      selector:@selector(sendA:)
      userInfo:nil
      repeats:YES];
-     */
-    
+     *//*
 #ifdef NO_DEVICE
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(testReceiveChar:) userInfo:nil repeats:YES];
 #endif
+}*/
+
+-(void)setDelegate:(id)del {
+    delegate = del;
+}
+
+//Char TX
+- (void) receivedChar:(char)input {
+    if (sensorState == SENSOR_STATE_VERIFYING && input == SIGNAL_VERIFY_ACK) {
+        [self setState:SENSOR_STATE_OFF];
+        [self sendCode:SIGNAL_ON_PING];
+        NSLog(@"Verified, turning on");
+    } else if (sensorState == SENSOR_STATE_OFF && input == SIGNAL_ON_ACK) {
+        [self setState:SENSOR_STATE_WARMING];
+        //now we wait...
+        //Timer starts here
+        NSLog(@"Sensor on, warming up");
+    } else if (sensorState == SENSOR_STATE_READING || sensorState == SENSOR_STATE_READY) {
+        [self storeReading:input];
+        NSLog(@"%d", (uint8_t)input);
+    }
+}
+
+- (void) sendCode:(char)code {
+	NSLog(@"Sending Char: %c", code);
+    for (int i = 0; i < 1; i++) {
+		[[SoftModemTerminalAppDelegate getInstance].generator writeByte:code];
+	}
+	for (int i = 0; i < 1; i++) {
+		[[SoftModemTerminalAppDelegate getInstance].generator writeByte:0x04];
+	}
 }
 
 -(NSString *)storeReading:(char)c {
@@ -130,27 +188,14 @@ BACController *instance;
 }
 
 
+
+
+
+
 //TEST CODE for no device
 -(void)testReceiveChar:(id)sender {
         char c = rand() % 155 + 100;
         [self receivedChar:c];
 }
-
-
-- (void) receivedChar:(char)input {
-    [self storeReading:input];
-    NSLog(@"%d", (uint8_t)input);
-}
-
-- (void) sendCode:(char)code {
-	NSLog(@"Sending Char: %c", code);
-    for (int i = 0; i < 1; i++) {
-		[[SoftModemTerminalAppDelegate getInstance].generator writeByte:code];
-	}
-	for (int i = 0; i < 1; i++) {
-		[[SoftModemTerminalAppDelegate getInstance].generator writeByte:0x04];
-	}
-}
-
 
 @end
