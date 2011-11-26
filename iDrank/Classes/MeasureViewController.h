@@ -11,6 +11,8 @@
 
 @interface MeasureViewController : UIViewController  {
     IBOutlet UILabel *readoutLabel;
+    IBOutlet UILabel *infoBodyLabel;
+    IBOutlet UILabel *infoTitleLabel;
 
 }
 @end

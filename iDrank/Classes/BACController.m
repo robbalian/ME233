@@ -45,9 +45,13 @@ BACController *instance;
         
         //testing
         //[self setState:SENSOR_STATE_WARMING];
-    
+        
     }
     return self;
+}
+
+-(int)currentState {
+    return sensorState;
 }
 
 -(void)sendTestChar {
@@ -60,7 +64,8 @@ BACController *instance;
         secondsTillWarm-= .5;
         [delegate warmupSecondsLeft:secondsTillWarm];
     } else {
-        [warmTimer invalidate];
+        if (warmTimer) [warmTimer invalidate];
+        warmTimer = nil;
         [self setState:SENSOR_STATE_READY];
     }
 }
@@ -68,6 +73,7 @@ BACController *instance;
 -(void)setState:(int)state {
     sensorState = state;
     [delegate sensorStateChanged:state];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"stateChanged" object:self];
 }
 
 -(void)startWarmupTimer {
@@ -79,7 +85,7 @@ BACController *instance;
     NSLog(@"Verifying sensor");
 #ifdef NO_DEVICE
     [self setState:SENSOR_STATE_WARMING];
-    [self startWarmupTimer];
+    [self startWarmupTimer];    
 #else
     [self sendCode:SIGNAL_VERIFY_PING];
     [self setState:SENSOR_STATE_VERIFYING];
@@ -88,7 +94,7 @@ BACController *instance;
 
 -(void)sensorUnplugged {
     [self setState:SENSOR_STATE_DISCONNECTED];
-    if ([warmTimer isValid]) [warmTimer invalidate]; 
+    if (warmTimer != nil && [warmTimer isValid]) [warmTimer invalidate]; 
     NSLog(@"Sensor unplugged");
 }
 

@@ -268,10 +268,9 @@
 			path = images/icons;
 			sourceTree = "<group>";
 		};
-		289233A00DB2D0730083E9F9 /* Main View */ = {
+		289233A00DB2D0730083E9F9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D49CBE5A147C93FC00468C36 /* Constants.h */,
 				D49CBE85147CAE0200468C36 /* PrefsViewController.h */,
 				D49CBE86147CAE0300468C36 /* PrefsViewController.m */,
 				D49CBE87147CAE0300468C36 /* PrefsViewController.xib */,
@@ -288,17 +287,19 @@
 				289233A90DB2D0DB0083E9F9 /* MainViewController.m */,
 				280E754B0DD40C5E005A515E /* MainView.xib */,
 			);
-			name = "Main View";
+			name = Views;
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				D4EEB282145FE6E10037FDB8 /* Controller */,
 				D42F7F01145F731B00770128 /* libHiJack.a */,
 				D42F7F02145F731B00770128 /* HiJackMgr.h */,
-				702E1CF3118D263A00141E6A /* Audio */,
-				289233A00DB2D0730083E9F9 /* Main View */,
+				D49CBE5A147C93FC00468C36 /* Constants.h */,
+				702E1CF3118D263A00141E6A /* FSK Classes */,
+				D4CE0CE214809ED300425369 /* Model */,
+				D4EEB282145FE6E10037FDB8 /* Controller */,
+				289233A00DB2D0730083E9F9 /* Views */,
 				080E96DDFE201D6D7F000001 /* Application Delegate */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -340,7 +341,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		702E1CF3118D263A00141E6A /* Audio */ = {
+		702E1CF3118D263A00141E6A /* FSK Classes */ = {
 			isa = PBXGroup;
 			children = (
 				702E1D58118D287600141E6A /* CharReceiver.h */,
@@ -361,7 +362,7 @@
 				702E1D00118D265F00141E6A /* MultiDelegate.m */,
 				702E1D01118D265F00141E6A /* PatternRecognizer.h */,
 			);
-			name = Audio;
+			name = "FSK Classes";
 			sourceTree = "<group>";
 		};
 		D49CBE67147C9D2B00468C36 /* Standard */ = {
@@ -390,6 +391,13 @@
 			);
 			name = StatusBar;
 			path = images/StatusBar;
+			sourceTree = "<group>";
+		};
+		D4CE0CE214809ED300425369 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		D4EEB282145FE6E10037FDB8 /* Controller */ = {

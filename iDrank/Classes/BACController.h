@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CharReceiver.h"
 
-#define SENSOR_WARMUP_SECONDS 30
+#define SENSOR_WARMUP_SECONDS 5
 
 enum {
     SENSOR_STATE_DISCONNECTED = 0,
@@ -41,6 +41,7 @@ enum {
 -(void)verifySensor;
 -(void)sensorUnplugged;
 
+-(int)currentState;
 @end
 
 

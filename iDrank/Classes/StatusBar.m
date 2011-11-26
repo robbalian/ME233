@@ -15,10 +15,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedSensorStateChangeNotification:) name:@"stateChanged" object:[BACController getInstance]];
         
         sensorController = [BACController getInstance];
         [sensorController setDelegate:self];
-
     }
     return self;
 }
@@ -30,7 +30,13 @@
 }
 
 -(void)sensorStateChanged:(int)state {
-    //update user instructions
+    
+}
+
+//-(void)sensorStateChanged:(int)state {
+-(void)receivedSensorStateChangeNotification:(id)sender {
+    int state = [[BACController getInstance] currentState];
+//update user instructions
     if (state >= SENSOR_STATE_OFF) {
         [statusIV setImage:[UIImage imageNamed:@"Sensor_enabled.png"]];
         if (state == SENSOR_STATE_WARMING) {
@@ -51,6 +57,8 @@
         [statusLabel setText:@"Plug in an iDrank Sensor"];
     }
 }
+
+//}
 
 -(void)warmupSecondsLeft:(double)seconds {
     NSLog(@"%f", seconds);

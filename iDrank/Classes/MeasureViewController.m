@@ -15,12 +15,30 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedSensorStateChangeNotification:) name:@"stateChanged" object:[BACController getInstance]];
+
         
     }
     return self;
 }
 
-
+-(void)receivedSensorStateChangeNotification:(id)sender {
+    int state = [[BACController getInstance] currentState];
+    
+    if (state == SENSOR_STATE_DISCONNECTED) {
+        [readoutLabel setText:@""];
+        [infoTitleLabel setText:@"While we wait..."];
+        [infoBodyLabel setText:@"Did you know that vodka is a proven cure for ugliness?"];
+        
+    } else if (state == SENSOR_STATE_WARMING) {
+        [readoutLabel setText:@"Warming"];
+    } else if (state == SENSOR_STATE_READY) {
+        [readoutLabel setText:@"Ready"];
+    } else if (state == SENSOR_STATE_READING) {
+        [readoutLabel setText:@"Calculating"];
+    }
+    
+}
 
 
 - (void)didReceiveMemoryWarning

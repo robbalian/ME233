@@ -43,7 +43,7 @@ void audioRouteChangeListenerCallback (
     
     
     NSString *str = [[NSString alloc] initWithFormat:@"%@", currentAudioRoute];
-    if ([str isEqualToString:@"HeadsetInOut"]) {
+    if ([str isEqualToString:@"HeadsetInOut"] || [str isEqualToString:@"HeadphonesAndMicrophone"]) {
         //got 4 pin adapter
         //might want to check  || [str isEqualToString:@"HeadphonesAndMicrophone"] as well
         [appDelegate verifySensor];
