@@ -84,7 +84,7 @@ BACController *instance;
 -(void)verifySensor {
     NSLog(@"Verifying sensor");
 #ifdef NO_DEVICE
-    [self fetchRecords];
+    ///[self fetchRecords];
     [self setState:SENSOR_STATE_WARMING];
     [self startWarmupTimer];
 #else
@@ -191,7 +191,7 @@ BACController *instance;
 -(void)doneCalculating:(id)sender {
     [self setState:SENSOR_STATE_DONE];
     [self setState:SENSOR_STATE_OFF];
-    [self addBAC:nil]; //add to our database on the phone
+    //[self addBAC:nil]; //add to our database on the phone
 }
 
 -(BOOL)detectSensorBlow {
