@@ -35,7 +35,12 @@
     } else if (state == SENSOR_STATE_READY) {
         [readoutLabel setText:@"Ready"];
     } else if (state == SENSOR_STATE_READING) {
-        [readoutLabel setText:@"Calculating"];
+        [readoutLabel setText:@"Reading..."];
+        //play sound or vibrate on loop
+    } else if (state == SENSOR_STATE_CALCULATING) {
+        [readoutLabel setText:@"Calculating..."];
+    } else if (state == SENSOR_STATE_DONE) {
+        [readoutLabel setText:[NSString stringWithFormat:@"%.02f", [[BACController getInstance] getCurrentBAC]]];
     }
     
 }

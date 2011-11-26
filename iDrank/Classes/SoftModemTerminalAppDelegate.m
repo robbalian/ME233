@@ -112,6 +112,7 @@ void audioRouteChangeListenerCallback (
 @synthesize generator;
 @synthesize window;
 @synthesize mainViewController;
+@synthesize managedObjectContext;
 
 + (SoftModemTerminalAppDelegate*) getInstance
 {
@@ -129,6 +130,7 @@ void audioRouteChangeListenerCallback (
     [window makeKeyAndVisible];
 
 	bacController = [BACController getInstance];
+    bacController.managedObjectContext = [self managedObjectContext];
     
     AVAudioSession *session = [AVAudioSession sharedInstance];
 	session.delegate = self;

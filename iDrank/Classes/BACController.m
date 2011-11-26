@@ -27,6 +27,8 @@
 
 @implementation BACController
 
+@synthesize eventArray, managedObjectContext, fetchedResultsController;
+
 BACController *instance;
 
 
@@ -42,10 +44,8 @@ BACController *instance;
     if ((self = [super init])) {
         readings = [[NSMutableArray alloc] init];
         currentReading = [[[NSString alloc] init] retain];
-        
         //testing
-        //[self setState:SENSOR_STATE_WARMING];
-        
+        //[self setState:SENSOR_STATE_WARMING];        
     }
     return self;
 }
@@ -60,8 +60,8 @@ BACController *instance;
 }
 
 -(void)warmTimerTick:(id)sender {
-    if (secondsTillWarm >= 1) {
-        secondsTillWarm-= .5;
+    if (secondsTillWarm > 1) {
+        secondsTillWarm-= 1;
         [delegate warmupSecondsLeft:secondsTillWarm];
     } else {
         if (warmTimer) [warmTimer invalidate];
@@ -78,14 +78,15 @@ BACController *instance;
 
 -(void)startWarmupTimer {
     secondsTillWarm = SENSOR_WARMUP_SECONDS;
-    warmTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(warmTimerTick:) userInfo:nil repeats:YES];
+    warmTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(warmTimerTick:) userInfo:nil repeats:YES];
 }
 
 -(void)verifySensor {
     NSLog(@"Verifying sensor");
 #ifdef NO_DEVICE
+    [self fetchRecords];
     [self setState:SENSOR_STATE_WARMING];
-    [self startWarmupTimer];    
+    [self startWarmupTimer];
 #else
     [self sendCode:SIGNAL_VERIFY_PING];
     [self setState:SENSOR_STATE_VERIFYING];
@@ -170,10 +171,34 @@ BACController *instance;
 }
 
 -(NSString *)storeReading:(char)c {
-    NSString *returnVal = @"";    
+    NSString *returnVal = @"";
     [readings addObject:[NSNumber numberWithInt:(uint8_t)c]];
-    [delegate bacChanged:[self getCurrentBAC]];
+    if (sensorState == SENSOR_STATE_READY && [self detectSensorBlow]) {
+        [self setState:SENSOR_STATE_READING];
+            readTimer = [NSTimer scheduledTimerWithTimeInterval:SENSOR_READ_SECONDS target:self selector:@selector(doneReading:) userInfo:nil repeats:NO];
+        //start timer
+        
+    }
+    //[delegate bacChanged:[self getCurrentBAC]];
     return returnVal;
+}
+
+-(void)doneReading:(id)sender {
+    [self setState:SENSOR_STATE_CALCULATING];
+    calculateTimer = [NSTimer scheduledTimerWithTimeInterval:SENSOR_CALCULATE_SECONDS target:self selector:@selector(doneCalculating:) userInfo:nil repeats:NO];
+}
+
+-(void)doneCalculating:(id)sender {
+    [self setState:SENSOR_STATE_DONE];
+    [self setState:SENSOR_STATE_OFF];
+    [self addBAC:nil]; //add to our database on the phone
+}
+
+-(BOOL)detectSensorBlow {
+    //read last X readings
+    //is it being used? GO
+    
+    return YES;
 }
 
 -(double)getCurrentBAC {
@@ -188,10 +213,62 @@ BACController *instance;
     double average = (double)total / numReadings;
     double bac = (average-125)*.0011;
     
-        
-    return bac > 0 ? bac : 0;
+    
+    return .08;
+    //return bac > 0 ? bac : 0;
     //return .4*(((double)(rand()%10))/10.0);
 }
+
+- (void)addBAC:(id)sender {   
+    
+    Event *event = (Event *)[NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:managedObjectContext];  
+    [event setTimestamp:[NSDate date]];
+    [event setBlood_alcohol_content:[NSNumber numberWithDouble:.03]];
+    //[event setUser_id:<#(NSNumber *)#>];
+    [event setName:@"Rob"];
+    
+    NSError *error;  
+    
+    if(![managedObjectContext save:&error]){  
+        
+        //This is a serious error saying the record  
+        //could not be saved. Advise the user to  
+        //try again or restart the application.   
+        
+    }  
+    
+    [eventArray insertObject:event atIndex:0];  
+}  
+
+- (void)fetchRecords {   
+    
+    // Define our table/entity to use  
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:managedObjectContext];   
+    
+    // Setup the fetch request  
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];  
+    [request setEntity:entity];   
+    
+    // Define how we will sort the records  
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];  
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];  
+    [request setSortDescriptors:sortDescriptors];  
+    [sortDescriptor release];   
+    
+    // Fetch the records and handle an error  
+    NSError *error;  
+    NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];   
+    
+    if (!mutableFetchResults) { 
+        // Handle the error.  
+        // This is a serious error and should advise the user to restart the application  
+    }   
+    
+    // Save our fetched data to an array  
+    [self setEventArray: mutableFetchResults];  
+    [mutableFetchResults release];  
+    [request release];  
+}   
 
 
 

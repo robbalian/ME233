@@ -20,8 +20,6 @@
 
 BOOL isConnected = FALSE;
 
-int ammoCounter = 10;
-char *message = (char *)@"Got it!";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
@@ -47,7 +45,7 @@ char *message = (char *)@"Got it!";
 }
 
 -(IBAction)writeTestCharPushed:(id)sender {
-    [sensorController sendTestChar];
+    [[BACController getInstance] sendTestChar];
 }
 
 

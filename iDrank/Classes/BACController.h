@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "CharReceiver.h"
+#import "Event.h"
 
 #define SENSOR_WARMUP_SECONDS 5
+#define SENSOR_READ_SECONDS 4
+#define SENSOR_CALCULATE_SECONDS 3
 
 enum {
     SENSOR_STATE_DISCONNECTED = 0,
@@ -17,7 +20,9 @@ enum {
     SENSOR_STATE_OFF, //CONNECTED >=2 
     SENSOR_STATE_WARMING,
     SENSOR_STATE_READY,
-    SENSOR_STATE_READING
+    SENSOR_STATE_READING,
+    SENSOR_STATE_CALCULATING,
+    SENSOR_STATE_DONE
 };
 
 @interface BACController : NSObject <CharReceiver>{
@@ -27,10 +32,19 @@ enum {
     id delegate;
     double secondsTillWarm;
     NSTimer *warmTimer;
+    NSTimer *readTimer;
+    NSTimer *calculateTimer;
+    
+    NSManagedObjectContext *managedObjectContext;
+    NSFetchedResultsController *fetchedResultsController;
+    NSMutableArray *eventArray;
 }
 
+//CoreData Methods
+-(void)fetchRecords;
+-(void)addBAC:(id)sender;
+
 -(void)setDelegate:(id)del;
--(int)getSecondsUntilSensorWarmedUp;
 +(BACController*) getInstance;
 -(NSString *)storeReading:(char)c;
 -(double)getCurrentBAC;
@@ -40,8 +54,16 @@ enum {
 -(void)sendTestChar;
 -(void)verifySensor;
 -(void)sensorUnplugged;
+-(BOOL)detectSensorBlow;
+-(void)doneReading:(id)sender;
+-(void)doneCalculating:(id)sender;
 
 -(int)currentState;
+
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;  
+@property (nonatomic, retain) NSMutableArray *eventArray;
+
 @end
 
 

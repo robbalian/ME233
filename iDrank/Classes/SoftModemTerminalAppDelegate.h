@@ -20,12 +20,15 @@
     UIWindow *window;
     MainViewController *mainViewController;
     BACController *bacController;
+    NSManagedObjectContext *managedObjectContext;
    // HiJackMgr *hijack;
 }
 
 @property (nonatomic, retain) AudioSignalAnalyzer* analyzer;
 @property (nonatomic, retain) FSKSerialGenerator* generator;
 
+
+@property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) MainViewController *mainViewController;
 

@@ -73,6 +73,9 @@
 		D49CBE84147CAC4700468C36 /* ReadingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D49CBE82147CAC4700468C36 /* ReadingsViewController.xib */; };
 		D49CBE88147CAE0300468C36 /* PrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49CBE86147CAE0300468C36 /* PrefsViewController.m */; };
 		D49CBE89147CAE0300468C36 /* PrefsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D49CBE87147CAE0300468C36 /* PrefsViewController.xib */; };
+		D4CE0CE51480A07B00425369 /* Event.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4CE0CE31480A07B00425369 /* Event.xcdatamodeld */; };
+		D4CE0CED1480A34A00425369 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CE0CEC1480A34A00425369 /* CoreData.framework */; };
+		D4CE0CF01480B3FF00425369 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CE0CEF1480B3FF00425369 /* Event.m */; };
 		D4D0594014633AA7009D47AD /* background_beer.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0593C14633AA7009D47AD /* background_beer.png */; };
 		D4D0594114633AA7009D47AD /* background_beer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0593D14633AA7009D47AD /* background_beer@2x.png */; };
 		D4D0594214633AA7009D47AD /* message_box.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0593E14633AA7009D47AD /* message_box.png */; };
@@ -171,6 +174,10 @@
 		D49CBE85147CAE0200468C36 /* PrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefsViewController.h; path = Classes/PrefsViewController.h; sourceTree = "<group>"; };
 		D49CBE86147CAE0300468C36 /* PrefsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrefsViewController.m; path = Classes/PrefsViewController.m; sourceTree = "<group>"; };
 		D49CBE87147CAE0300468C36 /* PrefsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PrefsViewController.xib; path = Classes/PrefsViewController.xib; sourceTree = "<group>"; };
+		D4CE0CE41480A07B00425369 /* Event.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Event.xcdatamodel; sourceTree = "<group>"; };
+		D4CE0CEC1480A34A00425369 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D4CE0CEE1480B3FF00425369 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		D4CE0CEF1480B3FF00425369 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		D4D0593C14633AA7009D47AD /* background_beer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background_beer.png; path = images/background_beer.png; sourceTree = "<group>"; };
 		D4D0593D14633AA7009D47AD /* background_beer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background_beer@2x.png"; path = "images/background_beer@2x.png"; sourceTree = "<group>"; };
 		D4D0593E14633AA7009D47AD /* message_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = message_box.png; path = images/message_box.png; sourceTree = "<group>"; };
@@ -186,6 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4CE0CED1480A34A00425369 /* CoreData.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -293,6 +301,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				D4CE0CEC1480A34A00425369 /* CoreData.framework */,
 				D42F7F01145F731B00770128 /* libHiJack.a */,
 				D42F7F02145F731B00770128 /* HiJackMgr.h */,
 				D49CBE5A147C93FC00468C36 /* Constants.h */,
@@ -321,6 +330,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D4CE0CE31480A07B00425369 /* Event.xcdatamodeld */,
 				D49CBE75147C9E9400468C36 /* Crysta.ttf */,
 				22B0CE9E1250598D006E4256 /* Images */,
 				280E754C0DD40C5E005A515E /* MainWindow.xib */,
@@ -396,6 +406,8 @@
 		D4CE0CE214809ED300425369 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D4CE0CEE1480B3FF00425369 /* Event.h */,
+				D4CE0CEF1480B3FF00425369 /* Event.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -539,6 +551,8 @@
 				D49CBE7E147CA47100468C36 /* StatusBar.m in Sources */,
 				D49CBE83147CAC4700468C36 /* ReadingsViewController.m in Sources */,
 				D49CBE88147CAE0300468C36 /* PrefsViewController.m in Sources */,
+				D4CE0CE51480A07B00425369 /* Event.xcdatamodeld in Sources */,
+				D4CE0CF01480B3FF00425369 /* Event.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,6 +648,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D4CE0CE31480A07B00425369 /* Event.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D4CE0CE41480A07B00425369 /* Event.xcdatamodel */,
+			);
+			currentVersion = D4CE0CE41480A07B00425369 /* Event.xcdatamodel */;
+			path = Event.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
 }
