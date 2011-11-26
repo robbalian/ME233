@@ -55,6 +55,7 @@ enum {
 -(void)verifySensor;
 -(void)sensorUnplugged;
 -(BOOL)detectSensorBlow;
+-(void)measureAgain;
 -(void)doneReading:(id)sender;
 -(void)doneCalculating:(id)sender;
 

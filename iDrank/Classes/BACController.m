@@ -188,6 +188,12 @@ BACController *instance;
     calculateTimer = [NSTimer scheduledTimerWithTimeInterval:SENSOR_CALCULATE_SECONDS target:self selector:@selector(doneCalculating:) userInfo:nil repeats:NO];
 }
 
+-(void)measureAgain {
+    //start warming from current temp state (estimated)
+    [self startWarmupTimer];
+    [self setState:SENSOR_STATE_WARMING];
+}
+
 -(void)doneCalculating:(id)sender {
     [self setState:SENSOR_STATE_DONE];
     [self setState:SENSOR_STATE_OFF];

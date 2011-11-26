@@ -39,6 +39,10 @@
 //update user instructions
     if (state >= SENSOR_STATE_OFF) {
         [statusIV setImage:[UIImage imageNamed:@"Sensor_enabled.png"]];
+        if (state == SENSOR_STATE_OFF  ) {
+            [coverView setFrame:CGRectMake(49, 7, 251, 38)];
+            [statusLabel setText:@"Sensor Off"];
+        }
         if (state == SENSOR_STATE_WARMING) {
             [statusLabel setText:@"Warming Up..."];
         

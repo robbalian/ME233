@@ -13,6 +13,7 @@
     IBOutlet UILabel *readoutLabel;
     IBOutlet UILabel *infoBodyLabel;
     IBOutlet UILabel *infoTitleLabel;
+    IBOutlet UIButton *measureAgainButton;
 
 }
 @end

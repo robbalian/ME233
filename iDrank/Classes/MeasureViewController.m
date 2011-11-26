@@ -29,8 +29,9 @@
         [readoutLabel setText:@""];
         [infoTitleLabel setText:@"While we wait..."];
         [infoBodyLabel setText:@"Did you know that vodka is a proven cure for ugliness?"];
-        
+        [measureAgainButton setHidden:YES];
     } else if (state == SENSOR_STATE_WARMING) {
+        [measureAgainButton setHidden:YES];
         [readoutLabel setText:@"Warming"];
     } else if (state == SENSOR_STATE_READY) {
         [readoutLabel setText:@"Ready"];
@@ -41,8 +42,13 @@
         [readoutLabel setText:@"Calculating..."];
     } else if (state == SENSOR_STATE_DONE) {
         [readoutLabel setText:[NSString stringWithFormat:@"%.02f", [[BACController getInstance] getCurrentBAC]]];
+        [measureAgainButton setHidden:NO];
     }
     
+}
+
+-(IBAction)measureAgain:(id)sender {
+    [[BACController getInstance] measureAgain];
 }
 
 
