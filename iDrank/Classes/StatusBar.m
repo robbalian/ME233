@@ -84,6 +84,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+#ifdef USING_SIM
+    //this shit is a hack
+    [[BACController getInstance] verifySensor]; //fake that there's a headphone jack
+#endif
     // Do any additional setup after loading the view from its nib.
 }
 

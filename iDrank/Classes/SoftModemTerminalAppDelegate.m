@@ -132,6 +132,8 @@ void audioRouteChangeListenerCallback (
 	bacController = [BACController getInstance];
     bacController.managedObjectContext = [self managedObjectContext];
     
+    
+    
     AVAudioSession *session = [AVAudioSession sharedInstance];
 	session.delegate = self;
     

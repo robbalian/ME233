@@ -11,8 +11,6 @@
 #import "FSKSerialGenerator.h"
 #include <ctype.h>
 
-#define NO_DEVICE 1
-
 #define SIGNAL_VERIFY_PING 'a'
 #define SIGNAL_VERIFY_ACK 'b'
 
@@ -39,6 +37,10 @@ BACController *instance;
     return instance;
 }
 
+-(void)sendTestChar {
+    //NSLog(@"sending test char: %c", TEST_CHAR);
+    [self sendCode:TEST_CHAR];
+}
 
 -(id)init {
     if ((self = [super init])) {
@@ -52,11 +54,6 @@ BACController *instance;
 
 -(int)currentState {
     return sensorState;
-}
-
--(void)sendTestChar {
-    NSLog(@"sending test char: %c", TEST_CHAR);
-    [self sendCode:TEST_CHAR];
 }
 
 -(void)warmTimerTick:(id)sender {
@@ -83,7 +80,7 @@ BACController *instance;
 
 -(void)verifySensor {
     NSLog(@"Verifying sensor");
-#ifdef NO_DEVICE
+#ifdef NO_IDRANK
     ///[self fetchRecords];
     [self setState:SENSOR_STATE_WARMING];
     [self startWarmupTimer];
@@ -134,7 +131,7 @@ BACController *instance;
      userInfo:nil
      repeats:YES];
      *//*
-#ifdef NO_DEVICE
+#ifdef NO_IDRANK
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(testReceiveChar:) userInfo:nil repeats:YES];
 #endif
 }*/
@@ -145,6 +142,7 @@ BACController *instance;
 
 //Char TX
 - (void) receivedChar:(char)input {
+    NSLog(@"Received Char %d", (uint8_t)input);
     if (sensorState == SENSOR_STATE_VERIFYING && input == SIGNAL_VERIFY_ACK) {
         [self setState:SENSOR_STATE_OFF];
         [self sendCode:SIGNAL_ON_PING];
@@ -156,7 +154,6 @@ BACController *instance;
         NSLog(@"Sensor on, warming up");
     } else if (sensorState == SENSOR_STATE_READING || sensorState == SENSOR_STATE_READY) {
         [self storeReading:input];
-        NSLog(@"%d", (uint8_t)input);
     }
 }
 

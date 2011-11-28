@@ -23,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/SoftModemTerminalAppDelegate.m"
-         timestampString = "344030037.347379"
+         timestampString = "344039332.738229"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "184"
-         endingLineNumber = "184"
+         startingLineNumber = "186"
+         endingLineNumber = "186"
          landmarkName = "-inputIsAvailableChanged:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -79,11 +79,25 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/SoftModemTerminalAppDelegate.m"
-         timestampString = "344030037.347379"
+         timestampString = "344039332.738229"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "192"
-         endingLineNumber = "192"
+         startingLineNumber = "194"
+         endingLineNumber = "194"
+         landmarkName = "-inputIsAvailableChanged:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/SoftModemTerminalAppDelegate.m"
+         timestampString = "344039332.738229"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "197"
+         endingLineNumber = "197"
          landmarkName = "-inputIsAvailableChanged:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -93,25 +107,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/SoftModemTerminalAppDelegate.m"
-         timestampString = "344030037.347379"
+         timestampString = "344039332.738229"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "195"
-         endingLineNumber = "195"
-         landmarkName = "-inputIsAvailableChanged:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/SoftModemTerminalAppDelegate.m"
-         timestampString = "343985765.280717"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "143"
-         endingLineNumber = "143"
+         startingLineNumber = "145"
+         endingLineNumber = "145"
          landmarkName = "-application:didFinishLaunchingWithOptions:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -261,11 +261,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/BACController.m"
-         timestampString = "343985765.280717"
+         timestampString = "344039659.32592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "80"
-         endingLineNumber = "80"
+         startingLineNumber = "77"
+         endingLineNumber = "77"
          landmarkName = "-startWarmupTimer"
          landmarkType = "5">
       </FileBreakpoint>
@@ -275,11 +275,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/BACController.m"
-         timestampString = "344038507.508429"
+         timestampString = "344039659.32592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "269"
-         endingLineNumber = "269"
+         startingLineNumber = "266"
+         endingLineNumber = "266"
          landmarkName = "-fetchRecords"
          landmarkType = "5">
       </FileBreakpoint>
@@ -289,26 +289,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/BACController.m"
-         timestampString = "344038507.508429"
+         timestampString = "344039659.32592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "242"
-         endingLineNumber = "242"
+         startingLineNumber = "239"
+         endingLineNumber = "239"
          landmarkName = "-addBAC:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/BACController.m"
-         timestampString = "343985765.280717"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "58"
-         endingLineNumber = "58"
-         landmarkName = "-sendTestChar"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -326,16 +312,16 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/BACController.m"
-         timestampString = "344038507.508429"
+         timestampString = "344039659.32592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "250"
-         endingLineNumber = "250"
+         startingLineNumber = "247"
+         endingLineNumber = "247"
          landmarkName = "-fetchRecords"
          landmarkType = "5">
       </FileBreakpoint>
@@ -345,11 +331,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/BACController.m"
-         timestampString = "344038507.508429"
+         timestampString = "344039659.32592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "230"
-         endingLineNumber = "230"
+         startingLineNumber = "227"
+         endingLineNumber = "227"
          landmarkName = "-addBAC:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -359,25 +345,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/BACController.m"
-         timestampString = "343985761.485908"
+         timestampString = "344039659.32592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "88"
-         endingLineNumber = "88"
-         landmarkName = "-verifySensor"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/BACController.m"
-         timestampString = "343985762.11947"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "87"
-         endingLineNumber = "87"
+         startingLineNumber = "85"
+         endingLineNumber = "85"
          landmarkName = "-verifySensor"
          landmarkType = "5">
       </FileBreakpoint>
@@ -393,6 +365,62 @@
          startingLineNumber = "130"
          endingLineNumber = "130"
          landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/BACController.m"
+         timestampString = "344161371.143564"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "145"
+         endingLineNumber = "145"
+         landmarkName = "-receivedChar:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/SoftModemTerminalAppDelegate.m"
+         timestampString = "344161480.903928"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "199"
+         endingLineNumber = "199"
+         landmarkName = "-inputIsAvailableChanged:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/BACController.m"
+         timestampString = "344161691.795127"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "155"
+         endingLineNumber = "155"
+         landmarkName = "-receivedChar:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/BACController.m"
+         timestampString = "344161691.795127"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "156"
+         endingLineNumber = "156"
+         landmarkName = "-receivedChar:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
