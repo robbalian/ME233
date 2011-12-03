@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ReadingsViewController : UIViewController
+@interface ReadingsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+    NSMutableArray *results;
+    IBOutlet UITableView *tv;
+}
+
+
 
 @end

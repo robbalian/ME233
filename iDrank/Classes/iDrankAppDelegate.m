@@ -358,7 +358,7 @@ void audioRouteChangeListenerCallback (
 #endif
 
 
-- (void)addBAC:(id)sender {   
+-(void)addBAC:(id)sender {   
     
     BACEvent *event = (BACEvent *)[NSEntityDescription insertNewObjectForEntityForName:@"BACEvent" inManagedObjectContext:__managedObjectContext];  
     [event setTime:[NSDate date]];
