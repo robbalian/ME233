@@ -7,7 +7,7 @@
 //
 
 #import "BACController.h"
-#import "SoftModemTerminalAppDelegate.h"
+#import "iDrankAppDelegate.h"
 #import "FSKSerialGenerator.h"
 #include <ctype.h>
 
@@ -39,7 +39,14 @@ BACController *instance;
 
 -(void)sendTestChar {
     //NSLog(@"sending test char: %c", TEST_CHAR);
+    
+#ifdef USING_HIJACK
+    [((iDrankAppDelegate *)[[UIApplication sharedApplication] delegate]) sendData:'z'];
+#endif
+
+#ifdef USING_FSK
     [self sendCode:TEST_CHAR];
+#endif
 }
 
 -(id)init {
@@ -160,10 +167,10 @@ BACController *instance;
 - (void) sendCode:(char)code {
 	NSLog(@"Sending Char: %c", code);
     for (int i = 0; i < 1; i++) {
-		[[SoftModemTerminalAppDelegate getInstance].generator writeByte:code];
+		[[iDrankAppDelegate getInstance].generator writeByte:code];
 	}
 	for (int i = 0; i < 1; i++) {
-		[[SoftModemTerminalAppDelegate getInstance].generator writeByte:0x04];
+		[[iDrankAppDelegate getInstance].generator writeByte:0x04];
 	}
 }
 
@@ -224,9 +231,9 @@ BACController *instance;
 
 - (void)addBAC:(id)sender {   
     
-    Event *event = (Event *)[NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:managedObjectContext];  
-    [event setTimestamp:[NSDate date]];
-    [event setBlood_alcohol_content:[NSNumber numberWithDouble:.03]];
+    BACEvent *event = (BACEvent *)[NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:managedObjectContext];  
+    //[event setTimestamp:[NSDate date]];
+    //[event setBlood_alcohol_content:[NSNumber numberWithDouble:.03]];
     //[event setUser_id:<#(NSNumber *)#>];
     [event setName:@"Rob"];
     

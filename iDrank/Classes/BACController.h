@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "CharReceiver.h"
-#import "Event.h"
+#import "BACEvent.h"
+//#import "iDrankAppDelegate.h"
 
 #define SENSOR_WARMUP_SECONDS 5
 #define SENSOR_READ_SECONDS 4

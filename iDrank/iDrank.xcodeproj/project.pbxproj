@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3623260D0F684500981E51 /* SoftModemTerminalAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* SoftModemTerminalAppDelegate.m */; };
+		1D3623260D0F684500981E51 /* iDrankAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* iDrankAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -35,7 +35,6 @@
 		702E1D07118D265F00141E6A /* MultiDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 702E1D00118D265F00141E6A /* MultiDelegate.m */; };
 		702E1D1D118D270B00141E6A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 702E1D1C118D270B00141E6A /* AudioToolbox.framework */; };
 		7061347B11F870BA00E36A4D /* FSKSerialGenerator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7061347A11F870BA00E36A4D /* FSKSerialGenerator.mm */; };
-		D42F7F03145F731B00770128 /* libHiJack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D42F7F01145F731B00770128 /* libHiJack.a */; };
 		D42FDE601460964B00B7B7C5 /* bar_lower.png in Resources */ = {isa = PBXBuildFile; fileRef = D42FDE561460964B00B7B7C5 /* bar_lower.png */; };
 		D42FDE611460964B00B7B7C5 /* bar_green.png in Resources */ = {isa = PBXBuildFile; fileRef = D42FDE571460964B00B7B7C5 /* bar_green.png */; };
 		D42FDE621460964B00B7B7C5 /* bar_red.png in Resources */ = {isa = PBXBuildFile; fileRef = D42FDE581460964B00B7B7C5 /* bar_red.png */; };
@@ -46,12 +45,19 @@
 		D42FDE671460964B00B7B7C5 /* bar_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D42FDE5D1460964B00B7B7C5 /* bar_red@2x.png */; };
 		D42FDE681460964B00B7B7C5 /* bar_yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D42FDE5E1460964B00B7B7C5 /* bar_yellow@2x.png */; };
 		D42FDE691460964B00B7B7C5 /* bar_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D42FDE5F1460964B00B7B7C5 /* bar_green@2x.png */; };
+		D450E75114847CCE00C11827 /* iDrank.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = D450E75014847CCE00C11827 /* iDrank.xcdatamodel */; };
 		D462155E146203C500919C92 /* icon_fb.png in Resources */ = {isa = PBXBuildFile; fileRef = D4621558146203C500919C92 /* icon_fb.png */; };
 		D462155F146203C500919C92 /* icon_fb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4621559146203C500919C92 /* icon_fb@2x.png */; };
 		D4621560146203C500919C92 /* icon_sms.png in Resources */ = {isa = PBXBuildFile; fileRef = D462155A146203C500919C92 /* icon_sms.png */; };
 		D4621561146203C500919C92 /* icon_sms@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D462155B146203C500919C92 /* icon_sms@2x.png */; };
 		D4621562146203C500919C92 /* icon_twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = D462155C146203C500919C92 /* icon_twitter.png */; };
 		D4621563146203C500919C92 /* icon_twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D462155D146203C500919C92 /* icon_twitter@2x.png */; };
+		D4895CD21489CD8F00A83480 /* BACEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = D4895CD11489CD8F00A83480 /* BACEvent.m */; };
+		D48FBDCB148730ED00DFFCF0 /* aurio_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D48FBDC0148730ED00DFFCF0 /* aurio_helper.cpp */; };
+		D48FBDCC148730ED00DFFCF0 /* CADebugMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D48FBDC2148730ED00DFFCF0 /* CADebugMacros.cpp */; };
+		D48FBDCD148730ED00DFFCF0 /* CAStreamBasicDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D48FBDC5148730ED00DFFCF0 /* CAStreamBasicDescription.cpp */; };
+		D48FBDCE148730ED00DFFCF0 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D48FBDC7148730ED00DFFCF0 /* CAXException.cpp */; };
+		D48FBDCF148730ED00DFFCF0 /* HiJackMgr.mm in Sources */ = {isa = PBXBuildFile; fileRef = D48FBDCA148730ED00DFFCF0 /* HiJackMgr.mm */; };
 		D49CBE48147C919800468C36 /* MeasureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49CBE46147C919800468C36 /* MeasureViewController.m */; };
 		D49CBE49147C919800468C36 /* MeasureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D49CBE47147C919800468C36 /* MeasureViewController.xib */; };
 		D49CBE5F147C9AA900468C36 /* Sensor_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = D49CBE5B147C9AA900468C36 /* Sensor_disabled.png */; };
@@ -73,22 +79,20 @@
 		D49CBE84147CAC4700468C36 /* ReadingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D49CBE82147CAC4700468C36 /* ReadingsViewController.xib */; };
 		D49CBE88147CAE0300468C36 /* PrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49CBE86147CAE0300468C36 /* PrefsViewController.m */; };
 		D49CBE89147CAE0300468C36 /* PrefsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D49CBE87147CAE0300468C36 /* PrefsViewController.xib */; };
-		D4CE0CE51480A07B00425369 /* Event.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4CE0CE31480A07B00425369 /* Event.xcdatamodeld */; };
 		D4CE0CED1480A34A00425369 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CE0CEC1480A34A00425369 /* CoreData.framework */; };
-		D4CE0CF01480B3FF00425369 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CE0CEF1480B3FF00425369 /* Event.m */; };
 		D4D0594014633AA7009D47AD /* background_beer.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0593C14633AA7009D47AD /* background_beer.png */; };
 		D4D0594114633AA7009D47AD /* background_beer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0593D14633AA7009D47AD /* background_beer@2x.png */; };
 		D4D0594214633AA7009D47AD /* message_box.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0593E14633AA7009D47AD /* message_box.png */; };
 		D4D0594314633AA7009D47AD /* message_box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0593F14633AA7009D47AD /* message_box@2x.png */; };
 		D4D0594C146346FE009D47AD /* icon_headphone_jack.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0594A146346FE009D47AD /* icon_headphone_jack.png */; };
 		D4D0594D146346FE009D47AD /* icon_headphone_jack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0594B146346FE009D47AD /* icon_headphone_jack@2x.png */; };
-		D4EEB285145FE7160037FDB8 /* BACController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4EEB284145FE7160037FDB8 /* BACController.m */; };
+		D4EEB285145FE7160037FDB8 /* BACController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D4EEB284145FE7160037FDB8 /* BACController.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* SoftModemTerminalAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftModemTerminalAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* SoftModemTerminalAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftModemTerminalAppDelegate.m; sourceTree = "<group>"; };
+		1D3623240D0F684500981E51 /* iDrankAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iDrankAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* iDrankAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iDrankAppDelegate.m; sourceTree = "<group>"; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		22B0CEA3125059C3006E4256 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = images/Default.png; sourceTree = "<group>"; };
 		22B0CEA4125059C3006E4256 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "images/Default@2x.png"; sourceTree = "<group>"; };
@@ -130,8 +134,6 @@
 		70BA824C11BA507600005CF1 /* iDrank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDrank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70D1A3A71192DE50009B9356 /* FSKModemConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSKModemConfig.h; path = Classes/FSKModemConfig.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* iDrank-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iDrank-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		D42F7F01145F731B00770128 /* libHiJack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libHiJack.a; sourceTree = "<group>"; };
-		D42F7F02145F731B00770128 /* HiJackMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HiJackMgr.h; sourceTree = "<group>"; };
 		D42FDE561460964B00B7B7C5 /* bar_lower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar_lower.png; path = images/bar_lower.png; sourceTree = "<group>"; };
 		D42FDE571460964B00B7B7C5 /* bar_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar_green.png; path = images/bar_green.png; sourceTree = "<group>"; };
 		D42FDE581460964B00B7B7C5 /* bar_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar_red.png; path = images/bar_red.png; sourceTree = "<group>"; };
@@ -142,12 +144,26 @@
 		D42FDE5D1460964B00B7B7C5 /* bar_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bar_red@2x.png"; path = "images/bar_red@2x.png"; sourceTree = "<group>"; };
 		D42FDE5E1460964B00B7B7C5 /* bar_yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bar_yellow@2x.png"; path = "images/bar_yellow@2x.png"; sourceTree = "<group>"; };
 		D42FDE5F1460964B00B7B7C5 /* bar_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bar_green@2x.png"; path = "images/bar_green@2x.png"; sourceTree = "<group>"; };
+		D450E75014847CCE00C11827 /* iDrank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iDrank.xcdatamodel; sourceTree = "<group>"; };
 		D4621558146203C500919C92 /* icon_fb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_fb.png; path = images/icon_fb.png; sourceTree = "<group>"; };
 		D4621559146203C500919C92 /* icon_fb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_fb@2x.png"; path = "images/icon_fb@2x.png"; sourceTree = "<group>"; };
 		D462155A146203C500919C92 /* icon_sms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_sms.png; path = images/icon_sms.png; sourceTree = "<group>"; };
 		D462155B146203C500919C92 /* icon_sms@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_sms@2x.png"; path = "images/icon_sms@2x.png"; sourceTree = "<group>"; };
 		D462155C146203C500919C92 /* icon_twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_twitter.png; path = images/icon_twitter.png; sourceTree = "<group>"; };
 		D462155D146203C500919C92 /* icon_twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_twitter@2x.png"; path = "images/icon_twitter@2x.png"; sourceTree = "<group>"; };
+		D4895CD01489CD8F00A83480 /* BACEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BACEvent.h; path = Classes/BACEvent.h; sourceTree = "<group>"; };
+		D4895CD11489CD8F00A83480 /* BACEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BACEvent.m; path = Classes/BACEvent.m; sourceTree = "<group>"; };
+		D48FBDC0148730ED00DFFCF0 /* aurio_helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = aurio_helper.cpp; sourceTree = "<group>"; };
+		D48FBDC1148730ED00DFFCF0 /* aurio_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aurio_helper.h; sourceTree = "<group>"; };
+		D48FBDC2148730ED00DFFCF0 /* CADebugMacros.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CADebugMacros.cpp; sourceTree = "<group>"; };
+		D48FBDC3148730ED00DFFCF0 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
+		D48FBDC4148730ED00DFFCF0 /* CAMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAMath.h; sourceTree = "<group>"; };
+		D48FBDC5148730ED00DFFCF0 /* CAStreamBasicDescription.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAStreamBasicDescription.cpp; sourceTree = "<group>"; };
+		D48FBDC6148730ED00DFFCF0 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
+		D48FBDC7148730ED00DFFCF0 /* CAXException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAXException.cpp; sourceTree = "<group>"; };
+		D48FBDC8148730ED00DFFCF0 /* CAXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAXException.h; sourceTree = "<group>"; };
+		D48FBDC9148730ED00DFFCF0 /* HiJackMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HiJackMgr.h; sourceTree = "<group>"; };
+		D48FBDCA148730ED00DFFCF0 /* HiJackMgr.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HiJackMgr.mm; sourceTree = "<group>"; };
 		D49CBE45147C919800468C36 /* MeasureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeasureViewController.h; path = Classes/MeasureViewController.h; sourceTree = "<group>"; };
 		D49CBE46147C919800468C36 /* MeasureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeasureViewController.m; path = Classes/MeasureViewController.m; sourceTree = "<group>"; };
 		D49CBE47147C919800468C36 /* MeasureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MeasureViewController.xib; path = Classes/MeasureViewController.xib; sourceTree = "<group>"; };
@@ -174,10 +190,7 @@
 		D49CBE85147CAE0200468C36 /* PrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefsViewController.h; path = Classes/PrefsViewController.h; sourceTree = "<group>"; };
 		D49CBE86147CAE0300468C36 /* PrefsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrefsViewController.m; path = Classes/PrefsViewController.m; sourceTree = "<group>"; };
 		D49CBE87147CAE0300468C36 /* PrefsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PrefsViewController.xib; path = Classes/PrefsViewController.xib; sourceTree = "<group>"; };
-		D4CE0CE41480A07B00425369 /* Event.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Event.xcdatamodel; sourceTree = "<group>"; };
 		D4CE0CEC1480A34A00425369 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		D4CE0CEE1480B3FF00425369 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		D4CE0CEF1480B3FF00425369 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		D4D0593C14633AA7009D47AD /* background_beer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background_beer.png; path = images/background_beer.png; sourceTree = "<group>"; };
 		D4D0593D14633AA7009D47AD /* background_beer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background_beer@2x.png"; path = "images/background_beer@2x.png"; sourceTree = "<group>"; };
 		D4D0593E14633AA7009D47AD /* message_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = message_box.png; path = images/message_box.png; sourceTree = "<group>"; };
@@ -185,7 +198,7 @@
 		D4D0594A146346FE009D47AD /* icon_headphone_jack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_headphone_jack.png; path = images/icon_headphone_jack.png; sourceTree = "<group>"; };
 		D4D0594B146346FE009D47AD /* icon_headphone_jack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_headphone_jack@2x.png"; path = "images/icon_headphone_jack@2x.png"; sourceTree = "<group>"; };
 		D4EEB283145FE7160037FDB8 /* BACController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BACController.h; path = Classes/BACController.h; sourceTree = "<group>"; };
-		D4EEB284145FE7160037FDB8 /* BACController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BACController.m; path = Classes/BACController.m; sourceTree = "<group>"; };
+		D4EEB284145FE7160037FDB8 /* BACController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BACController.mm; path = Classes/BACController.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,7 +212,6 @@
 				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
 				702E1D1D118D270B00141E6A /* AudioToolbox.framework in Frameworks */,
 				7000540711E5FD1200ED71EB /* AVFoundation.framework in Frameworks */,
-				D42F7F03145F731B00770128 /* libHiJack.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,8 +221,8 @@
 		080E96DDFE201D6D7F000001 /* Application Delegate */ = {
 			isa = PBXGroup;
 			children = (
-				1D3623240D0F684500981E51 /* SoftModemTerminalAppDelegate.h */,
-				1D3623250D0F684500981E51 /* SoftModemTerminalAppDelegate.m */,
+				1D3623240D0F684500981E51 /* iDrankAppDelegate.h */,
+				1D3623250D0F684500981E51 /* iDrankAppDelegate.m */,
 			);
 			name = "Application Delegate";
 			path = Classes;
@@ -301,9 +313,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				D48FBDBF148730CC00DFFCF0 /* Hijack Lib */,
 				D4CE0CEC1480A34A00425369 /* CoreData.framework */,
-				D42F7F01145F731B00770128 /* libHiJack.a */,
-				D42F7F02145F731B00770128 /* HiJackMgr.h */,
 				D49CBE5A147C93FC00468C36 /* Constants.h */,
 				702E1CF3118D263A00141E6A /* FSK Classes */,
 				D4CE0CE214809ED300425369 /* Model */,
@@ -330,7 +341,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D4CE0CE31480A07B00425369 /* Event.xcdatamodeld */,
+				D450E75014847CCE00C11827 /* iDrank.xcdatamodel */,
 				D49CBE75147C9E9400468C36 /* Crysta.ttf */,
 				22B0CE9E1250598D006E4256 /* Images */,
 				280E754C0DD40C5E005A515E /* MainWindow.xib */,
@@ -375,6 +386,24 @@
 			name = "FSK Classes";
 			sourceTree = "<group>";
 		};
+		D48FBDBF148730CC00DFFCF0 /* Hijack Lib */ = {
+			isa = PBXGroup;
+			children = (
+				D48FBDC0148730ED00DFFCF0 /* aurio_helper.cpp */,
+				D48FBDC1148730ED00DFFCF0 /* aurio_helper.h */,
+				D48FBDC2148730ED00DFFCF0 /* CADebugMacros.cpp */,
+				D48FBDC3148730ED00DFFCF0 /* CADebugMacros.h */,
+				D48FBDC4148730ED00DFFCF0 /* CAMath.h */,
+				D48FBDC5148730ED00DFFCF0 /* CAStreamBasicDescription.cpp */,
+				D48FBDC6148730ED00DFFCF0 /* CAStreamBasicDescription.h */,
+				D48FBDC7148730ED00DFFCF0 /* CAXException.cpp */,
+				D48FBDC8148730ED00DFFCF0 /* CAXException.h */,
+				D48FBDC9148730ED00DFFCF0 /* HiJackMgr.h */,
+				D48FBDCA148730ED00DFFCF0 /* HiJackMgr.mm */,
+			);
+			name = "Hijack Lib";
+			sourceTree = "<group>";
+		};
 		D49CBE67147C9D2B00468C36 /* Standard */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,8 +435,8 @@
 		D4CE0CE214809ED300425369 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D4CE0CEE1480B3FF00425369 /* Event.h */,
-				D4CE0CEF1480B3FF00425369 /* Event.m */,
+				D4895CD01489CD8F00A83480 /* BACEvent.h */,
+				D4895CD11489CD8F00A83480 /* BACEvent.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -416,7 +445,7 @@
 			isa = PBXGroup;
 			children = (
 				D4EEB283145FE7160037FDB8 /* BACController.h */,
-				D4EEB284145FE7160037FDB8 /* BACController.m */,
+				D4EEB284145FE7160037FDB8 /* BACController.mm */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -538,7 +567,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* SoftModemTerminalAppDelegate.m in Sources */,
+				1D3623260D0F684500981E51 /* iDrankAppDelegate.m in Sources */,
 				289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */,
 				702E1D02118D265F00141E6A /* AudioQueueObject.m in Sources */,
 				702E1D03118D265F00141E6A /* AudioSignalAnalyzer.m in Sources */,
@@ -546,13 +575,18 @@
 				702E1D05118D265F00141E6A /* FSKRecognizer.mm in Sources */,
 				702E1D07118D265F00141E6A /* MultiDelegate.m in Sources */,
 				7061347B11F870BA00E36A4D /* FSKSerialGenerator.mm in Sources */,
-				D4EEB285145FE7160037FDB8 /* BACController.m in Sources */,
+				D4EEB285145FE7160037FDB8 /* BACController.mm in Sources */,
 				D49CBE48147C919800468C36 /* MeasureViewController.m in Sources */,
 				D49CBE7E147CA47100468C36 /* StatusBar.m in Sources */,
 				D49CBE83147CAC4700468C36 /* ReadingsViewController.m in Sources */,
 				D49CBE88147CAE0300468C36 /* PrefsViewController.m in Sources */,
-				D4CE0CE51480A07B00425369 /* Event.xcdatamodeld in Sources */,
-				D4CE0CF01480B3FF00425369 /* Event.m in Sources */,
+				D450E75114847CCE00C11827 /* iDrank.xcdatamodel in Sources */,
+				D48FBDCB148730ED00DFFCF0 /* aurio_helper.cpp in Sources */,
+				D48FBDCC148730ED00DFFCF0 /* CADebugMacros.cpp in Sources */,
+				D48FBDCD148730ED00DFFCF0 /* CAStreamBasicDescription.cpp in Sources */,
+				D48FBDCE148730ED00DFFCF0 /* CAXException.cpp in Sources */,
+				D48FBDCF148730ED00DFFCF0 /* HiJackMgr.mm in Sources */,
+				D4895CD21489CD8F00A83480 /* BACEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,7 +600,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iDrank_Prefix.pch;
 				INFOPLIST_FILE = "iDrank-Info.plist";
@@ -574,7 +608,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/iDrankWorkspace-efttroryetqeikcsndwnqtrcitrv/Build/Products/Debug-iphoneos\"",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = iDrank;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -592,7 +628,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/iDrankWorkspace-efttroryetqeikcsndwnqtrcitrv/Build/Products/Debug-iphoneos\"",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = iDrank;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -603,12 +641,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Timothy Moses";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
 				PRODUCT_NAME = iDrank;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(BUILD_PRODUCTS_DIR)/HiJack/**";
 			};
 			name = Debug;
 		};
@@ -618,11 +665,18 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
 				PRODUCT_NAME = iDrank;
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(BUILD_PRODUCTS_DIR)/HiJack/**";
 			};
 			name = Release;
 		};
@@ -648,19 +702,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D4CE0CE31480A07B00425369 /* Event.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D4CE0CE41480A07B00425369 /* Event.xcdatamodel */,
-			);
-			currentVersion = D4CE0CE41480A07B00425369 /* Event.xcdatamodel */;
-			path = Event.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
 }

@@ -13,6 +13,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D2AAC07D0554694100DB518D"
+               BuildableName = "libHiJack.a"
+               BlueprintName = "HiJack"
+               ReferencedContainer = "container:../hijack-main-read-only/iPhone/LibHiJack/HiJack.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
                BuildableName = "iDrank.app"
                BlueprintName = "iDrank"
