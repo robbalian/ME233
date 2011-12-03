@@ -13,6 +13,8 @@
     IBOutlet UITableView *tv;
 }
 
+-(void)refreshData;
+
 
 
 @end

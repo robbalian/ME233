@@ -14,6 +14,9 @@
     IBOutlet UILabel *infoBodyLabel;
     IBOutlet UILabel *infoTitleLabel;
     IBOutlet UIButton *measureAgainButton;
+    IBOutlet UIImageView *circle;
 
 }
+
+//-(IBAction)ripple:(id)sender;
 @end

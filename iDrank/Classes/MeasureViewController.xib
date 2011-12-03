@@ -60,7 +60,7 @@
 						<string key="NSFrame">{{67, 57}, {186, 93}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1023255034"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:328</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -257,6 +257,14 @@
 					<int key="connectionID">16</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">circle</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="438588927"/>
+					</object>
+					<int key="connectionID">20</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">measureAgain:</string>
 						<reference key="source" ref="1023255034"/>
@@ -347,7 +355,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">16</int>
+			<int key="maxID">20</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -355,12 +363,17 @@
 					<string key="className">MeasureViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="circle">UIImageView</string>
 						<string key="infoBodyLabel">UILabel</string>
 						<string key="infoTitleLabel">UILabel</string>
 						<string key="measureAgainButton">UIButton</string>
 						<string key="readoutLabel">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="circle">
+							<string key="name">circle</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="infoBodyLabel">
 							<string key="name">infoBodyLabel</string>
 							<string key="candidateClassName">UILabel</string>

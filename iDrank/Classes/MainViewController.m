@@ -84,6 +84,7 @@ BOOL isConnected = FALSE;
             //Logs
             if (readingsVC == nil) readingsVC = [[ReadingsViewController alloc] init];
             [tabView addSubview:readingsVC.view];
+            [readingsVC refreshData];
             break;
         case 2:
             //Measure

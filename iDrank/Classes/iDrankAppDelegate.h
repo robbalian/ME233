@@ -51,7 +51,7 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
-
+-(void)addBAC:(id)sender;
 
 #ifdef OBJ_C
 //CORE DATA

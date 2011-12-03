@@ -41,7 +41,10 @@
     } else if (state == SENSOR_STATE_CALCULATING) {
         [readoutLabel setText:@"Calculating..."];
     } else if (state == SENSOR_STATE_DONE) {
-        [readoutLabel setText:[NSString stringWithFormat:@"%.02f", [[BACController getInstance] getCurrentBAC]]];
+        double bac = [[BACController getInstance] getCurrentBAC];
+        [readoutLabel setText:[NSString stringWithFormat:@"%.2f", bac]];
+        [infoTitleLabel setText:[NSString stringWithFormat:@"%.2f BAC", bac]];
+        [infoBodyLabel setText:@"This text"];
         [measureAgainButton setHidden:NO];
     }
     
@@ -50,7 +53,16 @@
 -(IBAction)measureAgain:(id)sender {
     [[BACController getInstance] measureAgain];
 }
-
+/*
+-(IBAction)ripple:(id)sender {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationTransition:110 forView:self.view cache:NO];
+    
+    [circle setFrame:CGRectMake(arc4random()%320, arc4random()%480, 300, 300)];
+    [UIView commitAnimations];
+}
+*/
 
 - (void)didReceiveMemoryWarning
 {

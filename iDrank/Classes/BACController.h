@@ -36,6 +36,7 @@ enum {
     int sensorState;
     id delegate;
     double secondsTillWarm;
+    double currentBAC;
     NSTimer *warmTimer;
     NSTimer *readTimer;
     NSTimer *calculateTimer;

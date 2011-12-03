@@ -189,6 +189,7 @@ BACController *instance;
 
 -(void)doneReading:(id)sender {
     [self setState:SENSOR_STATE_CALCULATING];
+    [self calculateBAC];
     calculateTimer = [NSTimer scheduledTimerWithTimeInterval:SENSOR_CALCULATE_SECONDS target:self selector:@selector(doneCalculating:) userInfo:nil repeats:NO];
 }
 
@@ -199,6 +200,7 @@ BACController *instance;
 }
 
 -(void)doneCalculating:(id)sender {
+    [((iDrankAppDelegate *)[[UIApplication sharedApplication] delegate]) addBAC:nil];
     [self setState:SENSOR_STATE_DONE];
     [self setState:SENSOR_STATE_OFF];
     //[self addBAC:nil]; //add to our database on the phone
@@ -212,6 +214,10 @@ BACController *instance;
 }
 
 -(double)getCurrentBAC {
+    return currentBAC;
+}
+
+-(void)calculateBAC {
     int total = 0;
     int numReadings = 0;
     for (int i=[readings count]-10; i<[readings count]; i++) {
@@ -224,66 +230,10 @@ BACController *instance;
     double bac = (average-125)*.0011;
     
     
-    return .08;
+    currentBAC = ((double)(arc4random() % 40)) / 100.0;
     //return bac > 0 ? bac : 0;
     //return .4*(((double)(rand()%10))/10.0);
 }
-
-- (void)addBAC:(id)sender {   
-    
-    BACEvent *event = (BACEvent *)[NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:managedObjectContext];  
-    //[event setTimestamp:[NSDate date]];
-    //[event setBlood_alcohol_content:[NSNumber numberWithDouble:.03]];
-    //[event setUser_id:<#(NSNumber *)#>];
-    [event setName:@"Rob"];
-    
-    NSError *error;  
-    
-    if(![managedObjectContext save:&error]){  
-        
-        //This is a serious error saying the record  
-        //could not be saved. Advise the user to  
-        //try again or restart the application.   
-        
-    }  
-    
-    [eventArray insertObject:event atIndex:0];  
-}  
-
-- (void)fetchRecords {   
-    
-    // Define our table/entity to use  
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:managedObjectContext];   
-    
-    // Setup the fetch request  
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];  
-    [request setEntity:entity];   
-    
-    // Define how we will sort the records  
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];  
-    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];  
-    [request setSortDescriptors:sortDescriptors];  
-    [sortDescriptor release];   
-    
-    // Fetch the records and handle an error  
-    NSError *error;  
-    NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];   
-    
-    if (!mutableFetchResults) { 
-        // Handle the error.  
-        // This is a serious error and should advise the user to restart the application  
-    }   
-    
-    // Save our fetched data to an array  
-    [self setEventArray: mutableFetchResults];  
-    [mutableFetchResults release];  
-    [request release];  
-}   
-
-
-
-
-
 
 //TEST CODE for no device
 -(void)testReceiveChar:(id)sender {

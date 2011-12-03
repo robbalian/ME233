@@ -180,10 +180,7 @@ void audioRouteChangeListenerCallback (
     hijack = [[HiJackMgr alloc] init];
 	[hijack setDelegate:self];
 #endif
-    
-    [self fetchRecords];
-    [self addBAC:nil];
-    
+       
 	return YES;
 }
 
@@ -362,7 +359,7 @@ void audioRouteChangeListenerCallback (
     
     BACEvent *event = (BACEvent *)[NSEntityDescription insertNewObjectForEntityForName:@"BACEvent" inManagedObjectContext:__managedObjectContext];  
     [event setTime:[NSDate date]];
-    [event setReading:[NSNumber numberWithDouble:.03]];
+    [event setReading:[NSNumber numberWithDouble:[[BACController getInstance] getCurrentBAC]]];
     //[event setUser_id:<#(NSNumber *)#>];
     [event setName:@"Rob"];
     

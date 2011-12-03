@@ -40,6 +40,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellID"];
+        [cell.textLabel setTextColor:[UIColor whiteColor]];
     }
     BACEvent *event = (BACEvent *)[results objectAtIndex:[indexPath row]];
    // NSLog(@"%@", event);
@@ -53,7 +54,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+       
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)refreshData {
+    iDrankAppDelegate *appDel =(iDrankAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDel fetchRecords];
+    results = appDel.eventArray;
+    [tv reloadData];
 }
 
 - (void)viewDidUnload

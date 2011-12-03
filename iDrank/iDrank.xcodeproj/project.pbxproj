@@ -87,6 +87,7 @@
 		D4D0594C146346FE009D47AD /* icon_headphone_jack.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0594A146346FE009D47AD /* icon_headphone_jack.png */; };
 		D4D0594D146346FE009D47AD /* icon_headphone_jack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0594B146346FE009D47AD /* icon_headphone_jack@2x.png */; };
 		D4EEB285145FE7160037FDB8 /* BACController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4EEB284145FE7160037FDB8 /* BACController.m */; };
+		D4F2824E148A29010044E6C4 /* InfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2824D148A29010044E6C4 /* InfoController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -199,6 +200,8 @@
 		D4D0594B146346FE009D47AD /* icon_headphone_jack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_headphone_jack@2x.png"; path = "images/icon_headphone_jack@2x.png"; sourceTree = "<group>"; };
 		D4EEB283145FE7160037FDB8 /* BACController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BACController.h; path = Classes/BACController.h; sourceTree = "<group>"; };
 		D4EEB284145FE7160037FDB8 /* BACController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BACController.m; path = Classes/BACController.m; sourceTree = "<group>"; };
+		D4F2824C148A29010044E6C4 /* InfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfoController.h; path = Classes/InfoController.h; sourceTree = "<group>"; };
+		D4F2824D148A29010044E6C4 /* InfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfoController.m; path = Classes/InfoController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -446,6 +449,8 @@
 			children = (
 				D4EEB283145FE7160037FDB8 /* BACController.h */,
 				D4EEB284145FE7160037FDB8 /* BACController.m */,
+				D4F2824C148A29010044E6C4 /* InfoController.h */,
+				D4F2824D148A29010044E6C4 /* InfoController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -587,6 +592,7 @@
 				D48FBDCE148730ED00DFFCF0 /* CAXException.cpp in Sources */,
 				D48FBDCF148730ED00DFFCF0 /* HiJackMgr.mm in Sources */,
 				D4895CD21489CD8F00A83480 /* BACEvent.m in Sources */,
+				D4F2824E148A29010044E6C4 /* InfoController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
