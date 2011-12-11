@@ -166,12 +166,12 @@ BACController *instance;
 
 - (void) sendCode:(char)code {
 	NSLog(@"Sending Char: %c", code);
-    for (int i = 0; i < 1; i++) {
+    //for (int i = 0; i < 1; i++) {
 		[[iDrankAppDelegate getInstance].generator writeByte:code];
-	}
-	for (int i = 0; i < 1; i++) {
-		[[iDrankAppDelegate getInstance].generator writeByte:0x04];
-	}
+	//}
+	//for (int i = 0; i < 1; i++) {
+	//	[[iDrankAppDelegate getInstance].generator writeByte:0x04];
+	//}
 }
 
 -(NSString *)storeReading:(char)c {

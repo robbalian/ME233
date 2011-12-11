@@ -50,6 +50,42 @@
     
 }
 
+-(IBAction)changeTheme:(id)sender {
+    //theme 1
+    //to theme 2
+    //add theme 2 to top, hidden
+    //animation: view 2 not hidden, view 1 hidden
+    //remove view 1
+    NSArray *nibObjs;
+    //if (arc4random() % 2 == 0) {
+        nibObjs = [[NSBundle mainBundle] loadNibNamed:@"CollegeThemeViewController" owner:self options:nil];
+    //} else {
+    //    nibObjs = [[NSBundle mainBundle] loadNibNamed:@"MeasureViewController" owner:self options:nil];
+    //}
+    UIView *aView = [nibObjs objectAtIndex:0];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.view cache:NO];
+    //REMOVES TOP VIEW
+    for (UIView *sub in self.view.subviews) {
+        [sub removeFromSuperview];
+    }
+    [self.view addSubview:aView];
+    
+    
+    //[aView setHidden:YES];
+    //[self.view addSubview:aView];
+    
+    //[aView setHidden:NO];
+    //[circle setFrame:CGRectMake(arc4random()%320, arc4random()%480, 300, 300)];
+    [UIView commitAnimations];
+}
+
+-(IBAction)testChar:(id)sender {
+    [[BACController getInstance] sendTestChar];
+}
+
 -(IBAction)measureAgain:(id)sender {
     [[BACController getInstance] measureAgain];
 }

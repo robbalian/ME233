@@ -58,6 +58,8 @@
 		D48FBDCD148730ED00DFFCF0 /* CAStreamBasicDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D48FBDC5148730ED00DFFCF0 /* CAStreamBasicDescription.cpp */; };
 		D48FBDCE148730ED00DFFCF0 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D48FBDC7148730ED00DFFCF0 /* CAXException.cpp */; };
 		D48FBDCF148730ED00DFFCF0 /* HiJackMgr.mm in Sources */ = {isa = PBXBuildFile; fileRef = D48FBDCA148730ED00DFFCF0 /* HiJackMgr.mm */; };
+		D491266F148AC90C003C005A /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = D491266E148AC90C003C005A /* Theme.m */; };
+		D4912672148AD955003C005A /* CollegeThemeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4912671148AD955003C005A /* CollegeThemeViewController.xib */; };
 		D49CBE48147C919800468C36 /* MeasureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49CBE46147C919800468C36 /* MeasureViewController.m */; };
 		D49CBE49147C919800468C36 /* MeasureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D49CBE47147C919800468C36 /* MeasureViewController.xib */; };
 		D49CBE5F147C9AA900468C36 /* Sensor_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = D49CBE5B147C9AA900468C36 /* Sensor_disabled.png */; };
@@ -165,6 +167,9 @@
 		D48FBDC8148730ED00DFFCF0 /* CAXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAXException.h; sourceTree = "<group>"; };
 		D48FBDC9148730ED00DFFCF0 /* HiJackMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HiJackMgr.h; sourceTree = "<group>"; };
 		D48FBDCA148730ED00DFFCF0 /* HiJackMgr.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HiJackMgr.mm; sourceTree = "<group>"; };
+		D491266D148AC90C003C005A /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Theme.h; path = Classes/Theme.h; sourceTree = "<group>"; };
+		D491266E148AC90C003C005A /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Theme.m; path = Classes/Theme.m; sourceTree = "<group>"; };
+		D4912671148AD955003C005A /* CollegeThemeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollegeThemeViewController.xib; sourceTree = "<group>"; };
 		D49CBE45147C919800468C36 /* MeasureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeasureViewController.h; path = Classes/MeasureViewController.h; sourceTree = "<group>"; };
 		D49CBE46147C919800468C36 /* MeasureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeasureViewController.m; path = Classes/MeasureViewController.m; sourceTree = "<group>"; };
 		D49CBE47147C919800468C36 /* MeasureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MeasureViewController.xib; path = Classes/MeasureViewController.xib; sourceTree = "<group>"; };
@@ -309,6 +314,7 @@
 				289233A80DB2D0DB0083E9F9 /* MainViewController.h */,
 				289233A90DB2D0DB0083E9F9 /* MainViewController.m */,
 				280E754B0DD40C5E005A515E /* MainView.xib */,
+				D4912671148AD955003C005A /* CollegeThemeViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -440,6 +446,8 @@
 			children = (
 				D4895CD01489CD8F00A83480 /* BACEvent.h */,
 				D4895CD11489CD8F00A83480 /* BACEvent.m */,
+				D491266D148AC90C003C005A /* Theme.h */,
+				D491266E148AC90C003C005A /* Theme.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -561,6 +569,7 @@
 				D49CBE7F147CA47100468C36 /* StatusBar.xib in Resources */,
 				D49CBE84147CAC4700468C36 /* ReadingsViewController.xib in Resources */,
 				D49CBE89147CAE0300468C36 /* PrefsViewController.xib in Resources */,
+				D4912672148AD955003C005A /* CollegeThemeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,6 +602,7 @@
 				D48FBDCF148730ED00DFFCF0 /* HiJackMgr.mm in Sources */,
 				D4895CD21489CD8F00A83480 /* BACEvent.m in Sources */,
 				D4F2824E148A29010044E6C4 /* InfoController.m in Sources */,
+				D491266F148AC90C003C005A /* Theme.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

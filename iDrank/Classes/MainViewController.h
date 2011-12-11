@@ -36,6 +36,7 @@
     IBOutlet UIView *statusBarView;
 }
 
+
 -(IBAction)showInfo;
 -(void)updateUIForBAC;
 -(void)sendCode:(char)code;

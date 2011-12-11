@@ -37,12 +37,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/MeasureViewController.m"
-         timestampString = "344601202.106923"
+         timestampString = "344923789.697956"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "79"
-         endingLineNumber = "79"
-         landmarkName = "-viewDidLoad"
+         startingLineNumber = "109"
+         endingLineNumber = "109"
+         landmarkName = "-didReceiveMemoryWarning"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -65,7 +65,7 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/MainViewController.m"
-         timestampString = "343977620.140758"
+         timestampString = "344823135.370271"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "84"
@@ -471,12 +471,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/MeasureViewController.m"
-         timestampString = "344601108.050092"
+         timestampString = "344923789.697956"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "59"
-         endingLineNumber = "59"
-         landmarkName = "-ripple:"
+         startingLineNumber = "89"
+         endingLineNumber = "89"
+         landmarkName = "-measureAgain:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
