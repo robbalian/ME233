@@ -12,13 +12,16 @@
 #include <ctype.h>
 
 #define SIGNAL_VERIFY_PING 'a'
-#define SIGNAL_VERIFY_ACK 'b'
+#define SIGNAL_VERIFY_ACK 'c'
 
-#define SIGNAL_ON_PING 'c'
-#define SIGNAL_ON_ACK 'd'
+#define SIGNAL_ON_PING 'e'
+#define SIGNAL_ON_ACK 'g'
 
-#define SIGNAL_OFF_PING 'e'
-#define SIGNAL_OFF_ACK 'f'
+#define SIGNAL_READY_PING 'i'
+#define SIGNAL_READY_ACK 'k'
+
+#define SIGNAL_OFF_PING 'm'
+#define SIGNAL_OFF_ACK 'o'
 
 
 #define TEST_CHAR 'z'
