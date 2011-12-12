@@ -62,32 +62,6 @@ BACController *instance;
     return self;
 }
 
--(int)currentState {
-    return sensorState;
-}
-
--(void)warmTimerTick:(id)sender {
-    if (secondsTillWarm > 1) {
-        secondsTillWarm-= 1;
-        [delegate warmupSecondsLeft:secondsTillWarm];
-    } else {
-        if (warmTimer) [warmTimer invalidate];
-        warmTimer = nil;
-        [self setState:SENSOR_STATE_READY];
-    }
-}
-
--(void)setState:(int)state {
-    sensorState = state;
-    [delegate sensorStateChanged:state];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"stateChanged" object:self];
-}
-
--(void)startWarmupTimer {
-    secondsTillWarm = SENSOR_WARMUP_SECONDS;
-    warmTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(warmTimerTick:) userInfo:nil repeats:YES];
-}
-
 -(void)verifySensor {
     NSLog(@"Verifying sensor");
 #ifdef NO_IDRANK
@@ -106,46 +80,6 @@ BACController *instance;
     NSLog(@"Sensor unplugged");
 }
 
-/*-(void)startWithDelegate:(id)del {
-    //set delegate for callbacks
-    delegate = del;
-    //if (sensorState >= SENSOR_STATE_OFF) {
-    //    [self sendCode:SIGNAL_SENSOR_POWER_ON];
-        //need some error checking to make sure it pings back
-        
-        secondsTillWarm = SENSOR_WARMUP_SECONDS;
-        warmTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(warmTimerTick:) userInfo:nil repeats:YES];
-    //}
-    
-    //if () {
-        //turn on sensor
-        //wait for ready
-        /* WAYS TO CHECK FOR READY
-         
-        //[delegate sensorStateChanged:SENSOR_STATE_WARMING
-         Temp sensor (iphone interprets temps and alcohol readings)
-         Start 15-30 second timer
-         Wait until values stabilize (this one might work)
-         
-         */
-    
-    //} else (if sensor isn't plugged in) {
-        
-        //[delegate sensorStateChanged:SENSOR_STATE_DISCONNECTED
-        
-    //}
-    
-    /*[NSTimer scheduledTimerWithTimeInterval:2.0f
-     target:self
-     selector:@selector(sendA:)
-     userInfo:nil
-     repeats:YES];
-     *//*
-#ifdef NO_IDRANK
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(testReceiveChar:) userInfo:nil repeats:YES];
-#endif
-}*/
-
 -(void)setDelegate:(id)del {
     delegate = del;
 }
@@ -159,22 +93,48 @@ BACController *instance;
         NSLog(@"Verified, turning on");
     } else if (sensorState == SENSOR_STATE_OFF && input == SIGNAL_ON_ACK) {
         [self setState:SENSOR_STATE_WARMING];
+        [self startWarmupTimer];
         //now we wait...
         //Timer starts here
         NSLog(@"Sensor on, warming up");
+    } else if (sensorState == SENSOR_STATE_WARMING && input == SIGNAL_READY_ACK) {
+        [self setState:SENSOR_STATE_READY];
+        //now ready to read
+        NSLog(@"Sensor ready to read");
+        
     } else if (sensorState == SENSOR_STATE_READING || sensorState == SENSOR_STATE_READY) {
         [self storeReading:input];
     }
 }
 
+-(void)warmTimerTick:(id)sender {
+    if (secondsTillWarm > 1) {
+        secondsTillWarm-= 1;
+        [delegate warmupSecondsLeft:secondsTillWarm];
+    } else {
+        if (warmTimer) [warmTimer invalidate];
+        warmTimer = nil;
+        [self sendCode:SIGNAL_READY_PING];
+        //notify sensor that it should be ready
+        //wait for ack in receivedChar
+        //[self setState:SENSOR_STATE_READY];
+    }
+}
+
+-(void)setState:(int)state {
+    sensorState = state;
+    [delegate sensorStateChanged:state];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"stateChanged" object:self];
+}
+
+-(void)startWarmupTimer {
+    secondsTillWarm = SENSOR_WARMUP_SECONDS;
+    warmTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(warmTimerTick:) userInfo:nil repeats:YES];
+}
+
 - (void) sendCode:(char)code {
 	NSLog(@"Sending Char: %c", code);
-    //for (int i = 0; i < 1; i++) {
-		[[iDrankAppDelegate getInstance].generator writeByte:code];
-	//}
-	//for (int i = 0; i < 1; i++) {
-	//	[[iDrankAppDelegate getInstance].generator writeByte:0x04];
-	//}
+ 		[[iDrankAppDelegate getInstance].generator writeByte:code];
 }
 
 -(NSString *)storeReading:(char)c {
@@ -192,13 +152,36 @@ BACController *instance;
 
 -(void)doneReading:(id)sender {
     [self setState:SENSOR_STATE_CALCULATING];
+    [self sendCode:SIGNAL_OFF_PING]; //error checking later...
+    //turn heater off, done with sensor now
+
     [self calculateBAC];
     calculateTimer = [NSTimer scheduledTimerWithTimeInterval:SENSOR_CALCULATE_SECONDS target:self selector:@selector(doneCalculating:) userInfo:nil repeats:NO];
 }
 
+-(void)calculateBAC {
+    int total = 0;
+    int numReadings = 0;
+    for (int i=[readings count]-10; i<[readings count]; i++) {
+        if (i < 0) continue;
+        int reading = [(NSNumber *)[readings objectAtIndex:i] intValue];
+        total += reading;
+        numReadings +=1;
+    }
+    double average = (double)total / numReadings;
+    double bac = (average-125)*.0011;
+    
+    
+    currentBAC = ((double)(arc4random() % 40)) / 100.0;
+    //return bac > 0 ? bac : 0;
+    //return .4*(((double)(rand()%10))/10.0);
+}
+
+
 -(void)measureAgain {
     //start warming from current temp state (estimated)
     [self startWarmupTimer];
+    [self sendCode:SIGNAL_ON_PING];
     [self setState:SENSOR_STATE_WARMING];
 }
 
@@ -220,22 +203,8 @@ BACController *instance;
     return currentBAC;
 }
 
--(void)calculateBAC {
-    int total = 0;
-    int numReadings = 0;
-    for (int i=[readings count]-10; i<[readings count]; i++) {
-        if (i < 0) continue;
-        int reading = [(NSNumber *)[readings objectAtIndex:i] intValue];
-        total += reading;
-        numReadings +=1;
-    }
-    double average = (double)total / numReadings;
-    double bac = (average-125)*.0011;
-    
-    
-    currentBAC = ((double)(arc4random() % 40)) / 100.0;
-    //return bac > 0 ? bac : 0;
-    //return .4*(((double)(rand()%10))/10.0);
+-(int)currentState {
+    return sensorState;
 }
 
 //TEST CODE for no device
