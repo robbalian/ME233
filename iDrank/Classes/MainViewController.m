@@ -17,13 +17,15 @@
 #define BAC_THRESHOLD_GREEN 157.0
 #define BAC_THRESHOLD_YELLOW 225.0
 
+@synthesize theme;
 
 BOOL isConnected = FALSE;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-
+        measureVC = [[MeasureViewController alloc] init];
+        theme = [[Theme alloc] initWithTheme:0 andDelegate:measureVC];
     }
     return self;
 }
@@ -71,35 +73,55 @@ BOOL isConnected = FALSE;
     }
 
 }
-// TAB BAR METHODS
 
--(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
-    if (item.tag == currentTab) return;
-    currentTab = item.tag;
+-(void)setTab:(int)tabNum {
+    if (tabNum == currentTab) return;
+    currentTab = tabNum;
+    
     for (UIView *view in tabView.subviews) {
         [view removeFromSuperview];
     }
-    switch (item.tag) {
-        case 1:
+    [tabBar setSelectedItem:[[tabBar items] objectAtIndex:tabNum]];
+    switch (tabNum) {
+        case 0:
             //Logs
             if (readingsVC == nil) readingsVC = [[ReadingsViewController alloc] init];
+            readingsVC.parent = self;
             [tabView addSubview:readingsVC.view];
             [readingsVC refreshData];
             break;
-        case 2:
+        case 1:
             //Measure
             if (measureVC == nil) measureVC = [[MeasureViewController alloc] init];
+            measureVC.parent = self;
             [tabView addSubview:measureVC.view];
             break;
-        case 3:
+        case 2:
             //More/Prefs
             if (prefsVC == nil) prefsVC = [[PrefsViewController alloc] init];
+            prefsVC.parent = self;
             [tabView addSubview:prefsVC.view];
             break;
             
         default:
             break;
     }
+
+}
+
+-(void)setTheme:(int)themeNum {
+    [theme setTheme:themeNum];
+    [self setTab:1];
+    [measureVC animateThemeChange];
+    //do animation thing
+    //switch tab to measureVC
+    //[measureviewcontroller change/resetTheme
+}
+
+// TAB BAR METHODS
+
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    [self setTab:item.tag];
 }
 
 - (void)didReceiveMemoryWarning {

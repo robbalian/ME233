@@ -7,6 +7,7 @@
 //
 
 #import "MeasureViewController.h"
+#import "MainViewController.h"
 
 @implementation MeasureViewController
 
@@ -15,9 +16,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        //theme = [[Theme alloc] initWithTheme:0 andDelegate:self];
+        //[self.view addSubview:[theme getView]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedSensorStateChangeNotification:) name:@"stateChanged" object:[BACController getInstance]];
-
-        
     }
     return self;
 }
@@ -50,32 +51,36 @@
     
 }
 
--(IBAction)changeTheme:(id)sender {
+-(void)animateThemeChange {
     //theme 1
     //to theme 2
     //add theme 2 to top, hidden
     //animation: view 2 not hidden, view 1 hidden
     //remove view 1
-    NSArray *nibObjs;
-    //if (arc4random() % 2 == 0) {
-        nibObjs = [[NSBundle mainBundle] loadNibNamed:@"CollegeThemeViewController" owner:self options:nil];
+
     //} else {
     //    nibObjs = [[NSBundle mainBundle] loadNibNamed:@"MeasureViewController" owner:self options:nil];
     //}
-    UIView *aView = [nibObjs objectAtIndex:0];
+    
+    //if (!theme) theme = [[Theme alloc] initWithTheme:0 andDelegate:self];
+
+    //[theme setTheme:([theme getThemeNum]+1) % NUM_THEMES];
+    
+    UIView *aView = [((MainViewController *)parent).theme getView];
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:1.0];
-    [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.view cache:NO];
+    [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.view cache:YES];
     //REMOVES TOP VIEW
-    for (UIView *sub in self.view.subviews) {
-        [sub removeFromSuperview];
-    }
-    [self.view addSubview:aView];
+    //for (UIView *sub in self.view.subviews) {
+        //[sub removeFromSuperview];
+    //}
+    
+    
     
     
     //[aView setHidden:YES];
-    //[self.view addSubview:aView];
+    [self.view addSubview:aView];
     
     //[aView setHidden:NO];
     //[circle setFrame:CGRectMake(arc4random()%320, arc4random()%480, 300, 300)];

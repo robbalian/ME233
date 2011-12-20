@@ -35,6 +35,7 @@
 		702E1D07118D265F00141E6A /* MultiDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 702E1D00118D265F00141E6A /* MultiDelegate.m */; };
 		702E1D1D118D270B00141E6A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 702E1D1C118D270B00141E6A /* AudioToolbox.framework */; };
 		7061347B11F870BA00E36A4D /* FSKSerialGenerator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7061347A11F870BA00E36A4D /* FSKSerialGenerator.mm */; };
+		D406CB5114A07B35000392B1 /* TabPane.m in Sources */ = {isa = PBXBuildFile; fileRef = D406CB4F14A07B35000392B1 /* TabPane.m */; };
 		D42FDE601460964B00B7B7C5 /* bar_lower.png in Resources */ = {isa = PBXBuildFile; fileRef = D42FDE561460964B00B7B7C5 /* bar_lower.png */; };
 		D42FDE611460964B00B7B7C5 /* bar_green.png in Resources */ = {isa = PBXBuildFile; fileRef = D42FDE571460964B00B7B7C5 /* bar_green.png */; };
 		D42FDE621460964B00B7B7C5 /* bar_red.png in Resources */ = {isa = PBXBuildFile; fileRef = D42FDE581460964B00B7B7C5 /* bar_red.png */; };
@@ -59,9 +60,8 @@
 		D48FBDCE148730ED00DFFCF0 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D48FBDC7148730ED00DFFCF0 /* CAXException.cpp */; };
 		D48FBDCF148730ED00DFFCF0 /* HiJackMgr.mm in Sources */ = {isa = PBXBuildFile; fileRef = D48FBDCA148730ED00DFFCF0 /* HiJackMgr.mm */; };
 		D491266F148AC90C003C005A /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = D491266E148AC90C003C005A /* Theme.m */; };
-		D4912672148AD955003C005A /* CollegeThemeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4912671148AD955003C005A /* CollegeThemeViewController.xib */; };
+		D4912672148AD955003C005A /* CollegeThemeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4912671148AD955003C005A /* CollegeThemeView.xib */; };
 		D49CBE48147C919800468C36 /* MeasureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49CBE46147C919800468C36 /* MeasureViewController.m */; };
-		D49CBE49147C919800468C36 /* MeasureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D49CBE47147C919800468C36 /* MeasureViewController.xib */; };
 		D49CBE5F147C9AA900468C36 /* Sensor_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = D49CBE5B147C9AA900468C36 /* Sensor_disabled.png */; };
 		D49CBE60147C9AA900468C36 /* Sensor_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D49CBE5C147C9AA900468C36 /* Sensor_disabled@2x.png */; };
 		D49CBE61147C9AAA00468C36 /* Sensor_enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = D49CBE5D147C9AA900468C36 /* Sensor_enabled.png */; };
@@ -81,6 +81,8 @@
 		D49CBE84147CAC4700468C36 /* ReadingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D49CBE82147CAC4700468C36 /* ReadingsViewController.xib */; };
 		D49CBE88147CAE0300468C36 /* PrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49CBE86147CAE0300468C36 /* PrefsViewController.m */; };
 		D49CBE89147CAE0300468C36 /* PrefsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D49CBE87147CAE0300468C36 /* PrefsViewController.xib */; };
+		D4C2ADFD149E7C3F00AC2B1A /* StandardThemeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4C2ADFC149E7C3F00AC2B1A /* StandardThemeView.xib */; };
+		D4C2AE01149E7E9E00AC2B1A /* MeasureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4C2AE00149E7E9E00AC2B1A /* MeasureViewController.xib */; };
 		D4CE0CED1480A34A00425369 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CE0CEC1480A34A00425369 /* CoreData.framework */; };
 		D4D0594014633AA7009D47AD /* background_beer.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0593C14633AA7009D47AD /* background_beer.png */; };
 		D4D0594114633AA7009D47AD /* background_beer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D0593D14633AA7009D47AD /* background_beer@2x.png */; };
@@ -137,6 +139,8 @@
 		70BA824C11BA507600005CF1 /* iDrank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDrank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70D1A3A71192DE50009B9356 /* FSKModemConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSKModemConfig.h; path = Classes/FSKModemConfig.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* iDrank-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iDrank-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		D406CB4E14A07B35000392B1 /* TabPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabPane.h; sourceTree = "<group>"; };
+		D406CB4F14A07B35000392B1 /* TabPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabPane.m; sourceTree = "<group>"; };
 		D42FDE561460964B00B7B7C5 /* bar_lower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar_lower.png; path = images/bar_lower.png; sourceTree = "<group>"; };
 		D42FDE571460964B00B7B7C5 /* bar_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar_green.png; path = images/bar_green.png; sourceTree = "<group>"; };
 		D42FDE581460964B00B7B7C5 /* bar_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar_red.png; path = images/bar_red.png; sourceTree = "<group>"; };
@@ -169,10 +173,9 @@
 		D48FBDCA148730ED00DFFCF0 /* HiJackMgr.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HiJackMgr.mm; sourceTree = "<group>"; };
 		D491266D148AC90C003C005A /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Theme.h; path = Classes/Theme.h; sourceTree = "<group>"; };
 		D491266E148AC90C003C005A /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Theme.m; path = Classes/Theme.m; sourceTree = "<group>"; };
-		D4912671148AD955003C005A /* CollegeThemeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollegeThemeViewController.xib; sourceTree = "<group>"; };
+		D4912671148AD955003C005A /* CollegeThemeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollegeThemeView.xib; sourceTree = "<group>"; };
 		D49CBE45147C919800468C36 /* MeasureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeasureViewController.h; path = Classes/MeasureViewController.h; sourceTree = "<group>"; };
 		D49CBE46147C919800468C36 /* MeasureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeasureViewController.m; path = Classes/MeasureViewController.m; sourceTree = "<group>"; };
-		D49CBE47147C919800468C36 /* MeasureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MeasureViewController.xib; path = Classes/MeasureViewController.xib; sourceTree = "<group>"; };
 		D49CBE5A147C93FC00468C36 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		D49CBE5B147C9AA900468C36 /* Sensor_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Sensor_disabled.png; path = ../Sensor_disabled.png; sourceTree = "<group>"; };
 		D49CBE5C147C9AA900468C36 /* Sensor_disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sensor_disabled@2x.png"; path = "../Sensor_disabled@2x.png"; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 		D49CBE85147CAE0200468C36 /* PrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefsViewController.h; path = Classes/PrefsViewController.h; sourceTree = "<group>"; };
 		D49CBE86147CAE0300468C36 /* PrefsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrefsViewController.m; path = Classes/PrefsViewController.m; sourceTree = "<group>"; };
 		D49CBE87147CAE0300468C36 /* PrefsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PrefsViewController.xib; path = Classes/PrefsViewController.xib; sourceTree = "<group>"; };
+		D4C2ADFC149E7C3F00AC2B1A /* StandardThemeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StandardThemeView.xib; sourceTree = "<group>"; };
+		D4C2AE00149E7E9E00AC2B1A /* MeasureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeasureViewController.xib; sourceTree = "<group>"; };
 		D4CE0CEC1480A34A00425369 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D4D0593C14633AA7009D47AD /* background_beer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background_beer.png; path = images/background_beer.png; sourceTree = "<group>"; };
 		D4D0593D14633AA7009D47AD /* background_beer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background_beer@2x.png"; path = "images/background_beer@2x.png"; sourceTree = "<group>"; };
@@ -299,6 +304,7 @@
 		289233A00DB2D0730083E9F9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D4C2AE00149E7E9E00AC2B1A /* MeasureViewController.xib */,
 				D49CBE85147CAE0200468C36 /* PrefsViewController.h */,
 				D49CBE86147CAE0300468C36 /* PrefsViewController.m */,
 				D49CBE87147CAE0300468C36 /* PrefsViewController.xib */,
@@ -307,14 +313,16 @@
 				D49CBE82147CAC4700468C36 /* ReadingsViewController.xib */,
 				D49CBE45147C919800468C36 /* MeasureViewController.h */,
 				D49CBE46147C919800468C36 /* MeasureViewController.m */,
-				D49CBE47147C919800468C36 /* MeasureViewController.xib */,
 				D49CBE7B147CA47100468C36 /* StatusBar.h */,
 				D49CBE7C147CA47100468C36 /* StatusBar.m */,
 				D49CBE7D147CA47100468C36 /* StatusBar.xib */,
 				289233A80DB2D0DB0083E9F9 /* MainViewController.h */,
 				289233A90DB2D0DB0083E9F9 /* MainViewController.m */,
 				280E754B0DD40C5E005A515E /* MainView.xib */,
-				D4912671148AD955003C005A /* CollegeThemeViewController.xib */,
+				D4912671148AD955003C005A /* CollegeThemeView.xib */,
+				D4C2ADFC149E7C3F00AC2B1A /* StandardThemeView.xib */,
+				D406CB4E14A07B35000392B1 /* TabPane.h */,
+				D406CB4F14A07B35000392B1 /* TabPane.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -552,7 +560,6 @@
 				D4D0594314633AA7009D47AD /* message_box@2x.png in Resources */,
 				D4D0594C146346FE009D47AD /* icon_headphone_jack.png in Resources */,
 				D4D0594D146346FE009D47AD /* icon_headphone_jack@2x.png in Resources */,
-				D49CBE49147C919800468C36 /* MeasureViewController.xib in Resources */,
 				D49CBE5F147C9AA900468C36 /* Sensor_disabled.png in Resources */,
 				D49CBE60147C9AA900468C36 /* Sensor_disabled@2x.png in Resources */,
 				D49CBE61147C9AAA00468C36 /* Sensor_enabled.png in Resources */,
@@ -569,7 +576,9 @@
 				D49CBE7F147CA47100468C36 /* StatusBar.xib in Resources */,
 				D49CBE84147CAC4700468C36 /* ReadingsViewController.xib in Resources */,
 				D49CBE89147CAE0300468C36 /* PrefsViewController.xib in Resources */,
-				D4912672148AD955003C005A /* CollegeThemeViewController.xib in Resources */,
+				D4912672148AD955003C005A /* CollegeThemeView.xib in Resources */,
+				D4C2ADFD149E7C3F00AC2B1A /* StandardThemeView.xib in Resources */,
+				D4C2AE01149E7E9E00AC2B1A /* MeasureViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +612,7 @@
 				D4895CD21489CD8F00A83480 /* BACEvent.m in Sources */,
 				D4F2824E148A29010044E6C4 /* InfoController.m in Sources */,
 				D491266F148AC90C003C005A /* Theme.m in Sources */,
+				D406CB5114A07B35000392B1 /* TabPane.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

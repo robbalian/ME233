@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TabPane.h"
 
-@interface PrefsViewController : UIViewController
+@interface PrefsViewController : TabPane
 
+
+-(IBAction)themeSelected:(id)sender;
 @end

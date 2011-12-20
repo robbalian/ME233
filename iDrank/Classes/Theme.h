@@ -10,14 +10,19 @@
 
 enum {
     THEME_STANDARD = 0,
-    THEME_COLLEGE
+    THEME_COLLEGE,
+    NUM_THEMES
 };    
 
 
 @interface Theme : NSObject {
-    
+    int themeNum;
+    id delegate;
 }
 
--(void)initWithTheme:(int)theme;
+-(id)initWithTheme:(int)theme andDelegate:(id)del;
+-(UIView *)getView;
+-(int)getThemeNum;
+-(void)setTheme:(int)newTheme;
 
 @end

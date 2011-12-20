@@ -10,6 +10,8 @@
 #import "StatusBar.h"
 #import "ReadingsViewController.h"
 #import "PrefsViewController.h"
+#import "Theme.h"
+
 
 @interface MainViewController : UIViewController <UITextFieldDelegate, BACControllerDelegate, UITabBarDelegate> {
 	int currentTab;
@@ -34,12 +36,18 @@
     
     IBOutlet UIView *tabView;
     IBOutlet UIView *statusBarView;
+    Theme *theme;
 }
+
+
 
 
 -(IBAction)showInfo;
 -(void)updateUIForBAC;
 -(void)sendCode:(char)code;
 -(IBAction)writeTestCharPushed:(id)sender;
+-(void)setTheme:(int)themeNum;
 
+
+@property (nonatomic, retain) Theme *theme;
 @end

@@ -1,15 +1,16 @@
 //
-//  PrefsViewController.m
+//  TabPane.m
 //  iDrank
 //
-//  Created by Rob Balian on 11/22/11.
+//  Created by Rob Balian on 12/20/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "PrefsViewController.h"
-#import "MainViewController.h"
+#import "TabPane.h"
 
-@implementation PrefsViewController
+@implementation TabPane
+
+@synthesize parent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -18,11 +19,6 @@
         // Custom initialization
     }
     return self;
-}
-
--(IBAction)themeSelected:(id)sender {
-    //set the theme from mainVC
-    [(MainViewController *)parent setTheme:((UIButton *)sender).tag];
 }
 
 - (void)didReceiveMemoryWarning

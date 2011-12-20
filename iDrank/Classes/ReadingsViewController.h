@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TabPane.h"
 
-@interface ReadingsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface ReadingsViewController : TabPane <UITableViewDelegate, UITableViewDataSource> {
     NSMutableArray *results;
     IBOutlet UITableView *tv;
 }
