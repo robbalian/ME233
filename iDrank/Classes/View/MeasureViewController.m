@@ -105,6 +105,15 @@ if (animated) {
 -(IBAction)facebookButtonTapped:(id)sender {
     [[iDrankAppDelegate getInstance] sendToFacebook];    
 }
+
+-(IBAction)SMSButtonTapped:(id)sender {
+    [[iDrankAppDelegate getInstance] sendToSMS];
+}
+
+-(IBAction)twitterButtonTapped:(id)sender {
+    [[iDrankAppDelegate getInstance] sendToTwitter];
+}
+
 /*
 -(IBAction)ripple:(id)sender {
     [UIView beginAnimations:nil context:NULL];

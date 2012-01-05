@@ -15,6 +15,9 @@
 #import "BACController.h"
 #import "Theme.h"
 #import "FBConnect.h"
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
+#import <Twitter/Twitter.h>
 
 #ifdef USING_HIJACK
 #import "HiJackMgr.h"
@@ -26,7 +29,7 @@
 @class MainViewController;
 @class AudioSignalAnalyzer, FSKSerialGenerator, FSKRecognizer;
 
-@interface iDrankAppDelegate : NSObject <UIApplicationDelegate, AVAudioSessionDelegate, FBSessionDelegate, FBDialogDelegate> { //, HiJackDelegate> {
+@interface iDrankAppDelegate : NSObject <UIApplicationDelegate, AVAudioSessionDelegate, FBSessionDelegate, FBDialogDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> { //, HiJackDelegate> {
 #ifdef USING_FSK
     AudioSignalAnalyzer* analyzer;
 	FSKSerialGenerator* generator;
@@ -62,6 +65,9 @@
 
 //SOCIAL
 -(void)sendToFacebook;
+-(void)sendToEmail;
+-(void)sendToSMS;
+-(void)sendToTwitter;
 
 @property (nonatomic, retain) Theme *theme;
 @property (nonatomic, retain) Facebook *facebook;

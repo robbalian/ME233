@@ -469,10 +469,148 @@ void audioRouteChangeListenerCallback (
                                    @"Using Dialogs to interact with users.", @"description",
                                    @"This app is awesome",  @"message",
                                    nil];
-
     
     [facebook dialog:@"feed" andParams:params andDelegate:self];
 }
+
+-(void)sendToSMS {
+    MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
+    picker.messageComposeDelegate = self;
+    
+    //picker.recipients = [NSArray arrayWithObject:@"123456789"];   // your recipient number or self for testing
+    NSString *emailBody = [NSString stringWithFormat:@"Just blew a %.2f with iDrank. Come join me!", [[BACController getInstance] getCurrentBAC]];
+    
+    
+    picker.body = emailBody;
+    
+    
+    [mainViewController presentModalViewController:picker animated:YES];
+    picker = nil;
+    NSLog(@"SMS fired");
+}
+
+-(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+    [mainViewController dismissModalViewControllerAnimated:YES];
+    /*switch (result) {
+        case MessageComposeResultSent:
+            [FlurryAPI logEvent:@"share_sms_sent" withParameters:nil];
+            break;
+        case MessageComposeResultCancelled:
+            [FlurryAPI logEvent:@"share_sms_cancelled" withParameters:nil];
+            break;
+        case MessageComposeResultFailed:
+            [FlurryAPI logEvent:@"share_sms_failed" withParameters:nil];
+            break;
+        default:
+            break;
+    }*/
+}
+
+-(void)sendToEmail {
+    NSLog(@"Send Email Start");
+    if([MFMailComposeViewController canSendMail])
+    {
+        
+        MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+        picker.mailComposeDelegate = self;
+        [picker setModalPresentationStyle:UIModalPresentationFullScreen];
+        [picker setModalInPopover:YES];
+        //[picker setMailComposeDelegate:self];
+        //NSLog(((UINavigationItem *)[picker.navigationBar]).title);
+        //[picker setView:self.view];
+        // Set the subject of email
+        [picker setSubject:@"Just measured my BAC using iDrank"];
+        
+        
+        // Add email addresses
+        // Notice three sections: "to" "cc" and "bcc"	
+        [picker setToRecipients:[NSArray arrayWithObjects:nil]];
+        
+        
+        // Fill out the email body text
+        
+        // Create NSData object as PNG image data from camera image
+        //NSLog(@"converting to nsdata");
+        //NSData *data = UIImagePNGRepresentation(imageView.image);
+        //NSLog(@"done");
+        
+        NSString *emailBody = [NSString stringWithFormat:@"<html><body>Just blew %@ BAC using iDrank<br />Get your own from iPhone Breathalyzer at <a href=\"http://www.kickstarter.com\">D.tect</a></body></html>", [[BACController getInstance] getCurrentBAC]];
+        
+        
+        // This is not an HTML formatted email
+        [picker setMessageBody:emailBody isHTML:YES];
+        
+        
+        // Attach image data to the email
+        // 'CameraImage.png' is the file name that will be attached to the email
+        //[picker addAttachmentData:data mimeType:@"image/jpeg" fileName:@"CameraImage"];
+        
+        // Show email view	
+        
+        [mainViewController presentModalViewController:picker animated:YES];
+        //[[[[UIApplication sharedApplication] delegate] ] presentModalViewController:picker animated:YES];
+        //[picker release];
+        picker = nil;
+        
+    }
+
+}
+
+-(void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 
+{
+    [mainViewController dismissModalViewControllerAnimated:YES]; 
+    NSLog(@"Send End");
+    //[controller dismissModalViewControllerAnimated:YES];
+    /*switch (result) {
+        case MFMailComposeResultCancelled:
+            [FlurryAPI logEvent:@"share_mail_cancelled" withParameters:nil];
+            break;
+        case MFMailComposeResultSaved:
+            [FlurryAPI logEvent:@"share_mail_saved" withParameters:nil];
+            break;
+        case MFMailComposeResultFailed:
+            [FlurryAPI logEvent:@"share_mail_failed" withParameters:nil];
+            break;
+        case MFMailComposeResultSent:
+            [FlurryAPI logEvent:@"share_mail_sent" withParameters:nil];
+            break;
+        default:
+            break;
+    }*/
+}
+
+-(void)sendToTwitter {
+    // Create the view controller
+    TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
+    
+    // Optional: set an image, url and initial text
+    //[twitter addImage:[UIImage imageNamed:@"iOSDevTips.png"]];
+    [twitter addURL:[NSURL URLWithString:[NSString stringWithString:@"http://iOSDeveloperTips.com/"]]];
+    [twitter setInitialText:@"Tweet from iOS 5 app using the Twitter framework."];
+    
+    // Show the controller
+    [mainViewController presentModalViewController:twitter animated:YES];
+    
+    // Called when the tweet dialog has been closed
+    twitter.completionHandler = ^(TWTweetComposeViewControllerResult result) 
+    {
+        NSString *title = @"Tweet Status";
+        NSString *msg; 
+        
+        if (result == TWTweetComposeViewControllerResultCancelled)
+            msg = @"Tweet compostion was canceled.";
+        else if (result == TWTweetComposeViewControllerResultDone)
+            msg = @"Tweet composition completed.";
+        
+        // Show alert to see how things went...
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+        [alertView show];
+        
+        // Dismiss the controller
+        [mainViewController dismissModalViewControllerAnimated:YES];
+    };
+}
+
 
 
 - (void)dealloc {

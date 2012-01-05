@@ -55,6 +55,8 @@
 		D44D54D214B52892005FCE7C /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D44D54C514B52892005FCE7C /* SBJsonBase.m */; };
 		D44D54D314B52892005FCE7C /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D44D54C714B52892005FCE7C /* SBJsonParser.m */; };
 		D44D54D414B52892005FCE7C /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D44D54C914B52892005FCE7C /* SBJsonWriter.m */; };
+		D44D54DA14B57889005FCE7C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44D54D914B57888005FCE7C /* MessageUI.framework */; };
+		D44D54DC14B586F5005FCE7C /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44D54DB14B586F5005FCE7C /* Twitter.framework */; };
 		D450E75114847CCE00C11827 /* iDrank.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = D450E75014847CCE00C11827 /* iDrank.xcdatamodel */; };
 		D49CBE76147C9E9400468C36 /* Crysta.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D49CBE75147C9E9400468C36 /* Crysta.ttf */; };
 		D4CE0CED1480A34A00425369 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CE0CEC1480A34A00425369 /* CoreData.framework */; };
@@ -150,6 +152,8 @@
 		D44D54C714B52892005FCE7C /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		D44D54C814B52892005FCE7C /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		D44D54C914B52892005FCE7C /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		D44D54D914B57888005FCE7C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		D44D54DB14B586F5005FCE7C /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		D450E75014847CCE00C11827 /* iDrank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iDrank.xcdatamodel; sourceTree = "<group>"; };
 		D49CBE5A147C93FC00468C36 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		D49CBE75147C9E9400468C36 /* Crysta.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Crysta.ttf; path = images/Crysta.ttf; sourceTree = "<group>"; };
@@ -161,6 +165,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D44D54DC14B586F5005FCE7C /* Twitter.framework in Frameworks */,
+				D44D54DA14B57889005FCE7C /* MessageUI.framework in Frameworks */,
 				D4CE0CED1480A34A00425369 /* CoreData.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -184,6 +190,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				D44D54DB14B586F5005FCE7C /* Twitter.framework */,
+				D44D54D914B57888005FCE7C /* MessageUI.framework */,
 				D4CE0CEC1480A34A00425369 /* CoreData.framework */,
 				D49CBE5A147C93FC00468C36 /* Constants.h */,
 				D44D54B114B52892005FCE7C /* FB Connect */,

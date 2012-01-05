@@ -23,6 +23,8 @@
 -(IBAction)testChar:(id)sender;
 -(void)setViewForThemeAnimated:(BOOL)animated;
 -(IBAction)facebookButtonTapped:(id)sender;
+-(IBAction)SMSButtonTapped:(id)sender;
+-(IBAction)twitterButtonTapped:(id)sender;
 
 //-(IBAction)ripple:(id)sender;
 @end
