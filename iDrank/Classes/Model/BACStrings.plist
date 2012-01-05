@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<dict>
+			<key>texts</key>
+			<array>
+				<string>Our sensor shows very little alcohol in your blood</string>
+				<string>Looks like you&apos;re pretty sober at the moment</string>
+			</array>
+			<key>BAC_Tier</key>
+			<integer>0</integer>
+		</dict>
+        <dict>
+			<key>texts</key>
+			<array>
+				<string>Welcome to the social zone! What a great place to be</string>
+				<string>You should be a little buzzed</string>
+			</array>
+			<key>BAC_Tier</key>
+			<real>0.02</real>
+		</dict>
+        <dict>
+			<key>texts</key>
+			<array>
+				<string>Tipsy!</string>
+				<string>You&apos;re pretty buzzed at this point. Definitely do not drive</string>
+			</array>
+			<key>BAC_Tier</key>
+			<real>0.1</real>
+		</dict>
+        <dict>
+			<key>texts</key>
+			<array>
+				<string>You&apos;re very drunk. Time to drink some water and look for a ride home!</string>
+				<string>Quite intoxicated. Things NOT to do: Karaoke, Dancing, Driving</string>
+			</array>
+			<key>BAC_Tier</key>
+			<real>0.2</real>
+		</dict>
+        <dict>
+			<key>texts</key>
+			<array>
+				<string>You&apos;re extremely drunk now, find a friend to take you home</string>
+				<string>Start drinking water my friend, you&apos;re going to have one hell of a hangover tomorrow.</string>
+			</array>
+			<key>BAC_Tier</key>
+			<real>0.3</real>
+		</dict>
+        </array>
+</array>
+</plist>
