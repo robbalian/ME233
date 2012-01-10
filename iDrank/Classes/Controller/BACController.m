@@ -30,15 +30,19 @@
 
 @synthesize eventArray, managedObjectContext, fetchedResultsController;
 
-BACController *instance;
-
-
-+ (BACController *)getInstance {
-    if (instance == nil) {
-        instance = [[BACController alloc] init];
++(BACController*)sharedInstance {
+    
+	static BACController *_sharedInstance;
+	if(!_sharedInstance) {
+		static dispatch_once_t oncePredicate;
+		dispatch_once(&oncePredicate, ^{
+			_sharedInstance = [[super allocWithZone:nil] init];
+        });
     }
-    return instance;
+    
+    return _sharedInstance;
 }
+
 
 -(void)sendTestChar {
     //NSLog(@"sending test char: %c", TEST_CHAR);

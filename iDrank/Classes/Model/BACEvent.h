@@ -12,9 +12,9 @@
 
 @interface BACEvent : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * name, *place_name;
 @property (nonatomic, retain) NSNumber * reading;
 @property (nonatomic, retain) NSDate * time;
-@property (nonatomic, retain) NSNumber * idrank_id;
+@property (nonatomic, retain) NSNumber * idrank_id, *location_lat, *location_long;
 
 @end

@@ -11,9 +11,9 @@
 
 @implementation BACEvent
 
-@dynamic name;
+@dynamic name, place_name;
 @dynamic reading;
 @dynamic time;
-@dynamic idrank_id;
+@dynamic idrank_id, location_lat, location_long;
 
 @end

@@ -140,7 +140,7 @@ void audioRouteChangeListenerCallback (
         facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
     }
     
-    if (![facebook isSessionValid]) {
+    /*if (![facebook isSessionValid]) {
         NSArray *permissions = [[NSArray alloc] initWithObjects:
                                 @"user_likes", 
                                 @"read_stream",
@@ -149,10 +149,11 @@ void audioRouteChangeListenerCallback (
                                 nil];
         [facebook authorize:permissions];
         [permissions release];
-    }
+    }*/
     
-    
-    
+    locationController = [LocationController sharedInstance];
+    locationController.delegate = self;
+    [locationController.locationManager startUpdatingLocation];
 
     
     MainViewController *aController = [[MainViewController alloc] initWithNibName:@"MainView" bundle:nil];
@@ -164,7 +165,7 @@ void audioRouteChangeListenerCallback (
     [window makeKeyAndVisible];
 
 
-	bacController = [BACController getInstance];
+	bacController = [BACController sharedInstance];
 #ifdef OBJ_C
     bacController.managedObjectContext = [self managedObjectContext];
 #endif
@@ -375,9 +376,13 @@ void audioRouteChangeListenerCallback (
 -(void)addBAC:(id)sender {   
     BACEvent *event = (BACEvent *)[NSEntityDescription insertNewObjectForEntityForName:@"BACEvent" inManagedObjectContext:__managedObjectContext];  
     [event setTime:[NSDate date]];
-    [event setReading:[NSNumber numberWithDouble:[[BACController getInstance] getCurrentBAC]]];
-    //[event setUser_id:<#(NSNumber *)#>];
+    [event setReading:[NSNumber numberWithDouble:[[BACController sharedInstance] getCurrentBAC]]];
     [event setName:@"Rob"];
+    CLLocation *myLoc = [locationController getLastLocation];
+    [event setLocation_lat:[NSNumber numberWithDouble:myLoc.coordinate.latitude]];
+    [event setLocation_long:[NSNumber numberWithDouble:myLoc.coordinate.longitude]];
+    [event setPlace_name:[[LocationController sharedInstance] getPlaceName]];
+    
     
     NSError *error;  
     
@@ -455,10 +460,18 @@ void audioRouteChangeListenerCallback (
     [defaults synchronize];
     
     //[facebook dialog:@"feed" andDelegate:self];
-    
-    
-       
 }
+
+#pragma mark LOCATION CALLBACKS
+
+-(void)nearbyPlacesUpdated {
+    //display
+    NSLog(@"DICTIONARY : %@",[locationController getNearbyPlaces]);
+    //PlaceSelectionViewController *psvc = [[PlaceSelectionViewController alloc] init];
+    //[mainViewController presentModalViewController:psvc animated:YES];
+}
+
+#pragma mark SHARING
 
 -(void)sendToFacebook {
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -478,7 +491,7 @@ void audioRouteChangeListenerCallback (
     picker.messageComposeDelegate = self;
     
     //picker.recipients = [NSArray arrayWithObject:@"123456789"];   // your recipient number or self for testing
-    NSString *emailBody = [NSString stringWithFormat:@"Just blew a %.2f with iDrank. Come join me!", [[BACController getInstance] getCurrentBAC]];
+    NSString *emailBody = [NSString stringWithFormat:@"Just blew a %.2f with iDrank. Come join me!", [[BACController sharedInstance] getCurrentBAC]];
     
     
     picker.body = emailBody;
@@ -534,7 +547,7 @@ void audioRouteChangeListenerCallback (
         //NSData *data = UIImagePNGRepresentation(imageView.image);
         //NSLog(@"done");
         
-        NSString *emailBody = [NSString stringWithFormat:@"<html><body>Just blew %@ BAC using iDrank<br />Get your own from iPhone Breathalyzer at <a href=\"http://www.kickstarter.com\">D.tect</a></body></html>", [[BACController getInstance] getCurrentBAC]];
+        NSString *emailBody = [NSString stringWithFormat:@"<html><body>Just blew %@ BAC using iDrank<br />Get your own from iPhone Breathalyzer at <a href=\"http://www.kickstarter.com\">D.tect</a></body></html>", [[BACController sharedInstance] getCurrentBAC]];
         
         
         // This is not an HTML formatted email

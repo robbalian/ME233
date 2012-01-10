@@ -40,7 +40,7 @@
 }
 
 -(NSString *)getBodyLabel {
-    double bac = [[BACController getInstance] getCurrentBAC];
+    double bac = [[BACController sharedInstance] getCurrentBAC];
     NSString *returnStr;
     for (NSDictionary *bacDict in [textDict objectAtIndex:themeNum]) {
         NSLog(@"BAC_Tier: %f", [((NSString *)[bacDict objectForKey:@"BAC_Tier"]) doubleValue]);

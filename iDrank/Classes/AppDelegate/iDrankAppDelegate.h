@@ -18,6 +18,8 @@
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
 #import <Twitter/Twitter.h>
+#import "LocationController.h"
+#import "PlaceSelectionViewController.h"
 
 #ifdef USING_HIJACK
 #import "HiJackMgr.h"
@@ -49,6 +51,8 @@
     Theme *theme;
     
     Facebook *facebook;
+    
+    LocationController *locationController;
 }
 
 
@@ -63,11 +67,16 @@
 -(void)addBAC:(id)sender;
 -(void)changeTheme:(int)themeNum;
 
+//LOCATION
+-(void)nearbyLocationsUpdated;
+
 //SOCIAL
 -(void)sendToFacebook;
 -(void)sendToEmail;
 -(void)sendToSMS;
 -(void)sendToTwitter;
+
+-(void)verifySensor;
 
 @property (nonatomic, retain) Theme *theme;
 @property (nonatomic, retain) Facebook *facebook;

@@ -14,7 +14,7 @@
 }
 
 -(void)refreshData;
-
+-(NSString *)dateDiff:(NSDate *)origDate;
 
 
 

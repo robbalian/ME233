@@ -46,12 +46,13 @@ enum {
     NSMutableArray *eventArray;
 }
 
++(BACController *)sharedInstance;
+
 //CoreData Methods
 -(void)fetchRecords;
 -(void)addBAC:(id)sender;
 
 -(void)setDelegate:(id)del;
-+(BACController*) getInstance;
 -(NSString *)storeReading:(char)c;
 -(double)getCurrentBAC;
 -(void)receivedChar:(char)input;

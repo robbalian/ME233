@@ -39,7 +39,7 @@ BOOL isConnected = FALSE;
 }
 
 -(IBAction)writeTestCharPushed:(id)sender {
-    [[BACController getInstance] sendTestChar];
+    [[BACController sharedInstance] sendTestChar];
 }
 
 
@@ -87,7 +87,8 @@ BOOL isConnected = FALSE;
     
     currentTab = tabNum;
     
-    
+    //TODO: find a better way to do this switching
+    //Could just add backgrounds to tabs...
     for (UIView *view in tabView.subviews) {
         //[view removeFromSuperview];
     }
@@ -97,8 +98,9 @@ BOOL isConnected = FALSE;
             //Logs
             if (readingsVC == nil) {
                 readingsVC = [[ReadingsViewController alloc] init];
+                [tabView addSubview:readingsVC.view];
+                
             }
-            [tabView addSubview:readingsVC.view];
             [tabView bringSubviewToFront:readingsVC.view];
             [readingsVC refreshData];
             break;
@@ -106,8 +108,9 @@ BOOL isConnected = FALSE;
             //Measure
             if (measureVC == nil) {
                 measureVC = [[MeasureViewController alloc] init];
+                [tabView addSubview:measureVC.view];
+                
             }
-            [tabView addSubview:measureVC.view];
             
             [tabView bringSubviewToFront:measureVC.view];
             break;
@@ -115,8 +118,9 @@ BOOL isConnected = FALSE;
             //More/Prefs
             if (prefsVC == nil) {
                 prefsVC = [[PrefsViewController alloc] init];
+                [tabView addSubview:prefsVC.view];
+                
             }
-            [tabView addSubview:prefsVC.view];
             
             [tabView bringSubviewToFront:prefsVC.view];
             break;

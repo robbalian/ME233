@@ -18,6 +18,9 @@
     IBOutlet UIImageView *circle;  
     
     IBOutlet UIView *shareCluster;
+    
+    IBOutlet UILabel *placeLabel;
+    IBOutlet UILabel *userNameLabel;
 }
 
 -(IBAction)testChar:(id)sender;
@@ -25,6 +28,8 @@
 -(IBAction)facebookButtonTapped:(id)sender;
 -(IBAction)SMSButtonTapped:(id)sender;
 -(IBAction)twitterButtonTapped:(id)sender;
+-(IBAction)placeButtonTapped:(id)sender;
+-(IBAction)profileButtonTapped:(id)sender;
 
 //-(IBAction)ripple:(id)sender;
 @end

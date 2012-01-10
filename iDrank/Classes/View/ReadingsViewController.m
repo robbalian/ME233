@@ -39,14 +39,48 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellID"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"cellID"];
         [cell.textLabel setTextColor:[UIColor whiteColor]];
     }
+    
+    
     BACEvent *event = (BACEvent *)[results objectAtIndex:[indexPath row]];
-   // NSLog(@"%@", event);
+    // NSLog(@"%@", event);
     cell.textLabel.text = [NSString stringWithFormat:@"%@ : %.2f", event.name, [event.reading doubleValue]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ at %@", [self dateDiff:event.time], event.place_name];
+    cell.detailTextLabel.numberOfLines = 2;
+    cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+    cell.detailTextLabel.textColor = [UIColor whiteColor];
+    
     
     return cell;
+}
+
+-(NSString *)dateDiff:(NSDate *)origDate {
+    //NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    //[df setFormatterBehavior:NSDateFormatterBehavior10_4];
+    //[df setDateFormat:@"EEE, dd MMM yy HH:mm:ss VVVV"];
+    //NSDate *convertedDate = [df dateFromString:origDate];
+    //[df release];
+    NSDate *todayDate = [NSDate date];
+    double ti = [origDate timeIntervalSinceDate:todayDate];
+    ti = ti * -1;
+    if(ti < 1) {
+        return @"never";
+    } else      if (ti < 60) {
+        return @"less than a minute ago";
+    } else if (ti < 3600) {
+        int diff = round(ti / 60);
+        return [NSString stringWithFormat:@"%d minutes ago", diff];
+    } else if (ti < 86400) {
+        int diff = round(ti / 60 / 60);
+        return[NSString stringWithFormat:@"%d hours ago", diff];
+    } else if (ti < 2629743) {
+        int diff = round(ti / 60 / 60 / 24);
+        return[NSString stringWithFormat:@"%d days ago", diff];
+    } else {
+        return @"never";
+    }   
 }
 
 #pragma mark - View lifecycle
@@ -54,7 +88,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-       
+    
     // Do any additional setup after loading the view from its nib.
 }
 

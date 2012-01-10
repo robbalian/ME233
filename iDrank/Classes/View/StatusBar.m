@@ -15,9 +15,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedSensorStateChangeNotification:) name:@"stateChanged" object:[BACController getInstance]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedSensorStateChangeNotification:) name:@"stateChanged" object:[BACController sharedInstance]];
         
-        sensorController = [BACController getInstance];
+        sensorController = [BACController sharedInstance];
         [sensorController setDelegate:self];
     }
     return self;
@@ -35,7 +35,7 @@
 
 //-(void)sensorStateChanged:(int)state {
 -(void)receivedSensorStateChangeNotification:(id)sender {
-    int state = [[BACController getInstance] currentState];
+    int state = [[BACController sharedInstance] currentState];
 //update user instructions
     if (state >= SENSOR_STATE_OFF) {
         [statusIV setImage:[UIImage imageNamed:@"Sensor_enabled.png"]];
@@ -88,7 +88,7 @@
     
 #ifdef USING_SIM
     //this shit is a hack
-    [[BACController getInstance] verifySensor]; //fake that there's a headphone jack
+    [[BACController sharedInstance] verifySensor]; //fake that there's a headphone jack
 #endif
     // Do any additional setup after loading the view from its nib.
 }

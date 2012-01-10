@@ -9,6 +9,8 @@
 #import "MeasureViewController.h"
 #import "MainViewController.h"
 #import "iDrankAppDelegate.h"
+#import "ProfileSelectionViewController.h"
+#import "UserController.h"
 
 @implementation MeasureViewController
 
@@ -19,13 +21,17 @@
         // Custom initialization
         //theme = [[Theme alloc] initWithTheme:0 andDelegate:self];
         //[self.view addSubview:[theme getView]];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedSensorStateChangeNotification:) name:@"stateChanged" object:[BACController getInstance]];    
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedSensorStateChangeNotification:) name:@"stateChanged" object:[BACController sharedInstance]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedLocationChangeNotification:) name:@"locationChanged" object:[LocationController sharedInstance]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedUserChangeNotification:) name:@"userChanged" object:[UserController sharedInstance]];
+        placeLabel.adjustsFontSizeToFitWidth = YES;
+        userNameLabel.adjustsFontSizeToFitWidth = YES;
     }
     return self;
 }
 
 -(void)receivedSensorStateChangeNotification:(id)sender {
-    int state = [[BACController getInstance] currentState];
+    int state = [[BACController sharedInstance] currentState];
     Theme *theme = [[iDrankAppDelegate getInstance] theme];
     if (state == SENSOR_STATE_DISCONNECTED) {
         [readoutLabel setText:@""];
@@ -44,7 +50,7 @@
     } else if (state == SENSOR_STATE_CALCULATING) {
         [readoutLabel setText:@"Calculating..."];
     } else if (state == SENSOR_STATE_DONE) {
-        double bac = [[BACController getInstance] getCurrentBAC];
+        double bac = [[BACController sharedInstance] getCurrentBAC];
         [readoutLabel setText:[NSString stringWithFormat:@"%.2f", bac]];
         [infoTitleLabel setText:[NSString stringWithFormat:@"%.2f BAC", bac]];
         [infoBodyLabel setText:[theme getBodyLabel]];
@@ -52,6 +58,14 @@
         [UIView transitionWithView:shareCluster duration:1.0 options:UIViewAnimationCurveEaseIn animations:^{ [shareCluster setAlpha:1.0]; } completion:nil];
     }
     
+}
+
+-(void)receivedLocationChangeNotification:(id)sender {
+    [placeLabel setText:[[LocationController sharedInstance] getPlaceName]];
+}
+
+-(void)receivedUserChangeNotification:(id)sender {
+    [userNameLabel setText:[[UserController sharedInstance] getUserName]];
 }
 
 -(void)setViewForThemeAnimated:(BOOL)animated {
@@ -95,11 +109,11 @@ if (animated) {
 }
 
 -(IBAction)testChar:(id)sender {
-    [[BACController getInstance] sendTestChar];
+    [[BACController sharedInstance] sendTestChar];
 }
 
 -(IBAction)measureAgain:(id)sender {
-    [[BACController getInstance] measureAgain];
+    [[BACController sharedInstance] measureAgain];
 }
 
 -(IBAction)facebookButtonTapped:(id)sender {
@@ -112,6 +126,17 @@ if (animated) {
 
 -(IBAction)twitterButtonTapped:(id)sender {
     [[iDrankAppDelegate getInstance] sendToTwitter];
+}
+
+
+-(IBAction)placeButtonTapped:(id)sender {
+    PlaceSelectionViewController *psvc = [[PlaceSelectionViewController alloc] init];
+    [((iDrankAppDelegate *)[iDrankAppDelegate getInstance]).mainViewController presentModalViewController:psvc animated:YES];
+}
+
+-(IBAction)profileButtonTapped:(id)sender {
+    ProfileSelectionViewController *psvc = [[ProfileSelectionViewController alloc] init];
+    [((iDrankAppDelegate *)[iDrankAppDelegate getInstance]).mainViewController presentModalViewController:psvc animated:YES];
 }
 
 /*
