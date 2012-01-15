@@ -32,6 +32,7 @@
 
 -(void)receivedSensorStateChangeNotification:(id)sender {
     int state = [[BACController sharedInstance] currentState];
+    NSLog(@"MeasureView received state change notification. State: %d", state);
     Theme *theme = [[iDrankAppDelegate getInstance] theme];
     if (state == SENSOR_STATE_DISCONNECTED) {
         [readoutLabel setText:@""];
@@ -49,15 +50,16 @@
         //play sound or vibrate on loop
     } else if (state == SENSOR_STATE_CALCULATING) {
         [readoutLabel setText:@"Calculating..."];
-    } else if (state == SENSOR_STATE_DONE) {
+    } else if (state == SENSOR_STATE_DONE || state == SENSOR_STATE_OFF) {
         double bac = [[BACController sharedInstance] getCurrentBAC];
         [readoutLabel setText:[NSString stringWithFormat:@"%.2f", bac]];
         [infoTitleLabel setText:[NSString stringWithFormat:@"%.2f BAC", bac]];
         [infoBodyLabel setText:[theme getBodyLabel]];
         [measureAgainButton setHidden:NO];
-        [UIView transitionWithView:shareCluster duration:1.0 options:UIViewAnimationCurveEaseIn animations:^{ [shareCluster setAlpha:1.0]; } completion:nil];
+        [self startThemeAnimations];
+        [UIView transitionWithView:shareCluster duration:1.0 options:UIViewAnimationCurveEaseIn animations:^{ [shareCluster setAlpha:1.0]; 
+        } completion:nil];
     }
-    
 }
 
 -(void)receivedLocationChangeNotification:(id)sender {
@@ -66,6 +68,10 @@
 
 -(void)receivedUserChangeNotification:(id)sender {
     [userNameLabel setText:[[UserController sharedInstance] getUserName]];
+}
+
+-(void)startThemeAnimations {
+    
 }
 
 -(void)setViewForThemeAnimated:(BOOL)animated {
@@ -106,6 +112,8 @@ if (animated) {
 } else {
     [self.view addSubview:aView];
 }
+    
+    [self receivedSensorStateChangeNotification:nil];
 }
 
 -(IBAction)testChar:(id)sender {
@@ -166,6 +174,7 @@ if (animated) {
     [self setViewForThemeAnimated:NO];
 
     // Do any additional setup after loading the view from its nib.
+    [userNameLabel setText:[[UserController sharedInstance] getUserName]];
     [readoutLabel setFont: [UIFont fontWithName: @"Crystal" size: readoutLabel.font.pointSize]];
     
 }

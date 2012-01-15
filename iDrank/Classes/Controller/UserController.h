@@ -20,6 +20,8 @@
 -(NSString *)getUserName;
 -(NSString *)recentUserAtIndex:(int)index;
 -(int)recentUserCount;
+-(void)removeUserNameFromRecents:(NSString *)name;
 
+-(void)saveToDefaults;
 +(UserController *)sharedInstance;
 @end

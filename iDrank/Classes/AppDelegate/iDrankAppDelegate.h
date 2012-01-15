@@ -20,6 +20,7 @@
 #import <Twitter/Twitter.h>
 #import "LocationController.h"
 #import "PlaceSelectionViewController.h"
+#import "UserController.h"
 
 #ifdef USING_HIJACK
 #import "HiJackMgr.h"

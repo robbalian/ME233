@@ -62,8 +62,20 @@
 		D44D54DF14B66DD9005FCE7C /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44D54DE14B66DD9005FCE7C /* LocationController.m */; };
 		D44D54E114B66DFE005FCE7C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44D54E014B66DFE005FCE7C /* CoreLocation.framework */; };
 		D450E75114847CCE00C11827 /* iDrank.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = D450E75014847CCE00C11827 /* iDrank.xcdatamodel */; };
+		D476E4E814BCCC1700BFB38E /* ReadingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D476E4E614BCCC1700BFB38E /* ReadingsTableViewCell.m */; };
+		D476E4E914BCCC1700BFB38E /* ReadingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D476E4E714BCCC1700BFB38E /* ReadingsTableViewCell.xib */; };
+		D476E4FD14BCCFF200BFB38E /* tableCell_background.png in Resources */ = {isa = PBXBuildFile; fileRef = D476E4FB14BCCFF200BFB38E /* tableCell_background.png */; };
+		D476E4FE14BCCFF200BFB38E /* tableCell_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D476E4FC14BCCFF200BFB38E /* tableCell_background@2x.png */; };
 		D49CBE76147C9E9400468C36 /* Crysta.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D49CBE75147C9E9400468C36 /* Crysta.ttf */; };
 		D4CE0CED1480A34A00425369 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CE0CEC1480A34A00425369 /* CoreData.framework */; };
+		D4E3685F14BFE1D100E1E7CE /* SpeedometerThemeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E3685E14BFE1D100E1E7CE /* SpeedometerThemeView.xib */; };
+		D4E3686614BFE67E00E1E7CE /* gauge.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E3686214BFE67E00E1E7CE /* gauge.png */; };
+		D4E3686714BFE67E00E1E7CE /* gauge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E3686314BFE67E00E1E7CE /* gauge@2x.png */; };
+		D4E3686814BFE67E00E1E7CE /* needle.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E3686414BFE67E00E1E7CE /* needle.png */; };
+		D4E3686914BFE67E00E1E7CE /* needle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E3686514BFE67E00E1E7CE /* needle@2x.png */; };
+		D4E3687114BFE96E00E1E7CE /* ThemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E3687014BFE96E00E1E7CE /* ThemeViewController.m */; };
+		D4E3687514BFE98700E1E7CE /* StandardThemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E3687314BFE98700E1E7CE /* StandardThemeViewController.m */; };
+		D4E3687614BFE98700E1E7CE /* StandardThemeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E3687414BFE98700E1E7CE /* StandardThemeViewController.xib */; };
 		D4FDFA5414B7A487001D06F1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D4FDFA2614B7A487001D06F1 /* Default.png */; };
 		D4FDFA5514B7A487001D06F1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4FDFA2714B7A487001D06F1 /* Default@2x.png */; };
 		D4FDFA5614B7A487001D06F1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D4FDFA2814B7A487001D06F1 /* Icon.png */; };
@@ -209,9 +221,24 @@
 		D44D54DE14B66DD9005FCE7C /* LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationController.m; sourceTree = "<group>"; };
 		D44D54E014B66DFE005FCE7C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D450E75014847CCE00C11827 /* iDrank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iDrank.xcdatamodel; sourceTree = "<group>"; };
+		D476E4E514BCCC1700BFB38E /* ReadingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingsTableViewCell.h; sourceTree = "<group>"; };
+		D476E4E614BCCC1700BFB38E /* ReadingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadingsTableViewCell.m; sourceTree = "<group>"; };
+		D476E4E714BCCC1700BFB38E /* ReadingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadingsTableViewCell.xib; sourceTree = "<group>"; };
+		D476E4FB14BCCFF200BFB38E /* tableCell_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableCell_background.png; sourceTree = "<group>"; };
+		D476E4FC14BCCFF200BFB38E /* tableCell_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableCell_background@2x.png"; sourceTree = "<group>"; };
 		D49CBE5A147C93FC00468C36 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		D49CBE75147C9E9400468C36 /* Crysta.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Crysta.ttf; path = images/Crysta.ttf; sourceTree = "<group>"; };
 		D4CE0CEC1480A34A00425369 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D4E3685E14BFE1D100E1E7CE /* SpeedometerThemeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeedometerThemeView.xib; sourceTree = "<group>"; };
+		D4E3686214BFE67E00E1E7CE /* gauge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gauge.png; sourceTree = "<group>"; };
+		D4E3686314BFE67E00E1E7CE /* gauge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gauge@2x.png"; sourceTree = "<group>"; };
+		D4E3686414BFE67E00E1E7CE /* needle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = needle.png; sourceTree = "<group>"; };
+		D4E3686514BFE67E00E1E7CE /* needle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "needle@2x.png"; sourceTree = "<group>"; };
+		D4E3686F14BFE96E00E1E7CE /* ThemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeViewController.h; sourceTree = "<group>"; };
+		D4E3687014BFE96E00E1E7CE /* ThemeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeViewController.m; sourceTree = "<group>"; };
+		D4E3687214BFE98700E1E7CE /* StandardThemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandardThemeViewController.h; sourceTree = "<group>"; };
+		D4E3687314BFE98700E1E7CE /* StandardThemeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandardThemeViewController.m; sourceTree = "<group>"; };
+		D4E3687414BFE98700E1E7CE /* StandardThemeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StandardThemeViewController.xib; sourceTree = "<group>"; };
 		D4FDFA2614B7A487001D06F1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		D4FDFA2714B7A487001D06F1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D4FDFA2814B7A487001D06F1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -452,6 +479,9 @@
 				D44D547814B51526005FCE7C /* StatusBar.m */,
 				D44D547914B51526005FCE7C /* StatusBar.xib */,
 				D44D547A14B51526005FCE7C /* Themes */,
+				D476E4E514BCCC1700BFB38E /* ReadingsTableViewCell.h */,
+				D476E4E614BCCC1700BFB38E /* ReadingsTableViewCell.m */,
+				D476E4E714BCCC1700BFB38E /* ReadingsTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -460,7 +490,13 @@
 			isa = PBXGroup;
 			children = (
 				D44D547B14B51526005FCE7C /* CollegeThemeView.xib */,
+				D4E3685E14BFE1D100E1E7CE /* SpeedometerThemeView.xib */,
 				D44D547C14B51526005FCE7C /* StandardThemeView.xib */,
+				D4E3686F14BFE96E00E1E7CE /* ThemeViewController.h */,
+				D4E3687014BFE96E00E1E7CE /* ThemeViewController.m */,
+				D4E3687214BFE98700E1E7CE /* StandardThemeViewController.h */,
+				D4E3687314BFE98700E1E7CE /* StandardThemeViewController.m */,
+				D4E3687414BFE98700E1E7CE /* StandardThemeViewController.xib */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -504,9 +540,31 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
+		D476E4FA14BCCFF200BFB38E /* Readings */ = {
+			isa = PBXGroup;
+			children = (
+				D476E4FB14BCCFF200BFB38E /* tableCell_background.png */,
+				D476E4FC14BCCFF200BFB38E /* tableCell_background@2x.png */,
+			);
+			path = Readings;
+			sourceTree = "<group>";
+		};
+		D4E3686114BFE67E00E1E7CE /* Theme_Speedometer */ = {
+			isa = PBXGroup;
+			children = (
+				D4E3686214BFE67E00E1E7CE /* gauge.png */,
+				D4E3686314BFE67E00E1E7CE /* gauge@2x.png */,
+				D4E3686414BFE67E00E1E7CE /* needle.png */,
+				D4E3686514BFE67E00E1E7CE /* needle@2x.png */,
+			);
+			path = Theme_Speedometer;
+			sourceTree = "<group>";
+		};
 		D4FDFA2414B7A487001D06F1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D4E3686114BFE67E00E1E7CE /* Theme_Speedometer */,
+				D476E4FA14BCCFF200BFB38E /* Readings */,
 				D4FDFA2514B7A487001D06F1 /* App */,
 				D4FDFA2A14B7A487001D06F1 /* Crysta.ttf */,
 				D4FDFA2B14B7A487001D06F1 /* Share */,
@@ -708,6 +766,15 @@
 				D4FDFA7C14B7A487001D06F1 /* message_box@2x.png in Resources */,
 				D4FDFA8114B7AACC001D06F1 /* PlaceSelectionViewController.xib in Resources */,
 				D4352E3914BC2237002A4A57 /* ProfileSelectionViewController.xib in Resources */,
+				D476E4E914BCCC1700BFB38E /* ReadingsTableViewCell.xib in Resources */,
+				D476E4FD14BCCFF200BFB38E /* tableCell_background.png in Resources */,
+				D476E4FE14BCCFF200BFB38E /* tableCell_background@2x.png in Resources */,
+				D4E3685F14BFE1D100E1E7CE /* SpeedometerThemeView.xib in Resources */,
+				D4E3686614BFE67E00E1E7CE /* gauge.png in Resources */,
+				D4E3686714BFE67E00E1E7CE /* gauge@2x.png in Resources */,
+				D4E3686814BFE67E00E1E7CE /* needle.png in Resources */,
+				D4E3686914BFE67E00E1E7CE /* needle@2x.png in Resources */,
+				D4E3687614BFE98700E1E7CE /* StandardThemeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,6 +821,9 @@
 				D4FDFA8014B7AACC001D06F1 /* PlaceSelectionViewController.m in Sources */,
 				D4352E3314BC20F7002A4A57 /* UserController.m in Sources */,
 				D4352E3814BC2237002A4A57 /* ProfileSelectionViewController.m in Sources */,
+				D476E4E814BCCC1700BFB38E /* ReadingsTableViewCell.m in Sources */,
+				D4E3687114BFE96E00E1E7CE /* ThemeViewController.m in Sources */,
+				D4E3687514BFE98700E1E7CE /* StandardThemeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

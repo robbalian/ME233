@@ -31,7 +31,7 @@
             nibName = @"CollegeThemeView";
             break;
         default:
-            nibName = @"StandardThemeView";
+            nibName = @"SpeedometerThemeView";
             break;
     }
     NSArray *nibObjs;

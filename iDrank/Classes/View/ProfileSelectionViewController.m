@@ -29,7 +29,8 @@
     }
     
     // Set up the cell...
-    NSString *cellValue = [[UserController sharedInstance] recentUserAtIndex:[indexPath row]];
+    int numRows = [[UserController sharedInstance] recentUserCount];
+    NSString *cellValue = [[UserController sharedInstance] recentUserAtIndex:(numRows - [indexPath row]-1)];
     
     cell.textLabel.text = cellValue;
     
@@ -47,6 +48,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [[UserController sharedInstance] setUserName:[[[tv cellForRowAtIndexPath:indexPath] textLabel] text]];
+    [[UserController sharedInstance] removeUserNameFromRecents: [[[tv cellForRowAtIndexPath:indexPath] textLabel] text]];
     [self dismissModalViewControllerAnimated:YES];
 }
 

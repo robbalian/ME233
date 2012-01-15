@@ -23,8 +23,13 @@
 
 -(id)init {
     if ((self = [super init])) {
-        recentUsers = [[NSMutableArray alloc] init];
-        userName = [[NSString alloc] init];
+        //ideally get from defaults
+        
+        userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentUserString"];
+        recentUsers = [[NSUserDefaults standardUserDefaults] objectForKey:@"recentUsersArray"];
+        
+        if (!recentUsers) recentUsers = [[NSMutableArray alloc] init];
+        if (!userName) userName = [[NSString alloc] init];
     }
     return self;
 }
@@ -36,6 +41,17 @@
     userName = [name copy];
     //notification
     [[NSNotificationCenter defaultCenter] postNotificationName:@"userChanged" object:self];
+    [self saveToDefaults];
+}
+
+-(void)removeUserNameFromRecents:(NSString *)name {
+    [recentUsers removeObject:name];
+    [self saveToDefaults];
+    /*for (int i=0; i<[recentUsers count]; i++) {
+        if ([[recentUsers objectAtIndex:i] isEqualToString:name]) {
+            
+        }
+    }*/
 }
 
 -(NSString *)getUserName {
@@ -43,12 +59,17 @@
 }
 
 -(NSString *)recentUserAtIndex:(int)index {
-    return [recentUsers objectAtIndex:index];    
+    return [recentUsers objectAtIndex:index];
 }
 
 -(int)recentUserCount {
     return [recentUsers count];
 }
 
+-(void)saveToDefaults {
+    [[NSUserDefaults standardUserDefaults] setObject:recentUsers forKey:@"recentUsersArray"];
+    [[NSUserDefaults standardUserDefaults] setObject:userName forKey:@"currentUserString"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 @end

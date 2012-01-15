@@ -8,6 +8,7 @@
 
 #import "ReadingsViewController.h"
 #import "iDrankAppDelegate.h"
+#import "ReadingsTableViewCell.h"
 
 @implementation ReadingsViewController
 
@@ -36,21 +37,42 @@
     return [results count];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60.0;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"cellID"];
-        [cell.textLabel setTextColor:[UIColor whiteColor]];
-    }
+    ReadingsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
+    if (cell == nil){
+        NSLog(@"New Cell Made");
     
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"ReadingsTableViewCell" owner:nil options:nil];
+        for (id ob in topLevelObjects) {
+            if ([ob isKindOfClass:[ReadingsTableViewCell class]]) {
+                cell = (ReadingsTableViewCell *)ob;
+                break;
+            }
+        }
+
+        ///cell = (ReadingsTableViewCell *)[[ReadingsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellID"];
+    }
     
     BACEvent *event = (BACEvent *)[results objectAtIndex:[indexPath row]];
     // NSLog(@"%@", event);
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ : %.2f", event.name, [event.reading doubleValue]];
+    /*cell.textLabel.text = [NSString stringWithFormat:@"%@ : %.2f", event.name, [event.reading doubleValue]];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ at %@", [self dateDiff:event.time], event.place_name];
     cell.detailTextLabel.numberOfLines = 2;
     cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
     cell.detailTextLabel.textColor = [UIColor whiteColor];
+    */
+    if ([event.place_name isEqualToString:@"unknown"]) {
+        cell.placeLabel.text = @"";
+    } else {
+        cell.placeLabel.text = [NSString stringWithFormat:@"@ %@", event.place_name];
+    }
+    cell.timeLabel.text = [NSString stringWithFormat:@"%@", [self dateDiff:event.time]];
+    cell.bacLabel.text = [NSString stringWithFormat:@"%.2f", [event.reading doubleValue]];
+    cell.userNameLabel.text = event.name;
     
     
     return cell;

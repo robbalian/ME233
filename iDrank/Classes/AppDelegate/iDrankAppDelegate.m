@@ -377,7 +377,7 @@ void audioRouteChangeListenerCallback (
     BACEvent *event = (BACEvent *)[NSEntityDescription insertNewObjectForEntityForName:@"BACEvent" inManagedObjectContext:__managedObjectContext];  
     [event setTime:[NSDate date]];
     [event setReading:[NSNumber numberWithDouble:[[BACController sharedInstance] getCurrentBAC]]];
-    [event setName:@"Rob"];
+    [event setName:[[UserController sharedInstance] getUserName]];
     CLLocation *myLoc = [locationController getLastLocation];
     [event setLocation_lat:[NSNumber numberWithDouble:myLoc.coordinate.latitude]];
     [event setLocation_long:[NSNumber numberWithDouble:myLoc.coordinate.longitude]];
