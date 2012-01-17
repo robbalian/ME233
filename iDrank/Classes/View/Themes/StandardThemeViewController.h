@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "ThemeViewController.h"
+#import "MeasureViewController.h"
 
-@interface StandardThemeViewController : ThemeViewController
+@interface StandardThemeViewController : MeasureViewController
 
 @end

@@ -48,9 +48,7 @@
 #endif
 
     NSMutableArray *eventArray;
-    
-    Theme *theme;
-    
+
     Facebook *facebook;
     
     LocationController *locationController;

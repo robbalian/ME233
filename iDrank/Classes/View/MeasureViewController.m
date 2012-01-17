@@ -26,6 +26,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedUserChangeNotification:) name:@"userChanged" object:[UserController sharedInstance]];
         placeLabel.adjustsFontSizeToFitWidth = YES;
         userNameLabel.adjustsFontSizeToFitWidth = YES;
+        [self receivedSensorStateChangeNotification:nil];
     }
     return self;
 }
@@ -33,7 +34,7 @@
 -(void)receivedSensorStateChangeNotification:(id)sender {
     int state = [[BACController sharedInstance] currentState];
     NSLog(@"MeasureView received state change notification. State: %d", state);
-    Theme *theme = [[iDrankAppDelegate getInstance] theme];
+    
     if (state == SENSOR_STATE_DISCONNECTED) {
         [readoutLabel setText:@""];
         [infoTitleLabel setText:@"While we wait..."];
@@ -54,7 +55,7 @@
         double bac = [[BACController sharedInstance] getCurrentBAC];
         [readoutLabel setText:[NSString stringWithFormat:@"%.2f", bac]];
         [infoTitleLabel setText:[NSString stringWithFormat:@"%.2f BAC", bac]];
-        [infoBodyLabel setText:[theme getBodyLabel]];
+        [infoBodyLabel setText:[[Theme sharedInstance] getBodyLabel]];
         [measureAgainButton setHidden:NO];
         [self startThemeAnimations];
         [UIView transitionWithView:shareCluster duration:1.0 options:UIViewAnimationCurveEaseIn animations:^{ [shareCluster setAlpha:1.0]; 
@@ -72,48 +73,6 @@
 
 -(void)startThemeAnimations {
     
-}
-
--(void)setViewForThemeAnimated:(BOOL)animated {
-    //theme 1
-    //to theme 2
-    //add theme 2 to top, hidden
-    //animation: view 2 not hidden, view 1 hidden
-    //remove view 1
-
-    //} else {
-    //    nibObjs = [[NSBundle mainBundle] loadNibNamed:@"MeasureViewController" owner:self options:nil];
-    //}
-    
-    //if (!theme) theme = [[Theme alloc] initWithTheme:0 andDelegate:self];
-
-    //[theme setTheme:([theme getThemeNum]+1) % NUM_THEMES];
-    
-    UIView *aView = [[iDrankAppDelegate getInstance].theme getView:self];
-    
-if (animated) {
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:1.0];
-    [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.view cache:YES];
-    //REMOVES TOP VIEW
-    //for (UIView *sub in self.view.subviews) {
-        //[sub removeFromSuperview];
-    //}
-    
-    
-    
-    
-    //[aView setHidden:YES];
-    [self.view addSubview:aView];
-    
-    //[aView setHidden:NO];
-    //[circle setFrame:CGRectMake(arc4random()%320, arc4random()%480, 300, 300)];
-    [UIView commitAnimations];
-} else {
-    [self.view addSubview:aView];
-}
-    
-    [self receivedSensorStateChangeNotification:nil];
 }
 
 -(IBAction)testChar:(id)sender {
@@ -171,8 +130,6 @@ if (animated) {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setViewForThemeAnimated:NO];
-
     // Do any additional setup after loading the view from its nib.
     [userNameLabel setText:[[UserController sharedInstance] getUserName]];
     [readoutLabel setFont: [UIFont fontWithName: @"Crystal" size: readoutLabel.font.pointSize]];

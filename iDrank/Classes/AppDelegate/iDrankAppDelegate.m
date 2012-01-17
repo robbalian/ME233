@@ -119,7 +119,6 @@ void audioRouteChangeListenerCallback (
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 @synthesize eventArray;
 #endif
-@synthesize theme;
 @synthesize facebook;
 
 + (iDrankAppDelegate*) getInstance
@@ -129,7 +128,6 @@ void audioRouteChangeListenerCallback (
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
-    theme = [[Theme alloc] initWithTheme:0];
     
     facebook = [[Facebook alloc] initWithAppId:@"106106509509643" andDelegate:self];
     
@@ -233,11 +231,10 @@ void audioRouteChangeListenerCallback (
 #endif
 
 -(void)changeTheme:(int)themeNum {
-    [theme setTheme:themeNum];
+    [[Theme sharedInstance] setTheme:themeNum];
     [mainViewController themeChanged];
     //pass it down until there's a view that can do something
     
-    //[measureVC setViewForThemeAnimated:YES];
     //do animation thing
     //switch tab to measureVC
     //[measureviewcontroller change/resetTheme

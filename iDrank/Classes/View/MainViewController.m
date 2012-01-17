@@ -63,7 +63,7 @@ BOOL isConnected = FALSE;
     if (height > BAC_THRESHOLD_YELLOW) {
         [bacBarIV setImage:[UIImage imageNamed:@"bar_red.png"]];
     }
-
+    
 }
 
 -(void)setTab:(int)tabNum {
@@ -107,9 +107,8 @@ BOOL isConnected = FALSE;
         case 1:
             //Measure
             if (measureVC == nil) {
-                measureVC = [[MeasureViewController alloc] init];
+                measureVC = [[[[Theme sharedInstance] getMeasureVCClass] alloc] init];
                 [tabView addSubview:measureVC.view];
-                
             }
             
             [tabView bringSubviewToFront:measureVC.view];
@@ -133,7 +132,46 @@ BOOL isConnected = FALSE;
 -(void)themeChanged {
     //[tabView bringSubviewToFront:measureVC.view];
     [self setTab:1];
-    [measureVC setViewForThemeAnimated:YES];
+    //DO IT NOWWWWW
+    //THIS SHOULD CEASE TO EXIST
+    //theme 1
+    //to theme 2
+    //add theme 2 to top, hidden
+    //animation: view 2 not hidden, view 1 hidden
+    //remove view 1
+    
+    //} else {
+    //    nibObjs = [[NSBundle mainBundle] loadNibNamed:@"MeasureViewController" owner:self options:nil];
+    //}
+    
+    //if (!theme) theme = [[Theme alloc] initWithTheme:0 andDelegate:self];
+    
+    //[theme setTheme:([theme getThemeNum]+1) % NUM_THEMES];
+    
+    //UIView *aView = [[Theme sharedInstance] getView:self];
+    
+    
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.view cache:YES];
+    //REMOVES TOP VIEW
+    //for (UIView *sub in self.view.subviews) {
+    //[sub removeFromSuperview];
+    //}
+    [measureVC.view removeFromSuperview];
+    //[measureVC release];
+    measureVC = [[[[Theme sharedInstance] getMeasureVCClass] alloc] init];
+    [tabView addSubview:measureVC.view];
+    
+    
+    //[aView setHidden:YES];
+    //[self.view addSubview:aView];
+    
+    //[aView setHidden:NO];
+    //[circle setFrame:CGRectMake(arc4random()%320, arc4random()%480, 300, 300)];
+    [UIView commitAnimations];
+    
     //[tabView addSubview:measureVC.view];
     
 }
@@ -159,12 +197,12 @@ BOOL isConnected = FALSE;
 
 
 /*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations.
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
+ // Override to allow orientations other than the default portrait orientation.
+ - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+ // Return YES for supported orientations.
+ return (interfaceOrientation == UIInterfaceOrientationPortrait);
+ }
+ */
 
 
 - (void)dealloc {

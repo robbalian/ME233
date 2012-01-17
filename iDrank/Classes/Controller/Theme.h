@@ -19,11 +19,14 @@ enum {
     int themeNum;
     NSArray *textDict;
 }
++(Theme *)sharedInstance;
 
 -(id)initWithTheme:(int)theme;
 -(UIView *)getView:(id)sender;
 -(int)getThemeNum;
 -(void)setTheme:(int)newTheme;
 -(NSString *)getBodyLabel;
+-(Class)getMeasureVCClass;
+
 
 @end

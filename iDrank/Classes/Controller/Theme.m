@@ -8,12 +8,26 @@
 
 #import "Theme.h"
 #import "BACController.h"
+#import "StandardThemeViewController.h"
+#import "CollegeThemeViewController.h"
+
 
 @implementation Theme
 
--(id)initWithTheme:(int)theme {
++(Theme *)sharedInstance {
+	static Theme *_sharedInstance;
+	if(!_sharedInstance) {
+		static dispatch_once_t oncePredicate;
+		dispatch_once(&oncePredicate, ^{
+			_sharedInstance = [[super allocWithZone:nil] init];
+        });
+    }
+    return _sharedInstance;
+}
+
+-(id)init {
     if (self = [super init]) {
-        themeNum = theme;
+        themeNum = 1;
         textDict = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BACStrings" ofType:@"plist"]];
         NSLog(@"Dict: %@", textDict);
     }
@@ -21,7 +35,7 @@
     //UIImageView *
 }
 
--(UIView *)getView:(id)sender {
+/*-(UIView *)getView:(id)sender {
     NSString *nibName;
     switch (themeNum) {
         case THEME_STANDARD:
@@ -37,6 +51,18 @@
     NSArray *nibObjs;
     nibObjs = [[NSBundle mainBundle] loadNibNamed:nibName owner:sender options:nil];
     return [nibObjs objectAtIndex:0];
+}*/
+
+-(Class)getMeasureVCClass {
+    switch (themeNum) {
+        case 0:
+            return [StandardThemeViewController class];
+            break;
+        case 1:
+            return [CollegeThemeViewController class];
+            break;
+    }
+    return [StandardThemeViewController class];
 }
 
 -(NSString *)getBodyLabel {

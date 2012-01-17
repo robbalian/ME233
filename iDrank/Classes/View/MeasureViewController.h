@@ -15,21 +15,20 @@
     IBOutlet UILabel *infoBodyLabel;
     IBOutlet UILabel *infoTitleLabel;
     IBOutlet UIButton *measureAgainButton;
-    IBOutlet UIImageView *circle;  
-    
     IBOutlet UIView *shareCluster;
-    
     IBOutlet UILabel *placeLabel;
     IBOutlet UILabel *userNameLabel;
 }
 
 -(IBAction)testChar:(id)sender;
--(void)setViewForThemeAnimated:(BOOL)animated;
+
+//sharing
 -(IBAction)facebookButtonTapped:(id)sender;
 -(IBAction)SMSButtonTapped:(id)sender;
 -(IBAction)twitterButtonTapped:(id)sender;
+
+//login/place
 -(IBAction)placeButtonTapped:(id)sender;
 -(IBAction)profileButtonTapped:(id)sender;
 
-//-(IBAction)ripple:(id)sender;
 @end
