@@ -16,8 +16,7 @@
     IBOutlet UILabel *infoTitleLabel;
     IBOutlet UIButton *measureAgainButton;
     IBOutlet UIView *shareCluster;
-    IBOutlet UILabel *placeLabel;
-    IBOutlet UILabel *userNameLabel;
+
 }
 
 -(IBAction)testChar:(id)sender;

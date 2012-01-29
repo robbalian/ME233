@@ -22,10 +22,6 @@
         //theme = [[Theme alloc] initWithTheme:0 andDelegate:self];
         //[self.view addSubview:[theme getView]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedSensorStateChangeNotification:) name:@"stateChanged" object:[BACController sharedInstance]];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedLocationChangeNotification:) name:@"locationChanged" object:[LocationController sharedInstance]];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedUserChangeNotification:) name:@"userChanged" object:[UserController sharedInstance]];
-        placeLabel.adjustsFontSizeToFitWidth = YES;
-        userNameLabel.adjustsFontSizeToFitWidth = YES;
         [self receivedSensorStateChangeNotification:nil];
     }
     return self;
@@ -63,14 +59,6 @@
     }
 }
 
--(void)receivedLocationChangeNotification:(id)sender {
-    [placeLabel setText:[[LocationController sharedInstance] getPlaceName]];
-}
-
--(void)receivedUserChangeNotification:(id)sender {
-    [userNameLabel setText:[[UserController sharedInstance] getUserName]];
-}
-
 -(void)startThemeAnimations {
     
 }
@@ -96,16 +84,6 @@
 }
 
 
--(IBAction)placeButtonTapped:(id)sender {
-    PlaceSelectionViewController *psvc = [[PlaceSelectionViewController alloc] init];
-    [((iDrankAppDelegate *)[iDrankAppDelegate getInstance]).mainViewController presentModalViewController:psvc animated:YES];
-}
-
--(IBAction)profileButtonTapped:(id)sender {
-    ProfileSelectionViewController *psvc = [[ProfileSelectionViewController alloc] init];
-    [((iDrankAppDelegate *)[iDrankAppDelegate getInstance]).mainViewController presentModalViewController:psvc animated:YES];
-}
-
 /*
 -(IBAction)ripple:(id)sender {
     [UIView beginAnimations:nil context:NULL];
@@ -130,10 +108,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    [userNameLabel setText:[[UserController sharedInstance] getUserName]];
+
     [readoutLabel setFont: [UIFont fontWithName: @"Crystal" size: readoutLabel.font.pointSize]];
-    
 }
 
 - (void)viewDidUnload

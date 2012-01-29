@@ -7,6 +7,11 @@
 //
 
 #import "StatusBar.h"
+#import "UserController.h"
+#import "LocationController.h"
+#import "ProfileSelectionViewController.h"
+#import "iDrankAppDelegate.h"
+#import "MainViewController.h"
 
 @implementation StatusBar
 
@@ -16,6 +21,9 @@
     if (self) {
         // Custom initialization
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedSensorStateChangeNotification:) name:@"stateChanged" object:[BACController sharedInstance]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedLocationChangeNotification:) name:@"locationChanged" object:[LocationController sharedInstance]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedUserChangeNotification:) name:@"userChanged" object:[UserController sharedInstance]];
+        //namePlaceLabel.adjustsFontSizeToFitWidth = YES;
         
         sensorController = [BACController sharedInstance];
         [sensorController setDelegate:self];
@@ -23,17 +31,18 @@
     return self;
 }
 
+
+-(void)receivedLocationChangeNotification:(id)sender {
+    [namePlaceLabel setText:[NSString stringWithFormat:@"%@ @ %@", [[UserController sharedInstance] getUserName], [[LocationController sharedInstance] getPlaceName]]];
+}
+
+-(void)receivedUserChangeNotification:(id)sender {
+    [namePlaceLabel setText:[NSString stringWithFormat:@"%@ @ %@", [[UserController sharedInstance] getUserName], [[LocationController sharedInstance] getPlaceName]]];
+}
+
+
 //## BAC CONTROLLER DELEGATE METHODS
 
--(void)bacChanged:(double)bac {
-    //[self updateUIForBAC];
-}
-
--(void)sensorStateChanged:(int)state {
-    
-}
-
-//-(void)sensorStateChanged:(int)state {
 -(void)receivedSensorStateChangeNotification:(id)sender {
     int state = [[BACController sharedInstance] currentState];
 //update user instructions
@@ -79,12 +88,22 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
+-(IBAction)profileButtonTapped:(id)sender {
+    ProfileSelectionViewController *psvc = [[ProfileSelectionViewController alloc] init];
+    [psvc.view setFrame:CGRectMake(0, 0, psvc.view.frame.size.width, psvc.view.frame.size.height)];
+    [((iDrankAppDelegate *)[iDrankAppDelegate getInstance]).mainViewController.view addSubview:psvc.view];
+    
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    [namePlaceLabel setText:[[UserController sharedInstance] getUserName]];
+
     
 #ifdef USING_SIM
     //this shit is a hack

@@ -11,10 +11,11 @@
 @interface ProfileSelectionViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITextField *textBox;
     IBOutlet UIButton *enterButton;
-    IBOutlet UITableView *tv;
+    IBOutlet UITableView *namestv;
+    
+    IBOutlet UITableView *placestv;
+    NSArray *places;
 }
 
 -(IBAction)done:(id)sender;
--(IBAction)cancel:(id)sender;
-
 @end

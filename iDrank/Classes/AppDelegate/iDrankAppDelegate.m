@@ -181,11 +181,22 @@ void audioRouteChangeListenerCallback (
     
 	if(session.inputIsAvailable){
 		[session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-	}else{
-		[session setCategory:AVAudioSessionCategoryPlayback error:nil];
+        /*OSStatus propertySetError = 0;
+        UInt32 allowMixing = true;
+        
+        propertySetError = AudioSessionSetProperty (
+                                                    kAudioSessionProperty_OverrideCategoryMixWithOthers,  // 1
+                                                    sizeof (allowMixing),                                 // 2
+                                                    &allowMixing                                          // 3
+                                                    );
+        
+        NSLog(@"%@", propertySetError);
+    */
+    }else{
+		//[session setCategory:AVAudioSessionCategoryPlayback error:nil];
 	}
-	[session setActive:YES error:nil];
-	[session setPreferredIOBufferDuration:0.023220 error:nil];
+	//[session setActive:YES error:nil];
+	//[session setPreferredIOBufferDuration:0.023220 error:nil];
 
     
     
@@ -219,7 +230,7 @@ void audioRouteChangeListenerCallback (
     return data;
 }
 
--(BOOL)sendData:(UInt8)data {
+-(BOOL)sendData:(UInt8)data {    
     if ([hijack send:data] == 1) {
         NSLog(@"Hijack sent data");
         return YES;
@@ -619,6 +630,22 @@ void audioRouteChangeListenerCallback (
         // Dismiss the controller
         [mainViewController dismissModalViewControllerAnimated:YES];
     };
+}
+
+
+-(void)playAif:(NSString *)filename {
+    SystemSoundID soundID;
+    NSString *path = [[NSBundle mainBundle]
+                      pathForResource:filename ofType:@"aif"];    
+    
+    if (path) { // test for path, to guard against crashes
+        
+        AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path],&soundID);
+        AudioServicesPlaySystemSound (soundID);
+        
+    } else {
+        NSLog(@"Can't find audio file!");
+    }
 }
 
 

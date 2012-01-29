@@ -8,6 +8,9 @@
 
 #import "MeasureViewController.h"
 
-@interface StandardThemeViewController : MeasureViewController
+
+@interface StandardThemeViewController : MeasureViewController {
+
+}
 
 @end

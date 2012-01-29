@@ -59,7 +59,7 @@ static LocationController *LCInstance;
         return [[dict objectForKey:@"response"]objectForKey:@"venues"];
     }
     NSLog(@"Foursquare response error!");
-    NSLog(@"%@", [dict objectForKey:@"response"]);
+    //NSLog(@"%@", [dict objectForKey:@"response"]);
     return nil;
 }
 
@@ -87,8 +87,8 @@ static LocationController *LCInstance;
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"CLLocationController: nearby locations loaded!");
-    NSLog(@"Autosetting place to : %@", [[[self getNearbyPlaces] objectAtIndex:0] objectForKey:@"name"]);
+    //NSLog(@"CLLocationController: nearby locations loaded!");
+    //NSLog(@"Autosetting place to : %@", [[[self getNearbyPlaces] objectAtIndex:0] objectForKey:@"name"]);
     [self setPlaceName:[[[self getNearbyPlaces] objectAtIndex:0] objectForKey:@"name"] ];
     
     //NSLog(@"%@", [[NSString alloc] initWithData:nearbyLocationsData encoding:NSASCIIStringEncoding]);
@@ -104,7 +104,7 @@ static LocationController *LCInstance;
 didUpdateToLocation:(CLLocation *)newLocation
 fromLocation:(CLLocation *)oldLocation
 {
-    NSLog(@"Location: %@", [newLocation description]);
+   // NSLog(@"Location: %@", [newLocation description]);
     if (newLocation.horizontalAccuracy < 100.0) {
         if (lastLocation == nil) {
             lastLocation = [newLocation copy];

@@ -14,7 +14,14 @@
     IBOutlet UIImageView *statusIV;
     IBOutlet UIView *coverView;
     
+    IBOutlet UILabel *namePlaceLabel;
+    
    BACController *sensorController;
 }
 
+-(IBAction)profileButtonTapped:(id)sender;
+-(void)receivedUserChangeNotification:(id)sender;
+-(void)receivedLocationChangeNotification:(id)sender;
+-(void)receivedSensorStateChangeNotification:(id)sender;
+-(void)warmupSecondsLeft:(double)seconds;
 @end

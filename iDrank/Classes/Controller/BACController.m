@@ -137,7 +137,7 @@
 
 -(void)setState:(int)state {
     sensorState = state;
-    [delegate sensorStateChanged:state];
+    //[delegate sensorStateChanged:state];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"stateChanged" object:self];
 }
 
@@ -147,7 +147,12 @@
 }
 
 - (void) sendCode:(char)code {
-	NSLog(@"Sending Char: %c", code);
+    UInt32 sessionCategory = kAudioSessionCategory_AmbientSound;
+    AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(sessionCategory), &sessionCategory);
+    UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_None;
+    AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute,sizeof (audioRouteOverride),&audioRouteOverride);
+    
+    NSLog(@"Sending Char: %c", code);
  		[[iDrankAppDelegate getInstance].generator writeByte:code];
 }
 

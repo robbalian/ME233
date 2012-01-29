@@ -7,6 +7,7 @@
 //
 
 #import "CollegeThemeViewController.h"
+#import "iDrankAppDelegate.h"
 
 @implementation CollegeThemeViewController
 
@@ -123,7 +124,30 @@
     [label0 setText:[NSString stringWithFormat:@"%c", [str characterAtIndex:0]]];
     [label1 setText:[NSString stringWithFormat:@"%c", [str characterAtIndex:2]]];
     [label2 setText:[NSString stringWithFormat:@"%c", [str characterAtIndex:3]]];
+}
 
+-(IBAction)playSound:(id)sender {
+    
+    
+    UInt32 sessionCategory = kAudioSessionCategory_PlayAndRecord;
+    AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(sessionCategory), &sessionCategory);
+    UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+    AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute,sizeof (audioRouteOverride),&audioRouteOverride);
+    
+    
+    
+    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/ding.mp3", [[NSBundle mainBundle] resourcePath]]];
+    
+	NSError *error;
+	audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+	//audioPlayer.numberOfLoops = -1;
+    
+	if (audioPlayer == nil)
+		NSLog([error description]);
+	else
+		[audioPlayer play];
+    
+    //[[iDrankAppDelegate getInstance] playAif:@"ding"];
 }
 
 - (void)viewDidUnload

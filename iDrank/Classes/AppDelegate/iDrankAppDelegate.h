@@ -19,7 +19,6 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import <Twitter/Twitter.h>
 #import "LocationController.h"
-#import "PlaceSelectionViewController.h"
 #import "UserController.h"
 
 #ifdef USING_HIJACK
@@ -65,6 +64,9 @@
 - (NSURL *)applicationDocumentsDirectory;
 -(void)addBAC:(id)sender;
 -(void)changeTheme:(int)themeNum;
+
+//TESTING
+-(void)playAif:(NSString *)filename;
 
 //LOCATION
 -(void)nearbyLocationsUpdated;

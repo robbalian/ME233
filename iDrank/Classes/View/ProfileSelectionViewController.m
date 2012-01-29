@@ -8,6 +8,7 @@
 
 #import "ProfileSelectionViewController.h"
 #import "UserController.h"
+#import "LocationController.h"
 
 @implementation ProfileSelectionViewController
 
@@ -15,7 +16,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        places = [[LocationController sharedInstance] getNearbyPlaces];
     }
     return self;
 }
@@ -29,38 +30,47 @@
     }
     
     // Set up the cell...
-    int numRows = [[UserController sharedInstance] recentUserCount];
-    NSString *cellValue = [[UserController sharedInstance] recentUserAtIndex:(numRows - [indexPath row]-1)];
-    
-    cell.textLabel.text = cellValue;
-    
+    if ([tableView isEqual:namestv]) {
+        int numRows = [[UserController sharedInstance] recentUserCount];
+        NSString *cellValue = [[UserController sharedInstance] recentUserAtIndex:(numRows - [indexPath row]-1)];
+        cell.textLabel.text = cellValue;
+    } else if ([tableView isEqual:placestv]) {
+        NSString *cellValue = [[places objectAtIndex:[indexPath row]] objectForKey:@"name"];
+        cell.textLabel.text = cellValue;
+    }
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[UserController sharedInstance] recentUserCount];
+    return [tableView isEqual:namestv] ? [[UserController sharedInstance] recentUserCount] : [places count];
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Recents";
+    return nil;
 }
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [[UserController sharedInstance] setUserName:[[[tv cellForRowAtIndexPath:indexPath] textLabel] text]];
-    [[UserController sharedInstance] removeUserNameFromRecents: [[[tv cellForRowAtIndexPath:indexPath] textLabel] text]];
-    [self dismissModalViewControllerAnimated:YES];
+    if ([tableView isEqual:namestv]) {
+        [[UserController sharedInstance] setUserName:[[[namestv cellForRowAtIndexPath:indexPath] textLabel] text]];
+        [[UserController sharedInstance] removeUserNameFromRecents: [[[namestv cellForRowAtIndexPath:indexPath] textLabel] text]];
+    } else {
+        [[LocationController sharedInstance] setPlaceName:[[places objectAtIndex:[indexPath row]] objectForKey:@"name"]];
+    }
+    [self done:nil];
 }
 
 -(IBAction)done:(id)sender {
-    if (![textBox.text isEqualToString:@""]) {
-        [[UserController sharedInstance] setUserName:textBox.text];
-        [self dismissModalViewControllerAnimated:YES];
-    }
-}
-
--(IBAction)cancel:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [UIView transitionWithView:self.view duration:.35 options:UIViewAnimationCurveEaseInOut animations:^{ 
+        self.view.transform = CGAffineTransformMakeTranslation(+320, 0);
+    } completion:^(BOOL finished){
+        [self.view removeFromSuperview];
+        [self release];
+    }];
+    //if (![textBox.text isEqualToString:@""]) {
+    //    [[UserController sharedInstance] setUserName:textBox.text];
+    //    [self dismissModalViewControllerAnimated:YES];
+    //}
 }
 
 
@@ -78,8 +88,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [tv reloadData];
+//    [self.view setFrame:CGRectMake(180, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
+    [UIView transitionWithView:self.view duration:.35 options:UIViewAnimationCurveEaseInOut animations:^{ 
+        self.view.transform = CGAffineTransformMakeTranslation(-320, 0);
+        //[self.view setFrame:CGRectMake(180, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    } completion:nil];
+
+    
+    [placestv reloadData];
+    [namestv reloadData];
 }
 
 - (void)viewDidUnload

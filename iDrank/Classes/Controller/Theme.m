@@ -29,7 +29,7 @@
     if (self = [super init]) {
         themeNum = 1;
         textDict = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BACStrings" ofType:@"plist"]];
-        NSLog(@"Dict: %@", textDict);
+        //NSLog(@"Dict: %@", textDict);
     }
     return self;
     //UIImageView *
@@ -69,7 +69,7 @@
     double bac = [[BACController sharedInstance] getCurrentBAC];
     NSString *returnStr;
     for (NSDictionary *bacDict in [textDict objectAtIndex:themeNum]) {
-        NSLog(@"BAC_Tier: %f", [((NSString *)[bacDict objectForKey:@"BAC_Tier"]) doubleValue]);
+       // NSLog(@"BAC_Tier: %f", [((NSString *)[bacDict objectForKey:@"BAC_Tier"]) doubleValue]);
         if (bac >= [((NSString *)[bacDict objectForKey:@"BAC_Tier"]) doubleValue]) {
             int rand = arc4random() % [[bacDict objectForKey:@"texts"] count];
             returnStr = (NSString *)[[bacDict objectForKey:@"texts"] objectAtIndex:rand];
