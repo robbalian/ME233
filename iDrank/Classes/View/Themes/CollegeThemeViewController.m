@@ -82,27 +82,24 @@
     double bac = [[BACController sharedInstance] getCurrentBAC];
     
     
-    if (state == SENSOR_STATE_DISCONNECTED) {
+    if (state == DISCONNECTED) {
         [readoutLabel setText:@""];
         [self setReadoutLabels:0];
         [measureAgainButton setHidden:YES];
         bac = 0;
-    } else if (state == SENSOR_STATE_WARMING) {
+    } else if (state == ON_WARMING) {
         [measureAgainButton setHidden:YES];
         //[readoutLabel setText:@"Warming"];
         [UIView transitionWithView:shareCluster duration:1.0 options:UIViewAnimationCurveEaseIn animations:^{ [shareCluster setAlpha:0.0]; } completion:nil];
-    } else if (state == SENSOR_STATE_READY) {
+    } else if (state == ON_READY) {
         bac = 0;
         [self setReadoutLabels:0];
         //[readoutLabel setText:@"Ready"];
-    } else if (state == SENSOR_STATE_READING) {
+    } else if (state == ON_BLOWING_INTO) {
         bac = 0;
         //[readoutLabel setText:@"Reading..."];
         //play sound or vibrate on loop
-    } else if (state == SENSOR_STATE_CALCULATING) {
-        bac = 0;
-        //[readoutLabel setText:@"Calculating..."];
-    } else if (state == SENSOR_STATE_DONE || state == SENSOR_STATE_OFF) {
+    } else if (state == OFF) {
         [self setReadoutLabels:bac];
         [readoutLabel setText:[NSString stringWithFormat:@"%.2f", bac]];
         [measureAgainButton setHidden:NO];

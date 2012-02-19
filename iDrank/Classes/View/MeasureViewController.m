@@ -31,23 +31,20 @@
     int state = [[BACController sharedInstance] currentState];
     NSLog(@"MeasureView received state change notification. State: %d", state);
     
-    if (state == SENSOR_STATE_DISCONNECTED) {
+    if (state == DISCONNECTED) {
         [readoutLabel setText:@""];
         [infoTitleLabel setText:@"While we wait..."];
         [infoBodyLabel setText:@"Did you know that vodka is a proven cure for ugliness?"];
         [measureAgainButton setHidden:YES];
-    } else if (state == SENSOR_STATE_WARMING) {
+    } else if (state == ON_WARMING) {
         [measureAgainButton setHidden:YES];
         [readoutLabel setText:@"Warming"];
         [UIView transitionWithView:shareCluster duration:1.0 options:UIViewAnimationCurveEaseIn animations:^{ [shareCluster setAlpha:0.0]; } completion:nil];
-    } else if (state == SENSOR_STATE_READY) {
+    } else if (state == ON_READY) {
         [readoutLabel setText:@"Ready"];
-    } else if (state == SENSOR_STATE_READING) {
-        [readoutLabel setText:@"Reading..."];
-        //play sound or vibrate on loop
-    } else if (state == SENSOR_STATE_CALCULATING) {
-        [readoutLabel setText:@"Calculating..."];
-    } else if (state == SENSOR_STATE_DONE || state == SENSOR_STATE_OFF) {
+    } else if (state == ON_BLOWING_INTO) {
+        [readoutLabel setText:@"Reading! Keep Blowing..."];
+    } else if (state == OFF) {
         double bac = [[BACController sharedInstance] getCurrentBAC];
         [readoutLabel setText:[NSString stringWithFormat:@"%.2f", bac]];
         [infoTitleLabel setText:[NSString stringWithFormat:@"%.2f BAC", bac]];

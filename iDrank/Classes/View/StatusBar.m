@@ -23,6 +23,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedSensorStateChangeNotification:) name:@"stateChanged" object:[BACController sharedInstance]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedLocationChangeNotification:) name:@"locationChanged" object:[LocationController sharedInstance]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedUserChangeNotification:) name:@"userChanged" object:[UserController sharedInstance]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedWarmTimerTickedNotification:) name:@"warmTimerTicked" object:[BACController sharedInstance]];
         //namePlaceLabel.adjustsFontSizeToFitWidth = YES;
         
         sensorController = [BACController sharedInstance];
@@ -46,23 +47,27 @@
 -(void)receivedSensorStateChangeNotification:(id)sender {
     int state = [[BACController sharedInstance] currentState];
 //update user instructions
-    if (state >= SENSOR_STATE_OFF) {
+    if (state == DISCONNECTED) {
+        [statusIV setImage:[UIImage imageNamed:@"Sensor_disabled.png"]];
+    } else {
         [statusIV setImage:[UIImage imageNamed:@"Sensor_enabled.png"]];
-        if (state == SENSOR_STATE_OFF  ) {
+    }
+    
+    if (state >= OFF) {
+        if (state == OFF) {
             [coverView setFrame:CGRectMake(49, 7, 251, 38)];
             [statusLabel setText:@"Sensor Off"];
         }
-        if (state == SENSOR_STATE_WARMING) {
+        if (state == ON_WARMING) {
             [statusLabel setText:@"Warming Up..."];
-        
             [UIView transitionWithView:self.view duration:SENSOR_WARMUP_SECONDS options:UIViewAnimationCurveLinear+UIViewAnimationOptionBeginFromCurrentState animations:^{ 
             [coverView setFrame:CGRectMake(49+251, 7, 0, 38)];
-            
              } completion:nil];
-
-        } else if (state == SENSOR_STATE_READY) {
+        } else if (state == ON_READY) {
             [statusLabel setText:@"READY!"];
             //probably do some modal popup
+        } else if (state == ON_BLOWING_INTO) {
+            [statusLabel setText:@"Keep Blowing!"];            
         }
     } else {
         [coverView setFrame:CGRectMake(49, 7, 251, 38)];
@@ -72,6 +77,11 @@
 }
 
 //}
+
+-(void)receivedWarmTimerTickedNotification:(id)sender {
+    
+    
+}
 
 -(void)warmupSecondsLeft:(double)seconds {
     NSLog(@"%f", seconds);

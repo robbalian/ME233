@@ -21,17 +21,8 @@
 //
 //		The system takes care of iPod audio pausing during route changes--this callback  
 //		is not involved with pausing playback of iPod audio.
-void audioRouteChangeListenerCallback (
-                                       void                      *inUserData,
-                                       AudioSessionPropertyID    inPropertyID,
-                                       UInt32                    inPropertyValueSize,
-                                       const void                *inPropertyValue
-                                       ) {
-	
-	iDrankAppDelegate *appDelegate = (iDrankAppDelegate *)inUserData;
-    
-    // ensure that this callback was invoked for a route change
-	if (inPropertyID != kAudioSessionProperty_AudioRouteChange) return;
+void checkCurrentAudioRoute(id appDel) {
+   	iDrankAppDelegate *appDelegate = (iDrankAppDelegate *)appDel;
     
     
     UInt32 currentAudioRoute;                            // 1
@@ -42,7 +33,7 @@ void audioRouteChangeListenerCallback (
                              &currentAudioRoute
                              );
     
-#ifdef USING_FSK
+    //#ifdef USING_FSK
     NSString *str = [[NSString alloc] initWithFormat:@"%@", currentAudioRoute];
     if ([str isEqualToString:@"HeadsetInOut"] || [str isEqualToString:@"HeadphonesAndMicrophone"]) {
         //got 4 pin adapter
@@ -53,18 +44,46 @@ void audioRouteChangeListenerCallback (
         [appDelegate sensorUnplugged];
     }
     NSLog(@"%@", str);
-#endif    
+    //#endif    
+}
+
+void audioRouteChangeListenerCallback (
+                                       void                      *inUserData,
+                                       AudioSessionPropertyID    inPropertyID,
+                                       UInt32                    inPropertyValueSize,
+                                       const void                *inPropertyValue
+                                       ) {
+	
+    UInt32 size = sizeof(CFDictionaryRef);
+    CFDictionaryRef newRef;
+    OSStatus error =  AudioSessionGetProperty(
+                                              kAudioSessionProperty_AudioRouteDescription,
+                                              &size,
+                                              &newRef
+                                              );
+    
+    NSLog(@"%@", newRef);
+    NSLog(@"%@", error);
+    
+    //CFNumberRef reason = (CFNumberRef)CFDictionaryGetValue(routeDictionary, CFSTR(kAudioSession_AudioRouteChangeKey_Reason));
+    //SInt32 reasonVal;
+    //CFNumberGetValue(reason, kCFNumberSInt32Type, &reasonVal);
+    checkCurrentAudioRoute(inUserData);
+
+    //hmmm not sure this should be here
+    // ensure that this callback was invoked for a route change
+	if (inPropertyID != kAudioSessionProperty_AudioRouteChange) return;
     
     
-    // Determines the reason for the route change, to ensure that it is not
-    //		because of a category change.
-    CFDictionaryRef	routeChangeDictionary = (CFDictionaryRef)inPropertyValue;
+    
+    // Determine the specific type of audio route change that occurred.
+    CFDictionaryRef routeChangeDictionary = inPropertyValue;
     
     CFNumberRef routeChangeReasonRef =
     CFDictionaryGetValue (
                           routeChangeDictionary,
                           CFSTR (kAudioSession_AudioRouteChangeKey_Reason)
-    );
+                          );
     
     SInt32 routeChangeReason;
     
@@ -198,6 +217,8 @@ void audioRouteChangeListenerCallback (
 	//[session setActive:YES error:nil];
 	//[session setPreferredIOBufferDuration:0.023220 error:nil];
 
+    
+    checkCurrentAudioRoute([iDrankAppDelegate getInstance]);
     
     
 	recognizer = [[FSKRecognizer alloc] init];
@@ -636,13 +657,10 @@ void audioRouteChangeListenerCallback (
 -(void)playAif:(NSString *)filename {
     SystemSoundID soundID;
     NSString *path = [[NSBundle mainBundle]
-                      pathForResource:filename ofType:@"aif"];    
-    
+                      pathForResource:filename ofType:@"aif"];
     if (path) { // test for path, to guard against crashes
-        
         AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path],&soundID);
         AudioServicesPlaySystemSound (soundID);
-        
     } else {
         NSLog(@"Can't find audio file!");
     }

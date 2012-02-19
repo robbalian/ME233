@@ -11,24 +11,21 @@
 #import "BACEvent.h"
 //#import "iDrankAppDelegate.h"
 
-#define SENSOR_WARMUP_SECONDS 1
+#define SENSOR_WARMUP_SECONDS 3
 #define SENSOR_READ_SECONDS 1
 #define SENSOR_CALCULATE_SECONDS 1
 
 #define NO_IDRANK 1
 #define USING_SIM 1
 
-
-enum {
-    SENSOR_STATE_DISCONNECTED = 0,
-    SENSOR_STATE_VERIFYING,
-    SENSOR_STATE_OFF, //CONNECTED >=2 
-    SENSOR_STATE_WARMING,
-    SENSOR_STATE_READY,
-    SENSOR_STATE_READING,
-    SENSOR_STATE_CALCULATING,
-    SENSOR_STATE_DONE
-};
+typedef enum {
+    UNKNOWN = -1,
+    DISCONNECTED = 0,
+    OFF,
+    ON_WARMING,
+    ON_READY,
+    ON_BLOWING_INTO
+} SensorState;
 
 @interface BACController : NSObject <CharReceiver>{
     NSMutableArray *readings;
@@ -40,10 +37,16 @@ enum {
     NSTimer *warmTimer;
     NSTimer *readTimer;
     NSTimer *calculateTimer;
+    NSTimer *verifyRetryTimer;
+    NSTimer *noBlowTimer;
+
+    
     
     NSManagedObjectContext *managedObjectContext;
     NSFetchedResultsController *fetchedResultsController;
     NSMutableArray *eventArray;
+    
+
 }
 
 +(BACController *)sharedInstance;
