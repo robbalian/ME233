@@ -60,6 +60,10 @@
     
 }
 
+-(IBAction)testCharIn:(id)sender {
+    [[BACController sharedInstance] receivedChar:'ý'];
+}
+
 -(IBAction)testChar:(id)sender {
     [[BACController sharedInstance] sendTestChar];
 }

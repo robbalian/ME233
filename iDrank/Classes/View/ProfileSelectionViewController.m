@@ -60,6 +60,33 @@
     [self done:nil];
 }
 
+-(IBAction)addNewUser:(id)sender {
+    UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"What's your name?" message:@"this gets covered" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add", nil];
+    newUserTF = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 45.0, 260.0, 25.0)];
+    [newUserTF setBackgroundColor:[UIColor whiteColor]];
+    [myAlertView addSubview:newUserTF];
+    [myAlertView show];
+    [newUserTF becomeFirstResponder];
+    [myAlertView release];    
+}
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0:
+            //cancelled
+            NSLog(@"TextField Cancelled");
+            break;
+        case 1:
+            [[UserController sharedInstance] setUserName:newUserTF.text];
+            [self done:nil];
+            break;
+        default:
+            break;
+    }
+}
+
+
+
 -(IBAction)done:(id)sender {
     [UIView transitionWithView:self.view duration:.35 options:UIViewAnimationCurveEaseInOut animations:^{ 
         self.view.transform = CGAffineTransformMakeTranslation(+320, 0);

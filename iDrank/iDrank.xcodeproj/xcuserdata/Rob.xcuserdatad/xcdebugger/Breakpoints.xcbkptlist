@@ -637,11 +637,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/Controller/UserController.m"
-         timestampString = "347916007.917565"
+         timestampString = "351339298.216512"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "39"
-         endingLineNumber = "39"
+         startingLineNumber = "51"
+         endingLineNumber = "51"
          landmarkName = "-setUserName:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -651,11 +651,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/Controller/UserController.m"
-         timestampString = "347916007.917565"
+         timestampString = "351339298.216512"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "41"
-         endingLineNumber = "41"
+         startingLineNumber = "53"
+         endingLineNumber = "53"
          landmarkName = "-setUserName:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -693,11 +693,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/View/MainViewController.m"
-         timestampString = "348352212.056615"
+         timestampString = "351480510.841206"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "161"
-         endingLineNumber = "161"
+         startingLineNumber = "212"
+         endingLineNumber = "212"
          landmarkName = "-themeChanged"
          landmarkType = "5">
       </FileBreakpoint>
@@ -777,11 +777,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/Controller/BACController.m"
-         timestampString = "351316310.973366"
+         timestampString = "351993453.02886"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "155"
-         endingLineNumber = "155"
+         startingLineNumber = "188"
+         endingLineNumber = "188"
          landmarkName = "@implementation BACController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -800,17 +800,17 @@
          landmarkType = "7">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/Controller/BACController.m"
-         timestampString = "351316310.973366"
+         timestampString = "351993453.02886"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "184"
-         endingLineNumber = "184"
-         landmarkName = "-doneReading:"
+         startingLineNumber = "76"
+         endingLineNumber = "76"
+         landmarkName = "-verifySensor"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -818,13 +818,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Classes/View/StatusBar.m"
-         timestampString = "351316024.535852"
+         filePath = "Classes/Controller/BACController.m"
+         timestampString = "351993453.02886"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "58"
-         endingLineNumber = "58"
-         landmarkName = "-receivedSensorStateChangeNotification:"
+         startingLineNumber = "154"
+         endingLineNumber = "154"
+         landmarkName = "-blowDetected"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -56,7 +56,7 @@ typedef enum {
 -(void)addBAC:(id)sender;
 
 -(void)setDelegate:(id)del;
--(NSString *)storeReading:(char)c;
+-(void)storeReading:(char)c;
 -(double)getCurrentBAC;
 -(void)receivedChar:(char)input;
 -(void)sendCode:(char)code;

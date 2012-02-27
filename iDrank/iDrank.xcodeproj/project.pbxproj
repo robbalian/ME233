@@ -58,6 +58,8 @@
 		D44D54DF14B66DD9005FCE7C /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44D54DE14B66DD9005FCE7C /* LocationController.m */; };
 		D44D54E114B66DFE005FCE7C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44D54E014B66DFE005FCE7C /* CoreLocation.framework */; };
 		D450E75114847CCE00C11827 /* iDrank.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = D450E75014847CCE00C11827 /* iDrank.xcdatamodel */; };
+		D46A40C714F3270D00EDF7DA /* InstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D46A40C514F3270D00EDF7DA /* InstructionsViewController.m */; };
+		D46A40C814F3270D00EDF7DA /* InstructionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D46A40C614F3270D00EDF7DA /* InstructionsViewController.xib */; };
 		D471D22114C259F3008694C1 /* CollegeThemeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D471D22014C259F3008694C1 /* CollegeThemeViewController.xib */; };
 		D476E4E814BCCC1700BFB38E /* ReadingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D476E4E614BCCC1700BFB38E /* ReadingsTableViewCell.m */; };
 		D476E4E914BCCC1700BFB38E /* ReadingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D476E4E714BCCC1700BFB38E /* ReadingsTableViewCell.xib */; };
@@ -223,6 +225,9 @@
 		D44D54DE14B66DD9005FCE7C /* LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationController.m; sourceTree = "<group>"; };
 		D44D54E014B66DFE005FCE7C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D450E75014847CCE00C11827 /* iDrank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iDrank.xcdatamodel; sourceTree = "<group>"; };
+		D46A40C414F3270D00EDF7DA /* InstructionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionsViewController.h; sourceTree = "<group>"; };
+		D46A40C514F3270D00EDF7DA /* InstructionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionsViewController.m; sourceTree = "<group>"; };
+		D46A40C614F3270D00EDF7DA /* InstructionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InstructionsViewController.xib; sourceTree = "<group>"; };
 		D471D22014C259F3008694C1 /* CollegeThemeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollegeThemeViewController.xib; sourceTree = "<group>"; };
 		D476E4E514BCCC1700BFB38E /* ReadingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingsTableViewCell.h; sourceTree = "<group>"; };
 		D476E4E614BCCC1700BFB38E /* ReadingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadingsTableViewCell.m; sourceTree = "<group>"; };
@@ -387,6 +392,9 @@
 				D4352E3514BC2237002A4A57 /* ProfileSelectionViewController.h */,
 				D4352E3614BC2237002A4A57 /* ProfileSelectionViewController.m */,
 				D4352E3714BC2237002A4A57 /* ProfileSelectionViewController.xib */,
+				D46A40C414F3270D00EDF7DA /* InstructionsViewController.h */,
+				D46A40C514F3270D00EDF7DA /* InstructionsViewController.m */,
+				D46A40C614F3270D00EDF7DA /* InstructionsViewController.xib */,
 			);
 			name = "Popup Views";
 			sourceTree = "<group>";
@@ -798,6 +806,7 @@
 				D490141814D54327002FE178 /* Sensor_enabled@2x.png in Resources */,
 				D490141914D54327002FE178 /* status_bar.png in Resources */,
 				D490141A14D54327002FE178 /* status_bar@2x.png in Resources */,
+				D46A40C814F3270D00EDF7DA /* InstructionsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -846,6 +855,7 @@
 				D476E4E814BCCC1700BFB38E /* ReadingsTableViewCell.m in Sources */,
 				D4E3687514BFE98700E1E7CE /* StandardThemeViewController.m in Sources */,
 				D4B172F614C253DD00D41047 /* CollegeThemeViewController.m in Sources */,
+				D46A40C714F3270D00EDF7DA /* InstructionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

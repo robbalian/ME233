@@ -11,6 +11,10 @@
 #import "FSKSerialGenerator.h"
 #include <ctype.h>
 
+#ifdef __APPLE__
+#include "TargetConditionals.h"
+#endif
+
 #define MIN_BLOW_DURATION 3.0
 #define NO_BLOW_DURATION 10.0
 
@@ -23,11 +27,12 @@
 #define WARM_PING 'c'
 #define WARM_ACK 'd'
 
-#define READY_PING 'e'
-#define READY_ACK 'f'
+#define OFF_PING 'h'
+#define OFF_ACK 'i'
 
-#define OFF_PING 'g'
-#define OFF_ACK 'h'
+#define S_DATA_PING 'e' // sensor value request - returns 8 bit value 
+#define T_DATA_PING 'f' // temperature value request - return 8 bit value (10* temp [c])
+#define V_DATA_PING 'g' // voltage value request - returns 7 bit value (10* voltage [V])
 
 
 @implementation BACController
@@ -68,6 +73,13 @@
 }
 
 -(void)verifySensor {
+#ifdef NO_DEVICE
+    //set to "connected"
+    [self receivedChar:VERIFY_ACK];
+    //[self setState:<#(int)#>
+    //[self receivedChar:WARM_ACK];
+    
+#else
     NSLog(@"Verifying sensor...");
     [self sendCode:VERIFY_PING];
     if ([verifyRetryTimer isValid]) {
@@ -76,7 +88,8 @@
     }
     if (sensorState == DISCONNECTED) {
         verifyRetryTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(verifySensor) userInfo:nil repeats:NO];
-    }
+    } 
+#endif
 }
 
 //Char TX
@@ -88,31 +101,36 @@
         switch (input) {
             case VERIFY_ACK:
                 //verified!
+                currentBAC = 0.0;
                 [self setState:OFF];
                 [self sendCode:WARM_PING];
                 if (verifyRetryTimer != nil && [verifyRetryTimer isValid]) { [verifyRetryTimer invalidate];
                     verifyRetryTimer = nil;
                 }
+                
+#ifdef NO_DEVICE
+                [self receivedChar:WARM_ACK]; //fake it
+#endif
+                
                 break;
             case OFF_ACK:
                 [self setState:OFF];
                 NSLog(@"Sensor State: OFF");
                 break;
-            
+                
             case WARM_ACK:
                 [self setState:ON_WARMING];
                 [self startWarmupTimer];
+#ifdef NO_DEVICE
+                //now we're ready
+                
+#endif
                 break;
-            case READY_ACK:
-                //start looking for blow
-                [self setState:ON_READY];
-                //start timer to turn the device off if unused
-                noBlowTimer = [NSTimer scheduledTimerWithTimeInterval:NO_BLOW_DURATION target:self selector:@selector(noBlowTimerExpired) userInfo:nil repeats:NO];
             case TEST_CHAR:
                 NSLog(@"Received Test Char");
                 break;
             default:
-                NSLog(@"Communication Error. Unexpected Char value");
+                NSLog(@"Communication Error. Unexpected Char value: %c", input);
                 break;
         }
     } else {
@@ -124,7 +142,11 @@
 
 
 -(void)warmTimerExpired {
-    [self sendCode:READY_PING];
+    //all warmed up, we're in ready mode
+    [self setState:ON_READY];
+    //start no blow timer so we don't keep heater on too long if no one blows
+    
+    noBlowTimer = [NSTimer scheduledTimerWithTimeInterval:NO_BLOW_DURATION target:self selector:@selector(noBlowTimerExpired) userInfo:nil repeats:NO];
 }
 
 -(void)blowDetected {
@@ -140,17 +162,28 @@
     //display message
     [self setState:ON_READY];
     NSLog(@"Blow ended prematurely...");
+    currentBAC = 0.0;
+    //currentBAC = 0.0;
     //[self startStayWarmTimer];
     //basically just regress to ON_READY state
 }
 
 -(void)blowEnded {
     //show bac via UI
+    if (noBlowTimer != nil && ![noBlowTimer isEqual:[NSNull null]] && [noBlowTimer isValid]) {
+        [noBlowTimer invalidate];
+        noBlowTimer = nil;
+    }
     [self calculateBAC];
     NSLog(@"Successful blow! Show reading: ");
-    //[self setState:OFF]; DON"T SET STATE UNTIL WE GET AN ACK
+    [((iDrankAppDelegate *)[[UIApplication sharedApplication] delegate]) addBAC:nil];
+    NSLog(@"Storing BAC");
+    //[self setState:OFF]; DON"T SET STATE UNTIL WE GET AN ACKs
     [self setState:UNKNOWN];
     [self sendCode:OFF_PING];
+#ifdef NO_DEVICE
+    [self setState:OFF];
+#endif
 }
 
 - (void) sendCode:(char)code {
@@ -190,6 +223,11 @@
     //start warming from current temp state (hmm)
     [self sendCode:WARM_PING];
     [readings removeAllObjects];
+#ifdef NO_DEVICE
+    [self verifySensor];
+    
+#endif
+    
 }
 
 -(void)doneCalculating:(id)sender {
@@ -223,7 +261,7 @@
     //read last X readings
     //is it being used? GO
     
-    if ([((NSNumber *)[readings objectAtIndex:([readings count]-1)]) intValue] > 225) return YES;
+    if ([((NSNumber *)[readings objectAtIndex:([readings count]-1)]) intValue] > 185) return YES;
     return NO;
 }
 
@@ -248,8 +286,11 @@
 -(void)noBlowTimerExpired {
     //ok you didn't blow in time. Shut off sensor to save battery, jerk.
     //[self setState:OFF];
+    noBlowTimer = nil;
+    
     [self setState:UNKNOWN];
     [self sendCode:OFF_PING];
+    currentBAC = 0.0;
 }
 
 //GETTERS AND SETTERS
@@ -267,8 +308,6 @@
 }
 
 -(void)setState:(int)state {
-    
-    
     sensorState = state;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"stateChanged" object:self];
 }

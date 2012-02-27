@@ -7,8 +7,11 @@
 //
 
 #import "UserController.h"
+#define MAX_RECENT_USERS 6
 
 @implementation UserController
+
+
 
 +(UserController*)sharedInstance {
 	static UserController *_sharedInstance;
@@ -35,12 +38,26 @@
 }
 
 -(void)setUserName:(NSString *)name {
+    if ([userName isEqualToString:name]) return;
+    NSString *duplicateName = nil;
+    for (NSString *storedName in recentUsers) {
+        if ([storedName isEqualToString:name]) {
+            duplicateName = storedName;
+        }
+    }
+    [self removeUserNameFromRecents:duplicateName];
+    
     if (userName != nil && ![userName isEqualToString:@""]) {
         [recentUsers addObject:userName];
     }
     userName = [name copy];
     //notification
     [[NSNotificationCenter defaultCenter] postNotificationName:@"userChanged" object:self];
+    
+    if ([recentUsers count] > MAX_RECENT_USERS) {
+        [recentUsers removeObjectAtIndex:0];
+    }
+    
     [self saveToDefaults];
 }
 
@@ -48,10 +65,10 @@
     [recentUsers removeObject:name];
     [self saveToDefaults];
     /*for (int i=0; i<[recentUsers count]; i++) {
-        if ([[recentUsers objectAtIndex:i] isEqualToString:name]) {
-            
-        }
-    }*/
+     if ([[recentUsers objectAtIndex:i] isEqualToString:name]) {
+     
+     }
+     }*/
 }
 
 -(NSString *)getUserName {

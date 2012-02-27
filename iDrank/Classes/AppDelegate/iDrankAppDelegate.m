@@ -520,13 +520,13 @@ void audioRouteChangeListenerCallback (
     picker.messageComposeDelegate = self;
     
     //picker.recipients = [NSArray arrayWithObject:@"123456789"];   // your recipient number or self for testing
-    NSString *emailBody = [NSString stringWithFormat:@"Just blew a %.2f with iDrank. Come join me!", [[BACController sharedInstance] getCurrentBAC]];
+    NSString *emailBody = [NSString stringWithFormat:@"Just blew a %.2f with iDrank. Come join me at %@!", [[BACController sharedInstance] getCurrentBAC], [[LocationController sharedInstance] getPlaceName]];
     
     
     picker.body = emailBody;
     
-    
-    [mainViewController presentModalViewController:picker animated:YES];
+    [mainViewController presentViewController:picker animated:YES completion:nil];
+    //[mainViewController presentModalViewController:picker animated:YES];
     picker = nil;
     NSLog(@"SMS fired");
 }

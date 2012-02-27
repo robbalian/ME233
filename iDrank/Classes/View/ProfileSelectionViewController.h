@@ -8,14 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProfileSelectionViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface ProfileSelectionViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate> {
     IBOutlet UITextField *textBox;
     IBOutlet UIButton *enterButton;
     IBOutlet UITableView *namestv;
+    
+    UITextField *newUserTF;
+    
     
     IBOutlet UITableView *placestv;
     NSArray *places;
 }
 
+-(IBAction)addNewUser:(id)sender;
 -(IBAction)done:(id)sender;
 @end

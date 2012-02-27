@@ -23,10 +23,61 @@ BOOL isConnected = FALSE;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedSensorStateChangeNotification:) name:@"stateChanged" object:[BACController sharedInstance]];
     }
     return self;
 }
 
+//## BAC CONTROLLER DELEGATE METHODS
+
+-(void)receivedSensorStateChangeNotification:(id)sender {
+    int state = [[BACController sharedInstance] currentState];
+    
+    switch (state) {
+        case DISCONNECTED:
+            //dismiss instructions
+            if (popupView) {
+                [popupView.view removeFromSuperview];                
+                popupView = nil;
+            }
+            break;
+        case OFF:
+            //dismiss instructions
+            if (popupView) {
+                [popupView.view removeFromSuperview];                
+                popupView = nil;
+            }
+            break;
+        case ON_WARMING:
+            break;
+        case ON_READY:
+            //swap back to original tab!
+            [self setTab:1];
+            //show blowing instructions
+            popupView = [[InstructionsViewController alloc] init];
+            [popupView.view setFrame:CGRectMake(0,0,0,0)];
+            [self.view addSubview:popupView.view];
+            [UIView transitionWithView:self.view duration:.3 options:UIViewAnimationCurveLinear animations:^{ 
+                [popupView.view setFrame:CGRectMake(10, 10, 250, 300)];
+            } completion:nil];
+            break;
+            
+            
+            break;
+        case ON_BLOWING_INTO:
+            //swap instructions to say "blow for 4 seconds"
+            break;
+        case UNKNOWN:
+            if (popupView) {
+                [popupView.view removeFromSuperview];  
+                popupView = nil;
+            }
+            //dismiss instructions
+            break;
+        default:
+            break;
+    }
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {

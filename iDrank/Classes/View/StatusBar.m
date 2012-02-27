@@ -53,30 +53,35 @@
         [statusIV setImage:[UIImage imageNamed:@"Sensor_enabled.png"]];
     }
     
-    if (state >= OFF) {
-        if (state == OFF) {
+    switch (state) {
+        case DISCONNECTED:
+            [coverView setFrame:CGRectMake(49, 7, 251, 38)];
+            [statusLabel setText:@"Plug in an iDrank Sensor"];
+            break;
+        case OFF:
             [coverView setFrame:CGRectMake(49, 7, 251, 38)];
             [statusLabel setText:@"Sensor Off"];
-        }
-        if (state == ON_WARMING) {
+            break;
+        case ON_WARMING:
             [statusLabel setText:@"Warming Up..."];
             [UIView transitionWithView:self.view duration:SENSOR_WARMUP_SECONDS options:UIViewAnimationCurveLinear+UIViewAnimationOptionBeginFromCurrentState animations:^{ 
-            [coverView setFrame:CGRectMake(49+251, 7, 0, 38)];
-             } completion:nil];
-        } else if (state == ON_READY) {
+                [coverView setFrame:CGRectMake(49+251, 7, 0, 38)];
+            } completion:nil];
+            break;
+        case ON_READY:
             [statusLabel setText:@"READY!"];
             //probably do some modal popup
-        } else if (state == ON_BLOWING_INTO) {
-            [statusLabel setText:@"Keep Blowing!"];            
-        }
-    } else {
-        [coverView setFrame:CGRectMake(49, 7, 251, 38)];
-        [statusIV setImage:[UIImage imageNamed:@"Sensor_disabled.png"]];
-        [statusLabel setText:@"Plug in an iDrank Sensor"];
+            break;
+        case ON_BLOWING_INTO:
+            [statusLabel setText:@"Keep Blowing!"];
+            break;
+        case UNKNOWN:
+            
+            break;
+        default:
+            break;
     }
 }
-
-//}
 
 -(void)receivedWarmTimerTickedNotification:(id)sender {
     

@@ -11,6 +11,8 @@
 #import "ReadingsViewController.h"
 #import "PrefsViewController.h"
 #import "Theme.h"
+#import "InstructionsViewController.h"
+
 
 
 @interface MainViewController : UIViewController <UITextFieldDelegate, BACControllerDelegate, UITabBarDelegate> {
@@ -32,6 +34,8 @@
     
     IBOutlet UIView *tabView;
     IBOutlet UIView *statusBarView;
+    
+    InstructionsViewController *popupView;
 }
 
 -(void)updateUIForBAC;
