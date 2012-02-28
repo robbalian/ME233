@@ -17,6 +17,7 @@
 		D4352E3314BC20F7002A4A57 /* UserController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4352E3214BC20F7002A4A57 /* UserController.m */; };
 		D4352E3814BC2237002A4A57 /* ProfileSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4352E3614BC2237002A4A57 /* ProfileSelectionViewController.m */; };
 		D4352E3914BC2237002A4A57 /* ProfileSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4352E3714BC2237002A4A57 /* ProfileSelectionViewController.xib */; };
+		D448853714FCC5510051B241 /* FSKController.m in Sources */ = {isa = PBXBuildFile; fileRef = D448853614FCC5510051B241 /* FSKController.m */; };
 		D44D547D14B51526005FCE7C /* iDrankAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D44D544314B51526005FCE7C /* iDrankAppDelegate.m */; };
 		D44D547E14B51526005FCE7C /* BACController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44D544614B51526005FCE7C /* BACController.m */; };
 		D44D547F14B51526005FCE7C /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = D44D544814B51526005FCE7C /* Theme.m */; };
@@ -145,6 +146,8 @@
 		D4352E3514BC2237002A4A57 /* ProfileSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSelectionViewController.h; sourceTree = "<group>"; };
 		D4352E3614BC2237002A4A57 /* ProfileSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSelectionViewController.m; sourceTree = "<group>"; };
 		D4352E3714BC2237002A4A57 /* ProfileSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileSelectionViewController.xib; sourceTree = "<group>"; };
+		D448853514FCC5510051B241 /* FSKController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSKController.h; sourceTree = "<group>"; };
+		D448853614FCC5510051B241 /* FSKController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSKController.m; sourceTree = "<group>"; };
 		D44D544214B51526005FCE7C /* iDrankAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iDrankAppDelegate.h; sourceTree = "<group>"; };
 		D44D544314B51526005FCE7C /* iDrankAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iDrankAppDelegate.m; sourceTree = "<group>"; };
 		D44D544514B51526005FCE7C /* BACController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BACController.h; sourceTree = "<group>"; };
@@ -431,6 +434,8 @@
 				D44D544814B51526005FCE7C /* Theme.m */,
 				D44D54DD14B66DD9005FCE7C /* LocationController.h */,
 				D44D54DE14B66DD9005FCE7C /* LocationController.m */,
+				D448853514FCC5510051B241 /* FSKController.h */,
+				D448853614FCC5510051B241 /* FSKController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -856,6 +861,7 @@
 				D4E3687514BFE98700E1E7CE /* StandardThemeViewController.m in Sources */,
 				D4B172F614C253DD00D41047 /* CollegeThemeViewController.m in Sources */,
 				D46A40C714F3270D00EDF7DA /* InstructionsViewController.m in Sources */,
+				D448853714FCC5510051B241 /* FSKController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

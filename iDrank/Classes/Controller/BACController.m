@@ -61,7 +61,10 @@
     if ((self = [super init])) {
         readings = [[NSMutableArray alloc] init];
         currentReading = [[[NSString alloc] init] retain];
-        //testing       
+        //testing
+        fskController = [[FSKController alloc] initWithDelegate:self];
+        [fskController testFSKController];
+        
     }
     return self;
 }

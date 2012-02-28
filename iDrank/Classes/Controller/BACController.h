@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CharReceiver.h"
 #import "BACEvent.h"
+#import "FSKController.h"
 //#import "iDrankAppDelegate.h"
 
 #define SENSOR_WARMUP_SECONDS 3
@@ -40,7 +41,7 @@ typedef enum {
     NSTimer *verifyRetryTimer;
     NSTimer *noBlowTimer;
 
-    
+    FSKController *fskController;
     
     NSManagedObjectContext *managedObjectContext;
     NSFetchedResultsController *fetchedResultsController;
