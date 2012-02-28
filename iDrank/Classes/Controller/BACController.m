@@ -18,6 +18,8 @@
 #define MIN_BLOW_DURATION 3.0
 #define NO_BLOW_DURATION 10.0
 
+#define SENSOR_READINGS_DELAY (.2)
+
 #define ERROR_SIGNAL 'A'
 #define TEST_CHAR 'T'
 
@@ -65,6 +67,8 @@
         fskController = [[FSKController alloc] initWithDelegate:self];
         [fskController testFSKController];
         
+        expectingReading = NO;
+        
     }
     return self;
 }
@@ -99,8 +103,9 @@
 - (void) receivedChar:(char)input {
     
     //if we're not in read mode:
-    if (sensorState < ON_READY) {
-        NSLog(@"Received Char %c", input);
+
+    if (!expectingReading) {
+    NSLog(@"Received Instruction Char %c", input);
         switch (input) {
             case VERIFY_ACK:
                 //verified!
@@ -137,8 +142,11 @@
                 break;
         }
     } else {
+        NSLog(@"Received Sensor Reading %u", (uint8_t)input);
         //else if we are in read mode, store the reading:
         [self storeReading:input];
+        expectingReading = NO;
+        [NSTimer scheduledTimerWithTimeInterval:SENSOR_READINGS_DELAY target:self selector:@selector(requestSensorReadingFromDevice) userInfo:nil repeats:NO];
     }
     
 }
@@ -150,6 +158,16 @@
     //start no blow timer so we don't keep heater on too long if no one blows
     
     noBlowTimer = [NSTimer scheduledTimerWithTimeInterval:NO_BLOW_DURATION target:self selector:@selector(noBlowTimerExpired) userInfo:nil repeats:NO];
+    
+    [self requestSensorReadingFromDevice];
+    
+    //sensorReadingTimer = [NSTimer scheduledTimerWithTimeInterval:<#(NSTimeInterval)#> target:<#(id)#> selector:<#(SEL)#> userInfo:<#(id)#> repeats:<#(BOOL)#>
+}
+
+-(void)requestSensorReadingFromDevice {
+    [self sendCode:S_DATA_PING];
+    expectingReading = YES;
+    NSLog(@"Requesting Sensor Data from Device");
 }
 
 -(void)blowDetected {
@@ -182,6 +200,7 @@
     [((iDrankAppDelegate *)[[UIApplication sharedApplication] delegate]) addBAC:nil];
     NSLog(@"Storing BAC");
     //[self setState:OFF]; DON"T SET STATE UNTIL WE GET AN ACKs
+    expectingReading = NO; //back to "communication" state
     [self setState:UNKNOWN];
     [self sendCode:OFF_PING];
 #ifdef NO_DEVICE
@@ -220,7 +239,6 @@
     [self calculateBAC];
     calculateTimer = [NSTimer scheduledTimerWithTimeInterval:SENSOR_CALCULATE_SECONDS target:self selector:@selector(doneCalculating:) userInfo:nil repeats:NO];
 }
-
 
 -(void)measureAgain {
     //start warming from current temp state (hmm)

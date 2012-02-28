@@ -40,6 +40,7 @@ typedef enum {
     NSTimer *calculateTimer;
     NSTimer *verifyRetryTimer;
     NSTimer *noBlowTimer;
+    NSTimer *sensorReadingTimer;
 
     FSKController *fskController;
     
@@ -47,7 +48,7 @@ typedef enum {
     NSFetchedResultsController *fetchedResultsController;
     NSMutableArray *eventArray;
     
-
+    BOOL expectingReading;
 }
 
 +(BACController *)sharedInstance;
@@ -71,6 +72,7 @@ typedef enum {
 -(void)doneReading:(id)sender;
 -(void)doneCalculating:(id)sender;
 -(void)calculateBAC;
+-(void)requestSensorReadingFromDevice;
 
 -(int)currentState;
 
