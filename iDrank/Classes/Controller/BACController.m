@@ -16,9 +16,9 @@
 #endif
 
 #define MIN_BLOW_DURATION 3.0
-#define NO_BLOW_DURATION 8.0
+#define NO_BLOW_DURATION 18.0
 
-#define SENSOR_READINGS_DELAY (.2)
+#define SENSOR_READINGS_DELAY (.02)
 
 #define ERROR_SIGNAL 'A'
 #define TEST_CHAR 'T'
@@ -369,7 +369,7 @@
     {
         // Path to save dictionary
         NSDateFormatter* formatter = [[[NSDateFormatter alloc] init] autorelease];
-        [formatter setDateFormat:@"MM-dd 'at' HH_mm"];
+        [formatter setDateFormat:@"MM-dd 'at' HH_mm_ss"];
         NSString *fileName = [NSString stringWithFormat:@"%@.csv", [formatter stringFromDate:[NSDate date]]];
         
         NSString  *dictPath = [[paths objectAtIndex:0] 

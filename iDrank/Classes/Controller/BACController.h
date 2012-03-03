@@ -12,7 +12,7 @@
 #import "FSKController.h"
 //#import "iDrankAppDelegate.h"
 
-#define SENSOR_WARMUP_SECONDS 3
+#define SENSOR_WARMUP_SECONDS 8
 #define SENSOR_READ_SECONDS 1
 #define SENSOR_CALCULATE_SECONDS 1
 
