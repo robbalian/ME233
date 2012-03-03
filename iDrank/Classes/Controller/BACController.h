@@ -49,6 +49,9 @@ typedef enum {
     NSMutableArray *eventArray;
     
     BOOL expectingReading;
+    
+    //calibration
+    double readingStartSeconds;
 }
 
 +(BACController *)sharedInstance;
@@ -73,6 +76,7 @@ typedef enum {
 -(void)doneCalculating:(id)sender;
 -(void)calculateBAC;
 -(void)requestSensorReadingFromDevice;
+-(void)stopRequestingSensorData;
 
 -(int)currentState;
 

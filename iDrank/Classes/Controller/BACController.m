@@ -16,7 +16,7 @@
 #endif
 
 #define MIN_BLOW_DURATION 3.0
-#define NO_BLOW_DURATION 10.0
+#define NO_BLOW_DURATION 8.0
 
 #define SENSOR_READINGS_DELAY (.2)
 
@@ -124,6 +124,7 @@
             case OFF_ACK:
                 [self setState:OFF];
                 NSLog(@"Sensor State: OFF");
+                [self writeFileToDocumentDirectory];
                 break;
                 
             case WARM_ACK:
@@ -146,7 +147,7 @@
         //else if we are in read mode, store the reading:
         [self storeReading:input];
         expectingReading = NO;
-        [NSTimer scheduledTimerWithTimeInterval:SENSOR_READINGS_DELAY target:self selector:@selector(requestSensorReadingFromDevice) userInfo:nil repeats:NO];
+        sensorReadingTimer = [NSTimer scheduledTimerWithTimeInterval:SENSOR_READINGS_DELAY target:self selector:@selector(requestSensorReadingFromDevice) userInfo:nil repeats:NO];
     }
     
 }
@@ -156,7 +157,7 @@
     //all warmed up, we're in ready mode
     [self setState:ON_READY];
     //start no blow timer so we don't keep heater on too long if no one blows
-    
+    readingStartSeconds = [[NSDate date] timeIntervalSince1970];
     noBlowTimer = [NSTimer scheduledTimerWithTimeInterval:NO_BLOW_DURATION target:self selector:@selector(noBlowTimerExpired) userInfo:nil repeats:NO];
     
     [self requestSensorReadingFromDevice];
@@ -166,6 +167,7 @@
 
 -(void)requestSensorReadingFromDevice {
     [self sendCode:S_DATA_PING];
+    sensorReadingTimer = nil;
     expectingReading = YES;
     NSLog(@"Requesting Sensor Data from Device");
 }
@@ -181,6 +183,7 @@
 
 -(void)blowEndedPrematurely {
     //display message
+    [self stopRequestingSensorData];
     [self setState:ON_READY];
     NSLog(@"Blow ended prematurely...");
     currentBAC = 0.0;
@@ -191,6 +194,8 @@
 
 -(void)blowEnded {
     //show bac via UI
+    
+    [self stopRequestingSensorData];
     if (noBlowTimer != nil && ![noBlowTimer isEqual:[NSNull null]] && [noBlowTimer isValid]) {
         [noBlowTimer invalidate];
         noBlowTimer = nil;
@@ -203,6 +208,7 @@
     expectingReading = NO; //back to "communication" state
     [self setState:UNKNOWN];
     [self sendCode:OFF_PING];
+
 #ifdef NO_DEVICE
     [self setState:OFF];
 #endif
@@ -219,7 +225,10 @@
 
 -(void)storeReading:(char)c {
     //ok we have to check if you're actually blowing into it
-    [readings addObject:[NSNumber numberWithInt:(uint8_t)c]];
+    //structure! [{timestamp:001259235, reading:163}, ...]
+    
+    NSDictionary *readingDict = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970] - readingStartSeconds], @"time", [NSNumber numberWithUnsignedShort:(uint8_t)c],@"reading", nil];
+    [readings addObject:readingDict];
     NSLog(@"Stored Reading: %u", (uint8_t)c);
     //if 
     if (sensorState == ON_READY && [self detectSensorBlow]) [self blowDetected];
@@ -264,7 +273,7 @@
     int numReadings = 0;
     for (int i=[readings count]-10; i<[readings count]; i++) {
         if (i < 0) continue;
-        int reading = [(NSNumber *)[readings objectAtIndex:i] intValue];
+        int reading = [(NSNumber *)[[readings objectAtIndex:i] objectForKey:@"reading"] intValue];
         total += reading;
         numReadings +=1;
     }
@@ -282,7 +291,7 @@
     //read last X readings
     //is it being used? GO
     
-    if ([((NSNumber *)[readings objectAtIndex:([readings count]-1)]) intValue] > 185) return YES;
+    if ([((NSNumber *)[[readings objectAtIndex:([readings count]-1)] objectForKey:@"reading"]) intValue] > 185) return YES;
     return NO;
 }
 
@@ -308,10 +317,19 @@
     //ok you didn't blow in time. Shut off sensor to save battery, jerk.
     //[self setState:OFF];
     noBlowTimer = nil;
+    [self stopRequestingSensorData];
     
     [self setState:UNKNOWN];
     [self sendCode:OFF_PING];
     currentBAC = 0.0;
+}
+
+-(void)stopRequestingSensorData {
+    if (sensorReadingTimer != nil && [sensorReadingTimer isValid]) {
+        [sensorReadingTimer invalidate];
+        sensorReadingTimer = nil;
+    }
+    expectingReading = NO;
 }
 
 //GETTERS AND SETTERS
@@ -333,5 +351,35 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"stateChanged" object:self];
 }
 
+//debugging data methods
+
+- (void) writeFileToDocumentDirectory
+{
+    
+    NSString *csvString = @"Seconds, Reading\r\n";
+    NSLog(@"Readings dict: %@", readings);
+
+    for (NSDictionary *dict in readings) {
+        csvString = [csvString stringByAppendingFormat:@"%f,%d\r\n", [(NSNumber *)[dict objectForKey:@"time"] doubleValue], [(NSNumber *)[dict objectForKey:@"reading"] intValue]];
+    }
+    // Get path to documents directory
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 
+                                                         NSUserDomainMask, YES);
+    if ([paths count] > 0)
+    {
+        // Path to save dictionary
+        NSDateFormatter* formatter = [[[NSDateFormatter alloc] init] autorelease];
+        [formatter setDateFormat:@"MM-dd 'at' HH_mm"];
+        NSString *fileName = [NSString stringWithFormat:@"%@.csv", [formatter stringFromDate:[NSDate date]]];
+        
+        NSString  *dictPath = [[paths objectAtIndex:0] 
+                               stringByAppendingPathComponent:fileName];
+        
+        NSLog(@"Writing Output File to iTunes : %@", fileName);
+
+        // Write dictionary
+        [csvString writeToFile:dictPath atomically:YES encoding:NSASCIIStringEncoding error:nil];
+    }
+}
 
 @end

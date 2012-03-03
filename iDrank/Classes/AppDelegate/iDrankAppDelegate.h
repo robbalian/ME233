@@ -9,7 +9,7 @@
 #define OBJ_C 1
 //#define USING_HIJACK 1
 #define USING_FSK 1
-#define NO_DEVICE 1
+//#define NO_DEVICE 1
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVAudioSession.h>
