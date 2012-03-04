@@ -28,7 +28,7 @@ typedef enum {
     ON_BLOWING_INTO
 } SensorState;
 
-@interface BACController : NSObject <CharReceiver>{
+@interface BACController : NSObject <FSKDelegate>{
     NSMutableArray *readings;
     NSString *currentReading;
     int sensorState;
@@ -56,18 +56,11 @@ typedef enum {
 
 +(BACController *)sharedInstance;
 
-//CoreData Methods
--(void)fetchRecords;
--(void)addBAC:(id)sender;
-
 -(void)setDelegate:(id)del;
--(void)storeReading:(char)c;
+-(void)storeReading:(int)reading;
 -(double)getCurrentBAC;
--(void)receivedChar:(char)input;
--(void)sendCode:(char)code;
 -(void)setState:(int)state;
 -(void)startWarmupTimer;
--(void)sendTestChar;
 -(void)verifySensor;
 -(void)sensorUnplugged;
 -(BOOL)detectSensorBlow;
@@ -77,6 +70,7 @@ typedef enum {
 -(void)calculateBAC;
 -(void)requestSensorReadingFromDevice;
 -(void)stopRequestingSensorData;
+-(void)writeFileToDocumentDirectory;
 
 -(int)currentState;
 
@@ -88,7 +82,6 @@ typedef enum {
 
 
 @protocol BACControllerDelegate
-
 
 -(void)warmupSecondsLeft:(double)seconds;
 -(void)sensorStateChanged:(int)state;

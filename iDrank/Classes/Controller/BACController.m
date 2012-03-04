@@ -8,12 +8,6 @@
 
 #import "BACController.h"
 #import "iDrankAppDelegate.h"
-#import "FSKSerialGenerator.h"
-#include <ctype.h>
-
-#ifdef __APPLE__
-#include "TargetConditionals.h"
-#endif
 
 #define MIN_BLOW_DURATION 3.0
 #define NO_BLOW_DURATION 18.0
@@ -22,19 +16,6 @@
 
 #define ERROR_SIGNAL 'A'
 #define TEST_CHAR 'T'
-
-#define VERIFY_PING 'a'
-#define VERIFY_ACK 'b'
-
-#define WARM_PING 'c'
-#define WARM_ACK 'd'
-
-#define OFF_PING 'h'
-#define OFF_ACK 'i'
-
-#define S_DATA_PING 'e' // sensor value request - returns 8 bit value 
-#define T_DATA_PING 'f' // temperature value request - return 8 bit value (10* temp [c])
-#define V_DATA_PING 'g' // voltage value request - returns 7 bit value (10* voltage [V])
 
 
 @implementation BACController
@@ -55,9 +36,7 @@
 }
 
 
--(void)sendTestChar {
-    [self sendCode:TEST_CHAR];
-}
+
 
 -(id)init {
     if ((self = [super init])) {
@@ -88,68 +67,11 @@
     
 #else
     NSLog(@"Verifying sensor...");
-    [self sendCode:VERIFY_PING];
-    if ([verifyRetryTimer isValid]) {
-        [verifyRetryTimer invalidate];
-        verifyRetryTimer = nil;
-    }
+    [fskController device_verify];
     if (sensorState == DISCONNECTED) {
         verifyRetryTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(verifySensor) userInfo:nil repeats:NO];
     } 
 #endif
-}
-
-//Char TX
-- (void) receivedChar:(char)input {
-    
-    //if we're not in read mode:
-
-    if (!expectingReading) {
-    NSLog(@"Received Instruction Char %c", input);
-        switch (input) {
-            case VERIFY_ACK:
-                //verified!
-                currentBAC = 0.0;
-                [self setState:OFF];
-                [self sendCode:WARM_PING];
-                if (verifyRetryTimer != nil && [verifyRetryTimer isValid]) { [verifyRetryTimer invalidate];
-                    verifyRetryTimer = nil;
-                }
-                
-#ifdef NO_DEVICE
-                [self receivedChar:WARM_ACK]; //fake it
-#endif
-                
-                break;
-            case OFF_ACK:
-                [self setState:OFF];
-                NSLog(@"Sensor State: OFF");
-                [self writeFileToDocumentDirectory];
-                break;
-                
-            case WARM_ACK:
-                [self setState:ON_WARMING];
-                [self startWarmupTimer];
-#ifdef NO_DEVICE
-                //now we're ready
-                
-#endif
-                break;
-            case TEST_CHAR:
-                NSLog(@"Received Test Char");
-                break;
-            default:
-                NSLog(@"Communication Error. Unexpected Char value: %c", input);
-                break;
-        }
-    } else {
-        NSLog(@"Received Sensor Reading %u", (uint8_t)input);
-        //else if we are in read mode, store the reading:
-        [self storeReading:input];
-        expectingReading = NO;
-        sensorReadingTimer = [NSTimer scheduledTimerWithTimeInterval:SENSOR_READINGS_DELAY target:self selector:@selector(requestSensorReadingFromDevice) userInfo:nil repeats:NO];
-    }
-    
 }
 
 
@@ -161,14 +83,10 @@
     noBlowTimer = [NSTimer scheduledTimerWithTimeInterval:NO_BLOW_DURATION target:self selector:@selector(noBlowTimerExpired) userInfo:nil repeats:NO];
     
     [self requestSensorReadingFromDevice];
-    
-    //sensorReadingTimer = [NSTimer scheduledTimerWithTimeInterval:<#(NSTimeInterval)#> target:<#(id)#> selector:<#(SEL)#> userInfo:<#(id)#> repeats:<#(BOOL)#>
 }
 
 -(void)requestSensorReadingFromDevice {
-    [self sendCode:S_DATA_PING];
-    sensorReadingTimer = nil;
-    expectingReading = YES;
+    [fskController requestReading];
     NSLog(@"Requesting Sensor Data from Device");
 }
 
@@ -203,33 +121,24 @@
     [self calculateBAC];
     NSLog(@"Successful blow! Show reading: ");
     [((iDrankAppDelegate *)[[UIApplication sharedApplication] delegate]) addBAC:nil];
-    NSLog(@"Storing BAC");
-    //[self setState:OFF]; DON"T SET STATE UNTIL WE GET AN ACKs
-    expectingReading = NO; //back to "communication" state
+    NSLog(@"Logging BAC");
     [self setState:UNKNOWN];
-    [self sendCode:OFF_PING];
+    [fskController device_turnHeaterOff];
 
 #ifdef NO_DEVICE
     [self setState:OFF];
 #endif
 }
 
-- (void) sendCode:(char)code {
-    UInt32 sessionCategory = kAudioSessionCategory_PlayAndRecord;
-    AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(sessionCategory), &sessionCategory);
-    UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_None;
-    AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute,sizeof (audioRouteOverride),&audioRouteOverride);
-    NSLog(@"Sending Char: %c", code);
-    [[iDrankAppDelegate getInstance].generator writeByte:code];
-}
 
--(void)storeReading:(char)c {
+
+-(void)storeReading:(int)reading {
     //ok we have to check if you're actually blowing into it
     //structure! [{timestamp:001259235, reading:163}, ...]
     
-    NSDictionary *readingDict = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970] - readingStartSeconds], @"time", [NSNumber numberWithUnsignedShort:(uint8_t)c],@"reading", nil];
+    NSDictionary *readingDict = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970] - readingStartSeconds], @"time", [NSNumber numberWithInt:reading],@"reading", nil];
     [readings addObject:readingDict];
-    NSLog(@"Stored Reading: %u", (uint8_t)c);
+    NSLog(@"Stored Reading: %d", reading);
     //if 
     if (sensorState == ON_READY && [self detectSensorBlow]) [self blowDetected];
     
@@ -251,7 +160,7 @@
 
 -(void)measureAgain {
     //start warming from current temp state (hmm)
-    [self sendCode:WARM_PING];
+    [fskController device_turnHeaterOn];
     [readings removeAllObjects];
 #ifdef NO_DEVICE
     [self verifySensor];
@@ -320,7 +229,7 @@
     [self stopRequestingSensorData];
     
     [self setState:UNKNOWN];
-    [self sendCode:OFF_PING];
+    [fskController device_turnHeaterOff];
     currentBAC = 0.0;
 }
 
@@ -330,6 +239,44 @@
         sensorReadingTimer = nil;
     }
     expectingReading = NO;
+}
+
+//FSK Delegate Functions
+
+
+-(void)receivedSensorData:(int)data {
+    NSLog(@"Received Sensor Data: %d", data);
+    [self storeReading:data];
+}
+
+-(void)receivedVerifiedAck {
+    NSLog(@"Received Verify Ack");
+    currentBAC = 0.0;
+    [self setState:OFF];
+    [fskController device_turnHeaterOn];
+}
+
+-(void)receivedVoltageData:(double)data {
+    
+}
+
+-(void)receivedTemperatureData:(double)data {
+    
+}
+
+-(void)receivedHeaterOnAck {
+    [self setState:ON_WARMING];
+    [self startWarmupTimer];
+}
+
+-(void)receivedHeaterOffAck {
+    
+}
+
+-(void)receivedOffAck {
+    NSLog(@"Sensor State: OFF");
+    [self setState:OFF];
+    [self writeFileToDocumentDirectory];
 }
 
 //GETTERS AND SETTERS

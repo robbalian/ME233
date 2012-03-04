@@ -7,27 +7,62 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CharReceiver.h"
 
 typedef enum {
     IDLE = 0,
-    PARSING
+    EXPECTING
 } ParsingState;
 
 #define MAX_PAYLOAD 4 //bytes
 
 @class BACController;
 
-@interface FSKController : NSObject {
+@protocol FSKDelegate <NSObject>
+@required
+-(void)receivedSensorData:(int)data;
+-(void)receivedVoltageData:(double)data;
+-(void)receivedTemperatureData:(double)data;
+-(void)receivedVerifiedAck;
+-(void)receivedHeaterOnAck;
+-(void)receivedHeaterOffAck;
+-(void)receivedOffAck;
+
+@end
+
+@interface FSKController : NSObject <CharReceiver> {
     BACController *delegate;
     int parsingState;
-    int numCharsRemaining;
-    char currentInstruction;
+    int numBytesExpected;
+    
+    int numRetriesRemaining;
+    
     NSMutableArray *charBuffer;
+    NSMutableArray *sendQueue;
+    
+    NSTimer *timeoutTimer;
 }
 
 -(id)initWithDelegate:(BACController *)del;
--(void)resetBuffer;
 -(void)receivedChar:(char)c;
--(BOOL)verifyPacket:(char)hashByte;
+-(void)sendChars;
+-(void)sendCode:(char)c;
+-(int)numBytesToExpect:(char)instruction;
+-(void)startTimeout;
+-(void)stopTimeout;
+-(void)timedOut;
+-(void)communicationSuccess;
+-(void)communicationFailure;
+-(int)numRetriesToDo:(char)instruction;
+
+-(void)testFSKController;
+
+-(void)requestReading;
+-(void)requestVoltage;
+-(void)requestTemperature;
+
+-(void)device_turnHeaterOff;
+-(void)device_turnHeaterOn;
+-(void)device_verify;
 
 @end
