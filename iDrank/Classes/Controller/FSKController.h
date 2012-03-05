@@ -54,6 +54,7 @@ typedef enum {
 -(void)communicationSuccess;
 -(void)communicationFailure;
 -(int)numRetriesToDo:(char)instruction;
+-(int)getDataFromCharBuffer;
 
 -(void)testFSKController;
 
