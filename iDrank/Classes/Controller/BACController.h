@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CharReceiver.h"
 #import "BACEvent.h"
 #import "FSKController.h"
 //#import "iDrankAppDelegate.h"
@@ -77,6 +76,8 @@ typedef enum {
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;  
 @property (nonatomic, retain) NSMutableArray *eventArray;
+
+@property (nonatomic, retain) FSKController *fskController;
 
 @end
 

@@ -222,7 +222,7 @@ void audioRouteChangeListenerCallback (
     
     
 	recognizer = [[FSKRecognizer alloc] init];
-	[recognizer addReceiver:bacController];
+	[recognizer addReceiver:bacController.fskController];
 
 	generator = [[FSKSerialGenerator alloc] init];
 	[generator play];

@@ -21,6 +21,7 @@
 @implementation BACController
 
 @synthesize eventArray, managedObjectContext, fetchedResultsController;
+@synthesize fskController;
 
 +(BACController*)sharedInstance {
     
