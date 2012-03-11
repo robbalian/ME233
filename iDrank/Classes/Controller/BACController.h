@@ -15,7 +15,6 @@
 #define SENSOR_READ_SECONDS 1
 #define SENSOR_CALCULATE_SECONDS 1
 
-#define NO_IDRANK 1
 #define USING_SIM 1
 
 typedef enum {

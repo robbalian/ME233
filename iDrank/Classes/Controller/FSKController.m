@@ -15,10 +15,7 @@
 #include "TargetConditionals.h"
 #endif
 
-#define TIMEOUT_SECONDS (1.0)
-
-#define ERROR_CHAR 'A'
-#define TEST_CHAR 'T'
+#define TIMEOUT_SECONDS (3.0)
 
 #define VERIFY_PING (0x01)
 #define VERIFY_ACK  (0x02)
@@ -37,6 +34,10 @@
 #define V_DATA_ACK  (0x0c)
 #define SERIAL_NUMBER_DATA_PING (0x0d)
 #define SERIAL_NUMBER_DATA_ACK  (0x0e)
+
+
+#define TEST_CHAR (0x0f)
+#define ERROR_SIGNAL (0x10) 
 
 #define INSTRUCTION_BITS(c) c>>3
 #define PACK_INSTRUCTION_BIT(c) c<<3
@@ -71,9 +72,15 @@
 
 
 -(void)receivedChar:(char)c {
+    NSLog(@"received char");
     //switch on the instruction we sent out..    
+    if ([sendQueue count] == 0) {
+        NSLog(@"No items in the send queue! something is wrong");
+        [self communicationFailure];
+        return;
+    }
     char sentChar = (char)[((NSNumber *)[sendQueue objectAtIndex:0]) unsignedIntValue]>>3;
-    NSLog(@"Received char. Sent char: %c, %u", sentChar, (uint8_t)sentChar);
+    NSLog(@"Received char: (%c, %u) -- Sent char: (%c, %u)", c, (uint8_t)c, sentChar, (uint8_t)sentChar);
     switch (sentChar) {
         case VERIFY_PING:
             if (c>>3 != VERIFY_ACK) {
@@ -81,37 +88,40 @@
                 [self communicationFailure];
                 break;
             }
-            [self communicationSuccess];
+            
+            //OK HERE"S THE THING: must send delegate call before commSuccess. It empties the charBuffer so we can't get meaninful info out... just do it
             [delegate receivedVerifiedAck];
+            [self communicationSuccess];
             break;
         case WARM_PING:
             if (c>>3 != WARM_ACK) {
                 [self communicationFailure];
                 break;
             }
-            [self communicationSuccess];
+            
             [delegate receivedHeaterOnAck];
+            [self communicationSuccess];
             break;
         case OFF_PING:
             if (c>>3 != OFF_ACK) {
                 [self communicationFailure];
                 break;
             }
-            [self communicationSuccess];
             [delegate receivedHeaterOffAck];
+            [self communicationSuccess];
             break;
         case S_DATA_PING:
-            if ([self numBytesToExpect:S_DATA_PING] == numBytesExpected && c != S_DATA_ACK) {
+            if ([self numBytesToExpect:S_DATA_PING] == numBytesExpected && INSTRUCTION_BITS(c) != S_DATA_ACK) {
                 //this is the FIRST byte back, and we're not expecting this
                 [self communicationFailure];
-                break;
-            }
-            [charBuffer addObject:[NSNumber numberWithUnsignedInt:(uint8_t)c]];
-            if (numBytesExpected == 1) {
-                //last byte! now process
-                NSLog(@"Char Buffer: %@", charBuffer);
-                [delegate receivedSensorData:[self getDataFromCharBuffer]];
-                [self communicationSuccess];
+            } else {
+                [charBuffer addObject:[NSNumber numberWithUnsignedInt:(uint8_t)c]];
+                if (numBytesExpected == 1) {
+                    //last byte! now process
+                    NSLog(@"Char Buffer: %@", charBuffer);
+                    [delegate receivedSensorData:[self getDataFromCharBuffer]];
+                    [self communicationSuccess];
+                }
             }
             break;
         case V_DATA_PING:
@@ -124,11 +134,21 @@
             if (numBytesExpected == 1) {
                 //last byte! now process
                 NSLog(@"Char Buffer: %@", charBuffer);
-                     [delegate receivedVoltageData:[self getDataFromCharBuffer]];
+                
+                [delegate receivedVoltageData:[self getDataFromCharBuffer]];
                 [self communicationSuccess];
             }
             break;
+        case TEST_CHAR:
+            if (c>>3 != TEST_CHAR) {
+                [self communicationFailure];
+                break;
+            }
+            [self communicationSuccess];
+            NSLog(@"Got Test Char!");
+            break;
         default:
+            [self communicationFailure];
             break;
     }
     
@@ -141,6 +161,7 @@
 
 -(int)getDataFromCharBuffer {
     //((([[charBuffer objectAtIndex:0] unsignedIntValue])&0x03)<<8) + [[charBuffer objectAtIndex:1] unsignedIntValue];
+    NSLog(@"Get data from char buffer...");
     int val = 0;
     for (int i=[charBuffer count]-1; i>0; i--) {
         val += [[charBuffer objectAtIndex:i] unsignedIntValue]<<(8*([charBuffer count]-1-i));
@@ -152,7 +173,8 @@
 -(void)sendChars {
     if ([sendQueue count] > 0 && parsingState == IDLE) {
         NSLog(@"%@", sendQueue);
-        numRetriesRemaining = [self numRetriesToDo:(char)([[sendQueue objectAtIndex:0] charValue]>>3)];
+        NSLog(@"Send chars...");
+        if (numRetriesRemaining == -1) numRetriesRemaining = [self numRetriesToDo:(char)([[sendQueue objectAtIndex:0] charValue]>>3)];
         [self sendCode:[[sendQueue objectAtIndex:0] charValue]];
         //start timeout timer!
         parsingState = EXPECTING;
@@ -180,7 +202,8 @@
 }
 
 -(void)sendTestChar {
-    [self sendCode:TEST_CHAR];
+    [sendQueue addObject:[NSNumber numberWithUnsignedInt:((uint8_t)TEST_CHAR<<3)]];
+    [self sendChars];
 }
 
 - (void)sendCode:(char)code {
@@ -241,7 +264,9 @@
     if (numRetriesRemaining <= 0) {
         if ([sendQueue count] > 0) [sendQueue removeObjectAtIndex:0];
         NSLog(@"Not retrying, moving on");
+        numRetriesRemaining = -1; //set this so that we get a new value for the new char we send
     } else {
+        
         NSLog(@"Retrying...");
     }
     //we're trying again, so reset some stuff

@@ -66,4 +66,6 @@ typedef enum {
 -(void)device_turnHeaterOn;
 -(void)device_verify;
 
+-(void)sendTestChar;
+
 @end

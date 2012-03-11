@@ -9,13 +9,12 @@
 #import "BACController.h"
 #import "iDrankAppDelegate.h"
 
-#define MIN_BLOW_DURATION 3.0
+#define MIN_BLOW_DURATION 4.0
 #define NO_BLOW_DURATION 18.0
 
 #define SENSOR_READINGS_DELAY (.02)
 
-#define ERROR_SIGNAL 'A'
-#define TEST_CHAR 'T'
+
 
 
 @implementation BACController
@@ -45,7 +44,7 @@
         currentReading = [[[NSString alloc] init] retain];
         //testing
         fskController = [[FSKController alloc] initWithDelegate:self];
-        [fskController testFSKController];
+        //[fskController testFSKController];
         
         expectingReading = NO;
         
@@ -68,8 +67,8 @@
     
 #else
     NSLog(@"Verifying sensor...");
-    [fskController device_verify];
     if (sensorState == DISCONNECTED) {
+        [fskController device_verify];
         verifyRetryTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(verifySensor) userInfo:nil repeats:NO];
     } 
 #endif
@@ -150,6 +149,10 @@
      
      }*/
     //[delegate bacChanged:[self getCurrentBAC]];
+}
+
+-(void)sendTestChar {
+    [fskController sendTestChar];
 }
 
 
@@ -248,6 +251,10 @@
 -(void)receivedSensorData:(int)data {
     NSLog(@"Received Sensor Data: %d", data);
     [self storeReading:data];
+    
+    if (sensorState == ON_READY || sensorState == ON_BLOWING_INTO) {
+        [self requestSensorReadingFromDevice]; //omg request ANOTHER ONE
+    }
 }
 
 -(void)receivedVerifiedAck {
@@ -271,13 +278,13 @@
 }
 
 -(void)receivedHeaterOffAck {
-    
+    NSLog(@"Heater OFF");
+    [self setState:OFF];
+    [self writeFileToDocumentDirectory];
 }
 
 -(void)receivedOffAck {
-    NSLog(@"Sensor State: OFF");
-    [self setState:OFF];
-    [self writeFileToDocumentDirectory];
+
 }
 
 //GETTERS AND SETTERS
