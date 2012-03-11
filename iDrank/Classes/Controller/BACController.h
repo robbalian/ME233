@@ -39,6 +39,9 @@ typedef enum {
     NSTimer *verifyRetryTimer;
     NSTimer *noBlowTimer;
     NSTimer *sensorReadingTimer;
+    
+    int maxSensorDifference;
+    int sensorInitialReading;
 
     FSKController *fskController;
     

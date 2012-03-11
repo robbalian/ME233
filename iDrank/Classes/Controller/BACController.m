@@ -9,7 +9,7 @@
 #import "BACController.h"
 #import "iDrankAppDelegate.h"
 
-#define MIN_BLOW_DURATION 10.0
+#define MIN_BLOW_DURATION 5.0
 #define NO_BLOW_DURATION 18.0
 
 #define BLOW_DETECT_THRESHOLD (.02)
@@ -80,7 +80,7 @@
     [self setState:ON_READY];
     //start no blow timer so we don't keep heater on too long if no one blows
     noBlowTimer = [NSTimer scheduledTimerWithTimeInterval:NO_BLOW_DURATION target:self selector:@selector(noBlowTimerExpired) userInfo:nil repeats:NO];
-    
+    maxSensorDifference = 0;
     [self requestSensorReadingFromDevice];
 }
 
@@ -194,8 +194,10 @@
     double average = (double)total / numReadings;
     double bac = (average-125)*.0011;
     
+    currentBAC = ((double)maxSensorDifference-10.0) / 180.0;
+    if (currentBAC <= .01 || currentBAC < 0) currentBAC = 0.0;
     
-    currentBAC = ((double)(arc4random() % 40)) / 100.0;
+    //currentBAC = ((double)(arc4random() % 40)) / 100.0;
     //return bac > 0 ? bac : 0;
     //return .4*(((double)(rand()%10))/10.0);
 }
@@ -211,9 +213,7 @@
         num += [((NSNumber *)[[readings objectAtIndex:([readings count]-i-1)] objectForKey:@"reading"]) intValue];
     }
     double average = ((double)num/3.0);
-    NSLog(@"Average: %f", average);
     double difference = fabs((average - (double)[((NSNumber *)[[readings objectAtIndex:([readings count]-1)] objectForKey:@"reading"]) intValue]) / average);
-    NSLog(@"Difference: %f", difference);
     
     if (difference > BLOW_DETECT_THRESHOLD) return YES;
     return NO;
@@ -260,7 +260,12 @@
 
 
 -(void)receivedSensorData:(int)data {
+    if (data < 100) return;
+    if (sensorState == ON_WARMING) sensorInitialReading = data; //update this while we're warming so we can get a good diff
+    
+    if (sensorState == ON_BLOWING_INTO && sensorInitialReading - data > maxSensorDifference) maxSensorDifference = sensorInitialReading - data;
     NSLog(@"Received Sensor Data: %d", data);
+    
     [self storeReading:data];
     
     if (sensorState == ON_WARMING || sensorState == ON_READY || sensorState == ON_BLOWING_INTO) {
