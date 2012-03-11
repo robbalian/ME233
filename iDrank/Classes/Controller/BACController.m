@@ -9,12 +9,10 @@
 #import "BACController.h"
 #import "iDrankAppDelegate.h"
 
-#define MIN_BLOW_DURATION 4.0
+#define MIN_BLOW_DURATION 10.0
 #define NO_BLOW_DURATION 18.0
 
-#define SENSOR_READINGS_DELAY (.02)
-
-
+#define SENSOR_READINGS_DELAY (.01)
 
 
 @implementation BACController
@@ -79,7 +77,6 @@
     //all warmed up, we're in ready mode
     [self setState:ON_READY];
     //start no blow timer so we don't keep heater on too long if no one blows
-    readingStartSeconds = [[NSDate date] timeIntervalSince1970];
     noBlowTimer = [NSTimer scheduledTimerWithTimeInterval:NO_BLOW_DURATION target:self selector:@selector(noBlowTimerExpired) userInfo:nil repeats:NO];
     
     [self requestSensorReadingFromDevice];
@@ -141,6 +138,8 @@
     NSLog(@"Stored Reading: %d", reading);
     //if 
     if (sensorState == ON_READY && [self detectSensorBlow]) [self blowDetected];
+    
+    
     
     /*if (sensorState == SENSOR_STATE_READY && [self detectSensorBlow]) {
      [self setState:SENSOR_STATE_READING];
@@ -204,6 +203,7 @@
     //read last X readings
     //is it being used? GO
     
+    //ok basically always at this point
     if ([((NSNumber *)[[readings objectAtIndex:([readings count]-1)] objectForKey:@"reading"]) intValue] > 185) return YES;
     return NO;
 }
@@ -252,7 +252,7 @@
     NSLog(@"Received Sensor Data: %d", data);
     [self storeReading:data];
     
-    if (sensorState == ON_READY || sensorState == ON_BLOWING_INTO) {
+    if (sensorState == ON_WARMING || sensorState == ON_READY || sensorState == ON_BLOWING_INTO) {
         [self requestSensorReadingFromDevice]; //omg request ANOTHER ONE
     }
 }
@@ -275,6 +275,8 @@
 -(void)receivedHeaterOnAck {
     [self setState:ON_WARMING];
     [self startWarmupTimer];
+    [self requestSensorReadingFromDevice];
+    readingStartSeconds = [[NSDate date] timeIntervalSince1970];
 }
 
 -(void)receivedHeaterOffAck {
