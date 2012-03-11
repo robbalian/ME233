@@ -12,6 +12,8 @@
 #define MIN_BLOW_DURATION 10.0
 #define NO_BLOW_DURATION 18.0
 
+#define BLOW_DETECT_THRESHOLD (.02)
+
 #define SENSOR_READINGS_DELAY (.01)
 
 
@@ -121,7 +123,7 @@
     NSLog(@"Logging BAC");
     [self setState:UNKNOWN];
     [fskController device_turnHeaterOff];
-
+    
 #ifdef NO_DEVICE
     [self setState:OFF];
 #endif
@@ -202,9 +204,18 @@
     
     //read last X readings
     //is it being used? GO
-    
+    int num = 0;
     //ok basically always at this point
-    if ([((NSNumber *)[[readings objectAtIndex:([readings count]-1)] objectForKey:@"reading"]) intValue] > 185) return YES;
+    for (int i=0; i<3; i++) {
+        //starting with second-to-latest value...
+        num += [((NSNumber *)[[readings objectAtIndex:([readings count]-i-1)] objectForKey:@"reading"]) intValue];
+    }
+    double average = ((double)num/3.0);
+    NSLog(@"Average: %f", average);
+    double difference = fabs((average - (double)[((NSNumber *)[[readings objectAtIndex:([readings count]-1)] objectForKey:@"reading"]) intValue]) / average);
+    NSLog(@"Difference: %f", difference);
+    
+    if (difference > BLOW_DETECT_THRESHOLD) return YES;
     return NO;
 }
 
@@ -286,7 +297,7 @@
 }
 
 -(void)receivedOffAck {
-
+    
 }
 
 //GETTERS AND SETTERS
@@ -315,7 +326,7 @@
     
     NSString *csvString = @"Seconds, Reading\r\n";
     NSLog(@"Readings dict: %@", readings);
-
+    
     for (NSDictionary *dict in readings) {
         csvString = [csvString stringByAppendingFormat:@"%f,%d\r\n", [(NSNumber *)[dict objectForKey:@"time"] doubleValue], [(NSNumber *)[dict objectForKey:@"reading"] intValue]];
     }
@@ -331,9 +342,9 @@
         
         NSString  *dictPath = [[paths objectAtIndex:0] 
                                stringByAppendingPathComponent:fileName];
-        
+        NSLog(@"Path: %@", dictPath);
         NSLog(@"Writing Output File to iTunes : %@", fileName);
-
+        
         // Write dictionary
         [csvString writeToFile:dictPath atomically:YES encoding:NSASCIIStringEncoding error:nil];
     }
