@@ -11,6 +11,7 @@
 #import "iDrankAppDelegate.h"
 #import "ProfileSelectionViewController.h"
 #import "UserController.h"
+#import "ManualEntryPopupViewController.h"
 
 @implementation MeasureViewController
 
@@ -95,6 +96,12 @@
     [UIView commitAnimations];
 }
 */
+
+-(IBAction)enterManually:(id)sender {
+    ManualEntryPopupViewController *mepvc = [[ManualEntryPopupViewController alloc] init]; 
+    [mepvc.view setFrame:CGRectMake(0, 130, 320, 250)];
+    [self.view addSubview:mepvc.view];
+}
 
 - (void)didReceiveMemoryWarning
 {

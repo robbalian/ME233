@@ -30,4 +30,6 @@
 -(IBAction)placeButtonTapped:(id)sender;
 -(IBAction)profileButtonTapped:(id)sender;
 
+
+-(IBAction)enterManually:(id)sender;
 @end

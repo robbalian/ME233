@@ -14,6 +14,8 @@
 		288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765580DF743DE002DB57D /* CoreGraphics.framework */; };
 		7000540711E5FD1200ED71EB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7000540611E5FD1200ED71EB /* AVFoundation.framework */; };
 		702E1D1D118D270B00141E6A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 702E1D1C118D270B00141E6A /* AudioToolbox.framework */; };
+		D426246315159AF100851BBB /* ManualEntryPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D426246115159AF100851BBB /* ManualEntryPopupViewController.m */; };
+		D426246415159AF100851BBB /* ManualEntryPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D426246215159AF100851BBB /* ManualEntryPopupViewController.xib */; };
 		D4352E3314BC20F7002A4A57 /* UserController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4352E3214BC20F7002A4A57 /* UserController.m */; };
 		D4352E3814BC2237002A4A57 /* ProfileSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4352E3614BC2237002A4A57 /* ProfileSelectionViewController.m */; };
 		D4352E3914BC2237002A4A57 /* ProfileSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4352E3714BC2237002A4A57 /* ProfileSelectionViewController.xib */; };
@@ -141,6 +143,9 @@
 		702E1D1C118D270B00141E6A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		70BA824C11BA507600005CF1 /* iDrank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDrank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* iDrank-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iDrank-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		D426246015159AF100851BBB /* ManualEntryPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualEntryPopupViewController.h; sourceTree = "<group>"; };
+		D426246115159AF100851BBB /* ManualEntryPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualEntryPopupViewController.m; sourceTree = "<group>"; };
+		D426246215159AF100851BBB /* ManualEntryPopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualEntryPopupViewController.xib; sourceTree = "<group>"; };
 		D4352E3114BC20F7002A4A57 /* UserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserController.h; sourceTree = "<group>"; };
 		D4352E3214BC20F7002A4A57 /* UserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserController.m; sourceTree = "<group>"; };
 		D4352E3514BC2237002A4A57 /* ProfileSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSelectionViewController.h; sourceTree = "<group>"; };
@@ -398,6 +403,9 @@
 				D46A40C414F3270D00EDF7DA /* InstructionsViewController.h */,
 				D46A40C514F3270D00EDF7DA /* InstructionsViewController.m */,
 				D46A40C614F3270D00EDF7DA /* InstructionsViewController.xib */,
+				D426246015159AF100851BBB /* ManualEntryPopupViewController.h */,
+				D426246115159AF100851BBB /* ManualEntryPopupViewController.m */,
+				D426246215159AF100851BBB /* ManualEntryPopupViewController.xib */,
 			);
 			name = "Popup Views";
 			sourceTree = "<group>";
@@ -812,6 +820,7 @@
 				D490141914D54327002FE178 /* status_bar.png in Resources */,
 				D490141A14D54327002FE178 /* status_bar@2x.png in Resources */,
 				D46A40C814F3270D00EDF7DA /* InstructionsViewController.xib in Resources */,
+				D426246415159AF100851BBB /* ManualEntryPopupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -862,6 +871,7 @@
 				D4B172F614C253DD00D41047 /* CollegeThemeViewController.m in Sources */,
 				D46A40C714F3270D00EDF7DA /* InstructionsViewController.m in Sources */,
 				D448853714FCC5510051B241 /* FSKController.m in Sources */,
+				D426246315159AF100851BBB /* ManualEntryPopupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
