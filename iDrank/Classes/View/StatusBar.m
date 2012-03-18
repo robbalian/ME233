@@ -25,7 +25,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedUserChangeNotification:) name:@"userChanged" object:[UserController sharedInstance]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedWarmTimerTickedNotification:) name:@"warmTimerTicked" object:[BACController sharedInstance]];
         //namePlaceLabel.adjustsFontSizeToFitWidth = YES;
-        
+                
         sensorController = [BACController sharedInstance];
         [sensorController setDelegate:self];
     }
@@ -69,6 +69,9 @@
             } completion:nil];
             break;
         case ON_READY:
+            [UIView transitionWithView:self.view duration:.1 options:UIViewAnimationCurveLinear+UIViewAnimationOptionBeginFromCurrentState animations:^{ 
+                [coverView setFrame:CGRectMake(49+251, 7, 0, 38)];
+            } completion:nil];
             [statusLabel setText:@"READY!"];
             //probably do some modal popup
             break;
@@ -118,12 +121,8 @@
     [super viewDidLoad];
     
     [namePlaceLabel setText:[[UserController sharedInstance] getUserName]];
+    [self receivedSensorStateChangeNotification:nil];
 
-    
-#ifdef USING_SIM
-    //this shit is a hack
-    [[BACController sharedInstance] verifySensor]; //fake that there's a headphone jack
-#endif
     // Do any additional setup after loading the view from its nib.
 }
 

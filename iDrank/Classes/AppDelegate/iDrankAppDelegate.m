@@ -39,7 +39,7 @@ void checkCurrentAudioRoute(id appDel) {
         //got 4 pin adapter
         //might want to check  || [str isEqualToString:@"HeadphonesAndMicrophone"] as well
         [appDelegate verifySensor];
-    } else if ([str isEqualToString:@"ReceiverAndMicrophone"]) {
+    } else { //if ([str isEqualToString:@"ReceiverAndMicrophone"]) {
         //unplugged
         [appDelegate sensorUnplugged];
     }

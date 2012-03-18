@@ -67,5 +67,6 @@ typedef enum {
 -(void)device_verify;
 
 -(void)sendTestChar;
+-(void)sensorUnplugged;
 
 @end
