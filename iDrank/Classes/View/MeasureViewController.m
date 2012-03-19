@@ -33,9 +33,9 @@
     NSLog(@"MeasureView received state change notification. State: %d", state);
     
     if (state == DISCONNECTED) {
-        [readoutLabel setText:@""];
-        [infoTitleLabel setText:@"While we wait..."];
-        [infoBodyLabel setText:@"Did you know that vodka is a proven cure for ugliness?"];
+        //[readoutLabel setText:@""];
+        //[infoTitleLabel setText:@"While we wait..."];
+        //[infoBodyLabel setText:@"Did you know that vodka is a proven cure for ugliness?"];
         [measureAgainButton setHidden:YES];
     } else if (state == ON_WARMING) {
         [measureAgainButton setHidden:YES];
@@ -116,7 +116,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    [shareCluster setAlpha:0.0];
     [readoutLabel setFont: [UIFont fontWithName: @"Crystal" size: readoutLabel.font.pointSize]];
 }
 

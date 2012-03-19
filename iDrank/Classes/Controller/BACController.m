@@ -191,6 +191,23 @@
 
 //CALCULATION
 
+-(void)bacManuallyEnteredWithGender:(BOOL)male Weight:(int)weight Drinks:(int)drinks Hours:(int)hours {
+    //source www.dot.wisconsin.gov/safety/motorist/drunkdriving/calculator.htm
+    double genderNum;
+    if (male) genderNum = .58;
+    else genderNum = .49;
+    
+    double alcohol = (((double)drinks)*12.0*.045)*80.6*(23.36 / (1000.0*(genderNum*(((double)weight) / 2.2046))));
+    NSLog(@"Alcohol: %f", alcohol);
+    double metabolism = hours*.012;
+    double bac = (alcohol - metabolism > 0) ? (alcohol - metabolism) : 0;
+    
+    currentBAC = bac;
+    [self setState:OFF];
+    [self setState:DISCONNECTED];
+    NSLog(@"Calculated BAC via Manual Entry: %.2f", bac);
+}
+
 -(void)calculateBAC {
     int total = 0;
     int numReadings = 0;

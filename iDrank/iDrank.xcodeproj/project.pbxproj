@@ -16,6 +16,8 @@
 		702E1D1D118D270B00141E6A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 702E1D1C118D270B00141E6A /* AudioToolbox.framework */; };
 		D426246315159AF100851BBB /* ManualEntryPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D426246115159AF100851BBB /* ManualEntryPopupViewController.m */; };
 		D426246415159AF100851BBB /* ManualEntryPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D426246215159AF100851BBB /* ManualEntryPopupViewController.xib */; };
+		D42624691516AC9A00851BBB /* DisclaimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D42624671516AC9A00851BBB /* DisclaimerViewController.m */; };
+		D426246A1516AC9A00851BBB /* DisclaimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D42624681516AC9A00851BBB /* DisclaimerViewController.xib */; };
 		D4352E3314BC20F7002A4A57 /* UserController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4352E3214BC20F7002A4A57 /* UserController.m */; };
 		D4352E3814BC2237002A4A57 /* ProfileSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4352E3614BC2237002A4A57 /* ProfileSelectionViewController.m */; };
 		D4352E3914BC2237002A4A57 /* ProfileSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4352E3714BC2237002A4A57 /* ProfileSelectionViewController.xib */; };
@@ -146,6 +148,9 @@
 		D426246015159AF100851BBB /* ManualEntryPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualEntryPopupViewController.h; sourceTree = "<group>"; };
 		D426246115159AF100851BBB /* ManualEntryPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualEntryPopupViewController.m; sourceTree = "<group>"; };
 		D426246215159AF100851BBB /* ManualEntryPopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualEntryPopupViewController.xib; sourceTree = "<group>"; };
+		D42624661516AC9A00851BBB /* DisclaimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisclaimerViewController.h; sourceTree = "<group>"; };
+		D42624671516AC9A00851BBB /* DisclaimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisclaimerViewController.m; sourceTree = "<group>"; };
+		D42624681516AC9A00851BBB /* DisclaimerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisclaimerViewController.xib; sourceTree = "<group>"; };
 		D4352E3114BC20F7002A4A57 /* UserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserController.h; sourceTree = "<group>"; };
 		D4352E3214BC20F7002A4A57 /* UserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserController.m; sourceTree = "<group>"; };
 		D4352E3514BC2237002A4A57 /* ProfileSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSelectionViewController.h; sourceTree = "<group>"; };
@@ -406,6 +411,9 @@
 				D426246015159AF100851BBB /* ManualEntryPopupViewController.h */,
 				D426246115159AF100851BBB /* ManualEntryPopupViewController.m */,
 				D426246215159AF100851BBB /* ManualEntryPopupViewController.xib */,
+				D42624661516AC9A00851BBB /* DisclaimerViewController.h */,
+				D42624671516AC9A00851BBB /* DisclaimerViewController.m */,
+				D42624681516AC9A00851BBB /* DisclaimerViewController.xib */,
 			);
 			name = "Popup Views";
 			sourceTree = "<group>";
@@ -821,6 +829,7 @@
 				D490141A14D54327002FE178 /* status_bar@2x.png in Resources */,
 				D46A40C814F3270D00EDF7DA /* InstructionsViewController.xib in Resources */,
 				D426246415159AF100851BBB /* ManualEntryPopupViewController.xib in Resources */,
+				D426246A1516AC9A00851BBB /* DisclaimerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,6 +881,7 @@
 				D46A40C714F3270D00EDF7DA /* InstructionsViewController.m in Sources */,
 				D448853714FCC5510051B241 /* FSKController.m in Sources */,
 				D426246315159AF100851BBB /* ManualEntryPopupViewController.m in Sources */,
+				D42624691516AC9A00851BBB /* DisclaimerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
