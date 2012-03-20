@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DisclaimerViewController : UIViewController {
+@interface DisclaimerViewController : UIViewController <UIAlertViewDelegate> {
     
 }
 

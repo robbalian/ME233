@@ -99,13 +99,14 @@ ZSBOYXRpb25hbCBIaWdod2F5IFRyYWZmaWMgU2FmZXR5IEFkbWluaXN0cmF0aW9uLg</bytes>
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
 						</object>
-						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-						</object>
+						<reference key="IBUINormalTitleColor" ref="82074970"/>
 						<object class="NSColor" key="IBUINormalTitleShadowColor" id="76669808">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
+						</object>
+						<object class="NSCustomResource" key="IBUINormalBackgroundImage" id="656953908">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">button.png</string>
 						</object>
 						<object class="IBUIFontDescription" key="IBUIFontDescription" id="925036628">
 							<int key="type">2</int>
@@ -133,11 +134,9 @@ ZSBOYXRpb25hbCBIaWdod2F5IFRyYWZmaWMgU2FmZXR5IEFkbWluaXN0cmF0aW9uLg</bytes>
 						<int key="IBUILineBreakMode">0</int>
 						<string key="IBUINormalTitle">I do not agree</string>
 						<reference key="IBUIHighlightedTitleColor" ref="82074970"/>
-						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-						</object>
+						<reference key="IBUINormalTitleColor" ref="82074970"/>
 						<reference key="IBUINormalTitleShadowColor" ref="76669808"/>
+						<reference key="IBUINormalBackgroundImage" ref="656953908"/>
 						<reference key="IBUIFontDescription" ref="925036628"/>
 						<reference key="IBUIFont" ref="202757747"/>
 					</object>
@@ -309,6 +308,10 @@ ZSBOYXRpb25hbCBIaWdod2F5IFRyYWZmaWMgU2FmZXR5IEFkbWluaXN0cmF0aW9uLg</bytes>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NS.key.0">button.png</string>
+			<string key="NS.object.0">{198, 58}</string>
+		</object>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>
 </archive>

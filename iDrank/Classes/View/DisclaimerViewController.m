@@ -26,7 +26,18 @@
 
 -(IBAction)disagree:(id)sender {
     //umm? alertview? kick you out?
+    [[[UIAlertView alloc] initWithTitle:@"Disclaimer" message:@"We can't let you use iDrank unless you read and agree to our legal terms!" delegate:self cancelButtonTitle:@"More on BAC" otherButtonTitles:@"Ok, I'll read them", nil] show];
 }
+
+-(void)alertViewCancel:(UIAlertView *)alertView {
+    
+}
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) return; //they're going to stay!
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://en.wikipedia.org/wiki/Blood_alcohol_content"]];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

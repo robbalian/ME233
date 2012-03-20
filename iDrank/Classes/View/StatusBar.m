@@ -56,7 +56,7 @@
     switch (state) {
         case DISCONNECTED:
             [coverView setFrame:CGRectMake(49, 7, 251, 38)];
-            [statusLabel setText:@"Plug in an iDrank Sensor"];
+            [statusLabel setText:@"Connect a Sensor or Enter Drinks Manually"];
             break;
         case OFF:
             [coverView setFrame:CGRectMake(49, 7, 251, 38)];

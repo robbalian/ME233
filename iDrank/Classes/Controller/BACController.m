@@ -205,6 +205,8 @@
     currentBAC = bac;
     [self setState:OFF];
     [self setState:DISCONNECTED];
+    //store it like any other...
+    [((iDrankAppDelegate *)[[UIApplication sharedApplication] delegate]) addBAC:nil];
     NSLog(@"Calculated BAC via Manual Entry: %.2f", bac);
 }
 

@@ -99,7 +99,7 @@
 
 -(IBAction)enterManually:(id)sender {
     ManualEntryPopupViewController *mepvc = [[ManualEntryPopupViewController alloc] init]; 
-    [mepvc.view setFrame:CGRectMake(0, 130, 320, 250)];
+    [mepvc.view setFrame:CGRectMake(0, 80, 320, 250)];
     [self.view addSubview:mepvc.view];
 }
 
