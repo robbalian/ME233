@@ -145,7 +145,7 @@
 		32CA4F630368D1EE00C91783 /* iDrank_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iDrank_Prefix.pch; sourceTree = "<group>"; };
 		7000540611E5FD1200ED71EB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		702E1D1C118D270B00141E6A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		70BA824C11BA507600005CF1 /* iDrank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDrank.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		70BA824C11BA507600005CF1 /* iBreathalyzer Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iBreathalyzer Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* iDrank-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iDrank-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		D426246015159AF100851BBB /* ManualEntryPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualEntryPopupViewController.h; sourceTree = "<group>"; };
 		D426246115159AF100851BBB /* ManualEntryPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualEntryPopupViewController.m; sourceTree = "<group>"; };
@@ -253,8 +253,8 @@
 		D476E4FC14BCCFF200BFB38E /* tableCell_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableCell_background@2x.png"; sourceTree = "<group>"; };
 		D49013F614D54327002FE178 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		D49013F714D54327002FE178 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		D49013F814D54327002FE178 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		D49013F914D54327002FE178 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		D49013F814D54327002FE178 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Images/App/Icon.png; sourceTree = "<group>"; };
+		D49013F914D54327002FE178 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Images/App/Icon@2x.png"; sourceTree = "<group>"; };
 		D49013FB14D54327002FE178 /* icon_headphone_jack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_headphone_jack.png; sourceTree = "<group>"; };
 		D49013FC14D54327002FE178 /* icon_headphone_jack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_headphone_jack@2x.png"; sourceTree = "<group>"; };
 		D49013FD14D54327002FE178 /* icon_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_location.png; sourceTree = "<group>"; };
@@ -343,7 +343,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				70BA824C11BA507600005CF1 /* iDrank.app */,
+				70BA824C11BA507600005CF1 /* iBreathalyzer Pro.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -351,6 +351,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				D49013F814D54327002FE178 /* Icon.png */,
+				D49013F914D54327002FE178 /* Icon@2x.png */,
 				D4AF79D714CB4C2C00938043 /* ding.aif */,
 				D4AF79D914CB55C000938043 /* ding.mp3 */,
 				D49F257914C56B2F0076F50C /* Security.framework */,
@@ -599,8 +601,6 @@
 				D44F561C15192F3100D67EC4 /* button@2x.png */,
 				D49013F614D54327002FE178 /* Default.png */,
 				D49013F714D54327002FE178 /* Default@2x.png */,
-				D49013F814D54327002FE178 /* Icon.png */,
-				D49013F914D54327002FE178 /* Icon@2x.png */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -728,7 +728,7 @@
 			);
 			name = iDrank;
 			productName = MultiTrigger;
-			productReference = 70BA824C11BA507600005CF1 /* iDrank.app */;
+			productReference = 70BA824C11BA507600005CF1 /* iBreathalyzer Pro.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -914,7 +914,7 @@
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/iDrankWorkspace-efttroryetqeikcsndwnqtrcitrv/Build/Products/Debug-iphoneos\"",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = iDrank;
+				PRODUCT_NAME = "iBreathalyzer Pro";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
@@ -934,7 +934,7 @@
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/iDrankWorkspace-efttroryetqeikcsndwnqtrcitrv/Build/Products/Debug-iphoneos\"",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = iDrank;
+				PRODUCT_NAME = "iBreathalyzer Pro";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -946,7 +946,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_OBJCPP_ARC_ABI = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: rob balian";
+				COMPRESS_PNG_FILES = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
@@ -960,8 +961,8 @@
 					"-all_load",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = iDrank;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PRODUCT_NAME = "iBreathalyzer Pro";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "39E89B84-94F4-4329-B37D-619D6CCA11F8";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "$(BUILD_PRODUCTS_DIR)/HiJack/**";
 			};
@@ -973,7 +974,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_OBJCPP_ARC_ABI = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: rob balian";
+				COMPRESS_PNG_FILES = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
@@ -987,7 +989,8 @@
 					"-all_load",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = iDrank;
+				PRODUCT_NAME = "iBreathalyzer Pro";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "39E89B84-94F4-4329-B37D-619D6CCA11F8";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "$(BUILD_PRODUCTS_DIR)/HiJack/**";
 			};

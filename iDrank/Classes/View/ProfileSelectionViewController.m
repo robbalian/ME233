@@ -38,6 +38,9 @@
         NSString *cellValue = [[places objectAtIndex:[indexPath row]] objectForKey:@"name"];
         cell.textLabel.text = cellValue;
     }
+    
+    //if (indexPath.row == 0 && [tableView isEqual:placestv] && places == nil) cell.textLabel.text = @"Unknown";
+    
     return cell;
 }
 
@@ -121,7 +124,8 @@
         self.view.transform = CGAffineTransformMakeTranslation(-320, 0);
         //[self.view setFrame:CGRectMake(180, 0, self.view.frame.size.width, self.view.frame.size.height)];
     } completion:nil];
-
+    
+    if ([[[LocationController sharedInstance] getNearbyPlaces] count] >= 1) [[LocationController sharedInstance] requestNearbyPlaces];
     
     [placestv reloadData];
     [namestv reloadData];

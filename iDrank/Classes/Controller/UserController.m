@@ -31,8 +31,13 @@
         userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentUserString"];
         recentUsers = [[NSUserDefaults standardUserDefaults] objectForKey:@"recentUsersArray"];
         
-        if (!recentUsers) recentUsers = [[NSMutableArray alloc] init];
-        if (!userName) userName = [[NSString alloc] init];
+        if (!recentUsers) {
+            recentUsers = [[NSMutableArray alloc] init];
+        }
+        if (!userName) {
+            userName = [[NSString alloc] init];
+            if ([recentUsers count] == 0) [self setUserName:@"User"];
+        }
     }
     return self;
 }

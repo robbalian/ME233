@@ -53,18 +53,23 @@ static LocationController *LCInstance;
 }
 
 -(NSArray *)getNearbyPlaces {
+    
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *dict = [[parser objectWithString:[[NSString alloc] initWithData:nearbyLocationsData encoding:NSASCIIStringEncoding] ] retain];
     if ([((NSNumber *)[[dict objectForKey:@"meta"] objectForKey:@"code"]) intValue] == 200) {
         return [[dict objectForKey:@"response"]objectForKey:@"venues"];
     }
+    
+    
+    
+    //[self requestNearbyPlaces];
     NSLog(@"Foursquare response error!");
     //NSLog(@"%@", [dict objectForKey:@"response"]);
-    return nil;
+    return [[NSArray arrayWithObject:[NSDictionary dictionaryWithObject:[[[NSString alloc] initWithString:@"Unknown"] retain] forKey:@"name"]] retain];
 }
 
 -(void)requestNearbyPlaces {
-    NSString *urlStr = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&oauth_token=THDFFMXFX1BXN2NZ41VJHPR43KCBGPQ30PFJKFA55LT3N51E&v=20120105", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude];
+    NSString *urlStr = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&oauth_token=THDFFMXFX1BXN2NZ41VJHPR43KCBGPQ30PFJKFA55LT3N51E&v=20120320", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude];
     NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlStr] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:req delegate:self startImmediately:YES];
     
@@ -79,6 +84,7 @@ static LocationController *LCInstance;
 }
 
 -(NSString *)getPlaceName {
+    if (placeName == NULL) return @"Unknown";
     return placeName;
 }
 
