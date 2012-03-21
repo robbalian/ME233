@@ -10,7 +10,9 @@
 
 
 @interface StandardThemeViewController : MeasureViewController {
-
+    int ticks;
 }
+
+-(IBAction)fakeReading:(id)sender;
 
 @end

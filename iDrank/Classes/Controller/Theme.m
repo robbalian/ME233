@@ -27,7 +27,7 @@
 
 -(id)init {
     if (self = [super init]) {
-        themeNum = 1;
+        themeNum = 0;
         textDict = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BACStrings" ofType:@"plist"]];
         //NSLog(@"Dict: %@", textDict);
     }

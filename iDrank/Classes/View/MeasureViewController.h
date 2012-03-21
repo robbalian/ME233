@@ -30,4 +30,7 @@
 -(IBAction)placeButtonTapped:(id)sender;
 -(IBAction)profileButtonTapped:(id)sender;
 
+//Notification center catches
+-(void)receivedSensorStateChangeNotification:(id)sender;
+
 @end
