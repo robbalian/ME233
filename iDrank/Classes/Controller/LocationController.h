@@ -30,6 +30,7 @@
        didFailWithError:(NSError *)error;
 -(CLLocation *)getLastLocation;
 -(NSArray *)getNearbyPlaces;
+-(void)requestNearbyPlaces;
 -(void)setPlaceName:(NSString *)name;
 -(NSString *)getPlaceName;
 

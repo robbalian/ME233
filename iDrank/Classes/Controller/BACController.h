@@ -77,6 +77,8 @@ typedef enum {
 
 -(int)currentState;
 
+-(void)bacManuallyEnteredWithGender:(BOOL)male Weight:(int)weight Drinks:(int)drinks Hours:(int)hours;
+
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;  
 @property (nonatomic, retain) NSMutableArray *eventArray;

@@ -17,6 +17,10 @@
 		D4352E3314BC20F7002A4A57 /* UserController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4352E3214BC20F7002A4A57 /* UserController.m */; };
 		D4352E3814BC2237002A4A57 /* ProfileSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4352E3614BC2237002A4A57 /* ProfileSelectionViewController.m */; };
 		D4352E3914BC2237002A4A57 /* ProfileSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4352E3714BC2237002A4A57 /* ProfileSelectionViewController.xib */; };
+		D44711091519CB9D00694E81 /* ManualEntryPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D44711031519CB9D00694E81 /* ManualEntryPopupViewController.xib */; };
+		D447110A1519CB9D00694E81 /* ManualEntryPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44711041519CB9D00694E81 /* ManualEntryPopupViewController.m */; };
+		D447110B1519CB9D00694E81 /* DisclaimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D44711061519CB9D00694E81 /* DisclaimerViewController.xib */; };
+		D447110C1519CB9D00694E81 /* DisclaimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44711071519CB9D00694E81 /* DisclaimerViewController.m */; };
 		D448853714FCC5510051B241 /* FSKController.m in Sources */ = {isa = PBXBuildFile; fileRef = D448853614FCC5510051B241 /* FSKController.m */; };
 		D44D547D14B51526005FCE7C /* iDrankAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D44D544314B51526005FCE7C /* iDrankAppDelegate.m */; };
 		D44D547E14B51526005FCE7C /* BACController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44D544614B51526005FCE7C /* BACController.m */; };
@@ -146,6 +150,12 @@
 		D4352E3514BC2237002A4A57 /* ProfileSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSelectionViewController.h; sourceTree = "<group>"; };
 		D4352E3614BC2237002A4A57 /* ProfileSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSelectionViewController.m; sourceTree = "<group>"; };
 		D4352E3714BC2237002A4A57 /* ProfileSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileSelectionViewController.xib; sourceTree = "<group>"; };
+		D44711031519CB9D00694E81 /* ManualEntryPopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualEntryPopupViewController.xib; sourceTree = "<group>"; };
+		D44711041519CB9D00694E81 /* ManualEntryPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualEntryPopupViewController.m; sourceTree = "<group>"; };
+		D44711051519CB9D00694E81 /* ManualEntryPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualEntryPopupViewController.h; sourceTree = "<group>"; };
+		D44711061519CB9D00694E81 /* DisclaimerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisclaimerViewController.xib; sourceTree = "<group>"; };
+		D44711071519CB9D00694E81 /* DisclaimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisclaimerViewController.m; sourceTree = "<group>"; };
+		D44711081519CB9D00694E81 /* DisclaimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisclaimerViewController.h; sourceTree = "<group>"; };
 		D448853514FCC5510051B241 /* FSKController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSKController.h; sourceTree = "<group>"; };
 		D448853614FCC5510051B241 /* FSKController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSKController.m; sourceTree = "<group>"; };
 		D44D544214B51526005FCE7C /* iDrankAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iDrankAppDelegate.h; sourceTree = "<group>"; };
@@ -392,6 +402,12 @@
 		D4352E3A14BC2240002A4A57 /* Popup Views */ = {
 			isa = PBXGroup;
 			children = (
+				D44711031519CB9D00694E81 /* ManualEntryPopupViewController.xib */,
+				D44711041519CB9D00694E81 /* ManualEntryPopupViewController.m */,
+				D44711051519CB9D00694E81 /* ManualEntryPopupViewController.h */,
+				D44711061519CB9D00694E81 /* DisclaimerViewController.xib */,
+				D44711071519CB9D00694E81 /* DisclaimerViewController.m */,
+				D44711081519CB9D00694E81 /* DisclaimerViewController.h */,
 				D4352E3514BC2237002A4A57 /* ProfileSelectionViewController.h */,
 				D4352E3614BC2237002A4A57 /* ProfileSelectionViewController.m */,
 				D4352E3714BC2237002A4A57 /* ProfileSelectionViewController.xib */,
@@ -812,6 +828,8 @@
 				D490141914D54327002FE178 /* status_bar.png in Resources */,
 				D490141A14D54327002FE178 /* status_bar@2x.png in Resources */,
 				D46A40C814F3270D00EDF7DA /* InstructionsViewController.xib in Resources */,
+				D44711091519CB9D00694E81 /* ManualEntryPopupViewController.xib in Resources */,
+				D447110B1519CB9D00694E81 /* DisclaimerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -862,6 +880,8 @@
 				D4B172F614C253DD00D41047 /* CollegeThemeViewController.m in Sources */,
 				D46A40C714F3270D00EDF7DA /* InstructionsViewController.m in Sources */,
 				D448853714FCC5510051B241 /* FSKController.m in Sources */,
+				D447110A1519CB9D00694E81 /* ManualEntryPopupViewController.m in Sources */,
+				D447110C1519CB9D00694E81 /* DisclaimerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

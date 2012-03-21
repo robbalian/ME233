@@ -516,19 +516,35 @@ void audioRouteChangeListenerCallback (
 }
 
 -(void)sendToSMS {
-    MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
+    //MFMessageComposeViewController *controller = [[[MFMessageComposeViewController alloc] init] autorelease];
+    
+    
+    
+    NSLog(@"SMS started");
+    MFMessageComposeViewController *picker = [[[MFMessageComposeViewController alloc] init] autorelease];
+    if ([MFMessageComposeViewController canSendText]) {
+    
     picker.messageComposeDelegate = self;
     
     //picker.recipients = [NSArray arrayWithObject:@"123456789"];   // your recipient number or self for testing
-    NSString *emailBody = [NSString stringWithFormat:@"Just blew a %.2f with iDrank. Come join me at %@!", [[BACController sharedInstance] getCurrentBAC], [[LocationController sharedInstance] getPlaceName]];
+    
+    //NSString *emailBody = @"test string!";
+    NSString *emailBody = [NSString stringWithFormat:@"Just blew a %.2f with iBreathalyzer Pro. Come join me at %@!", [[BACController sharedInstance] getCurrentBAC], [[LocationController sharedInstance] getPlaceName]];
     
     
     picker.body = emailBody;
     
-    [mainViewController presentViewController:picker animated:YES completion:nil];
-    //[mainViewController presentModalViewController:picker animated:YES];
+    //[mainViewController. presentViewController:picker animated:NO completion:nil];
+    [mainViewController presentModalViewController:picker animated:YES];
     picker = nil;
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+
     NSLog(@"SMS fired");
+    } else {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Doesn't look like you're able to send SMS : (" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
 }
 
 -(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
@@ -561,7 +577,7 @@ void audioRouteChangeListenerCallback (
         //NSLog(((UINavigationItem *)[picker.navigationBar]).title);
         //[picker setView:self.view];
         // Set the subject of email
-        [picker setSubject:@"Just measured my BAC using iDrank"];
+        [picker setSubject:@"Just measured my BAC using iBreathalyzer Pro"];
         
         
         // Add email addresses
@@ -576,7 +592,7 @@ void audioRouteChangeListenerCallback (
         //NSData *data = UIImagePNGRepresentation(imageView.image);
         //NSLog(@"done");
         
-        NSString *emailBody = [NSString stringWithFormat:@"<html><body>Just blew %@ BAC using iDrank<br />Get your own from iPhone Breathalyzer at <a href=\"http://www.kickstarter.com\">D.tect</a></body></html>", [[BACController sharedInstance] getCurrentBAC]];
+        NSString *emailBody = [NSString stringWithFormat:@"<html><body>Just blew %@ BAC using iBreathalyzer Pro<br /</body></html>", [[BACController sharedInstance] getCurrentBAC]];
         
         
         // This is not an HTML formatted email
@@ -624,11 +640,18 @@ void audioRouteChangeListenerCallback (
 -(void)sendToTwitter {
     // Create the view controller
     TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
-    
+    if (![TWTweetComposeViewController canSendTweet]) {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Doesn't look like you're able to send tweets : (" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
     // Optional: set an image, url and initial text
     //[twitter addImage:[UIImage imageNamed:@"iOSDevTips.png"]];
-    [twitter addURL:[NSURL URLWithString:[NSString stringWithString:@"http://iOSDeveloperTips.com/"]]];
-    [twitter setInitialText:@"Tweet from iOS 5 app using the Twitter framework."];
+    //[twitter addURL:[NSURL URLWithString:[NSString stringWithString:@"http://iOSDeveloperTips.com/"]]];
+    NSString *emailBody = [NSString stringWithFormat:@"Just blew a %.2f with iBreathalyzer Pro. Come join me at %@!", [[BACController sharedInstance] getCurrentBAC], [[LocationController sharedInstance] getPlaceName]];
+    
+    
+    [twitter setInitialText:emailBody];
     
     // Show the controller
     [mainViewController presentModalViewController:twitter animated:YES];
@@ -640,13 +663,15 @@ void audioRouteChangeListenerCallback (
         NSString *msg; 
         
         if (result == TWTweetComposeViewControllerResultCancelled)
-            msg = @"Tweet compostion was canceled.";
+            msg = @"";
         else if (result == TWTweetComposeViewControllerResultDone)
-            msg = @"Tweet composition completed.";
+            msg = @"Your tweet has been sent!";
         
         // Show alert to see how things went...
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
-        [alertView show];
+        if (![msg isEqualToString:@""]) {
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+            [alertView show];
+        }
         
         // Dismiss the controller
         [mainViewController dismissModalViewControllerAnimated:YES];
