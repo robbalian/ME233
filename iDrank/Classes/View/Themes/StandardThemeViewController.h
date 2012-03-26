@@ -11,8 +11,11 @@
 
 @interface StandardThemeViewController : MeasureViewController {
     int ticks;
+    IBOutlet UIView *fakeButtonCluster;
 }
 
 -(IBAction)fakeReading:(id)sender;
+-(IBAction)hideFakeButtons:(id)sender;
+-(IBAction)showFakeButtons:(id)sender;
 
 @end

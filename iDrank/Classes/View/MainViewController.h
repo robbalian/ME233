@@ -43,5 +43,7 @@
 -(void)themeChanged;
 -(void)setTab:(int)tabNum;
 
+@property (nonatomic, retain) StatusBar *statusBar;
+@property (nonatomic, retain) MeasureViewController *measureVC;
 
 @end

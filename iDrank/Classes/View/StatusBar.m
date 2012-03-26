@@ -47,6 +47,10 @@
 -(void)receivedSensorStateChangeNotification:(id)sender {
     int state = [[BACController sharedInstance] currentState];
 //update user instructions
+    [self updateUIForStateChange:state];
+}
+
+-(void)updateUIForStateChange:(int)state {
     if (state == DISCONNECTED) {
         [statusIV setImage:[UIImage imageNamed:@"Sensor_disabled.png"]];
     } else {

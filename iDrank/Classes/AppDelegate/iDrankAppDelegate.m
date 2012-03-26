@@ -69,7 +69,7 @@ void audioRouteChangeListenerCallback (
     //SInt32 reasonVal;
     //CFNumberGetValue(reason, kCFNumberSInt32Type, &reasonVal);
     checkCurrentAudioRoute(inUserData);
-
+    
     //hmmm not sure this should be here
     // ensure that this callback was invoked for a route change
 	if (inPropertyID != kAudioSessionProperty_AudioRouteChange) return;
@@ -114,13 +114,13 @@ void audioRouteChangeListenerCallback (
     //int routeChangeReason = 0;
     
     if (routeChangeReason == kAudioSessionRouteChangeReason_OldDeviceUnavailable) {
-
+        
     } else if (routeChangeReason == kAudioSessionRouteChangeReason_NewDeviceAvailable) {
-
+        
     } else if (routeChangeReason == kAudioSessionRouteChangeReason_CategoryChange) {
         //gets called at least once at the beginning of every session, or when we try to mess with the category settings
     } else {
-       //we don't know why the route changed... probably have to reset. This is unlikely
+        //we don't know why the route changed... probably have to reset. This is unlikely
     }
     
     NSLog(@"change reason %d", routeChangeReason);
@@ -158,20 +158,20 @@ void audioRouteChangeListenerCallback (
     }
     
     /*if (![facebook isSessionValid]) {
-        NSArray *permissions = [[NSArray alloc] initWithObjects:
-                                @"user_likes", 
-                                @"read_stream",
-                                @"publish_actions",
-                                @"publish_stream",
-                                nil];
-        [facebook authorize:permissions];
-        [permissions release];
-    }*/
+     NSArray *permissions = [[NSArray alloc] initWithObjects:
+     @"user_likes", 
+     @"read_stream",
+     @"publish_actions",
+     @"publish_stream",
+     nil];
+     [facebook authorize:permissions];
+     [permissions release];
+     }*/
     
     locationController = [LocationController sharedInstance];
     locationController.delegate = self;
     [locationController.locationManager startUpdatingLocation];
-
+    
     
     MainViewController *aController = [[MainViewController alloc] initWithNibName:@"MainView" bundle:nil];
 	self.mainViewController = aController;
@@ -180,8 +180,8 @@ void audioRouteChangeListenerCallback (
     mainViewController.view.frame = [UIScreen mainScreen].applicationFrame;
 	[window addSubview:[mainViewController view]];
     [window makeKeyAndVisible];
-
-
+    
+    
 	bacController = [BACController sharedInstance];
 #ifdef OBJ_C
     bacController.managedObjectContext = [self managedObjectContext];
@@ -196,40 +196,40 @@ void audioRouteChangeListenerCallback (
                                      kAudioSessionProperty_AudioRouteChange,
                                      audioRouteChangeListenerCallback,
                                      self
-    );
+                                     );
     
 	if(session.inputIsAvailable){
 		[session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
         /*OSStatus propertySetError = 0;
-        UInt32 allowMixing = true;
-        
-        propertySetError = AudioSessionSetProperty (
-                                                    kAudioSessionProperty_OverrideCategoryMixWithOthers,  // 1
-                                                    sizeof (allowMixing),                                 // 2
-                                                    &allowMixing                                          // 3
-                                                    );
-        
-        NSLog(@"%@", propertySetError);
-    */
+         UInt32 allowMixing = true;
+         
+         propertySetError = AudioSessionSetProperty (
+         kAudioSessionProperty_OverrideCategoryMixWithOthers,  // 1
+         sizeof (allowMixing),                                 // 2
+         &allowMixing                                          // 3
+         );
+         
+         NSLog(@"%@", propertySetError);
+         */
     }else{
 		//[session setCategory:AVAudioSessionCategoryPlayback error:nil];
 	}
 	//[session setActive:YES error:nil];
 	//[session setPreferredIOBufferDuration:0.023220 error:nil];
-
+    
     
     checkCurrentAudioRoute([iDrankAppDelegate getInstance]);
     
     
 	recognizer = [[FSKRecognizer alloc] init];
 	[recognizer addReceiver:bacController.fskController];
-
+    
 	generator = [[FSKSerialGenerator alloc] init];
 	[generator play];
-
+    
 	analyzer = [[AudioSignalAnalyzer alloc] init];
 	[analyzer addRecognizer:recognizer];
-
+    
 	if(session.inputIsAvailable){
 		[analyzer record];
 	}
@@ -240,7 +240,7 @@ void audioRouteChangeListenerCallback (
 	[hijack setDelegate:self];
 #endif
     
-       
+    
 	return YES;
 }
 
@@ -522,24 +522,24 @@ void audioRouteChangeListenerCallback (
     
     NSLog(@"SMS started");
     MFMessageComposeViewController *picker = [[[MFMessageComposeViewController alloc] init] autorelease];
-    if ([MFMessageComposeViewController canSendText]) {
-    
-    picker.messageComposeDelegate = self;
-    
-    //picker.recipients = [NSArray arrayWithObject:@"123456789"];   // your recipient number or self for testing
-    
-    //NSString *emailBody = @"test string!";
-    NSString *emailBody = [NSString stringWithFormat:@"Just blew a %.2f with iBreathalyzer Pro. Come join me at %@!", [[BACController sharedInstance] getCurrentBAC], [[LocationController sharedInstance] getPlaceName]];
-    
-    
-    picker.body = emailBody;
-    
-    //[mainViewController. presentViewController:picker animated:NO completion:nil];
-    [mainViewController presentModalViewController:picker animated:YES];
-    picker = nil;
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-
-    NSLog(@"SMS fired");
+    if (picker != nil && [MFMessageComposeViewController canSendText]) {
+        
+        picker.messageComposeDelegate = self;
+        
+        //picker.recipients = [NSArray arrayWithObject:@"123456789"];   // your recipient number or self for testing
+        
+        //NSString *emailBody = @"test string!";
+        NSString *emailBody = [NSString stringWithFormat:@"Just blew a %.2f with iBreathalyzer Pro. Come join me at %@!", [[BACController sharedInstance] getCurrentBAC], [[LocationController sharedInstance] getPlaceName]];
+        
+        
+        picker.body = emailBody;
+        
+        //[mainViewController. presentViewController:picker animated:NO completion:nil];
+        [mainViewController presentModalViewController:picker animated:YES];
+        picker = nil;
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+        
+        NSLog(@"SMS fired");
     } else {
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Doesn't look like you're able to send SMS : (" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
         [alertView show];
@@ -550,18 +550,18 @@ void audioRouteChangeListenerCallback (
 -(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
     [mainViewController dismissModalViewControllerAnimated:YES];
     /*switch (result) {
-        case MessageComposeResultSent:
-            [FlurryAPI logEvent:@"share_sms_sent" withParameters:nil];
-            break;
-        case MessageComposeResultCancelled:
-            [FlurryAPI logEvent:@"share_sms_cancelled" withParameters:nil];
-            break;
-        case MessageComposeResultFailed:
-            [FlurryAPI logEvent:@"share_sms_failed" withParameters:nil];
-            break;
-        default:
-            break;
-    }*/
+     case MessageComposeResultSent:
+     [FlurryAPI logEvent:@"share_sms_sent" withParameters:nil];
+     break;
+     case MessageComposeResultCancelled:
+     [FlurryAPI logEvent:@"share_sms_cancelled" withParameters:nil];
+     break;
+     case MessageComposeResultFailed:
+     [FlurryAPI logEvent:@"share_sms_failed" withParameters:nil];
+     break;
+     default:
+     break;
+     }*/
 }
 
 -(void)sendToEmail {
@@ -611,7 +611,7 @@ void audioRouteChangeListenerCallback (
         picker = nil;
         
     }
-
+    
 }
 
 -(void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 
@@ -620,21 +620,21 @@ void audioRouteChangeListenerCallback (
     NSLog(@"Send End");
     //[controller dismissModalViewControllerAnimated:YES];
     /*switch (result) {
-        case MFMailComposeResultCancelled:
-            [FlurryAPI logEvent:@"share_mail_cancelled" withParameters:nil];
-            break;
-        case MFMailComposeResultSaved:
-            [FlurryAPI logEvent:@"share_mail_saved" withParameters:nil];
-            break;
-        case MFMailComposeResultFailed:
-            [FlurryAPI logEvent:@"share_mail_failed" withParameters:nil];
-            break;
-        case MFMailComposeResultSent:
-            [FlurryAPI logEvent:@"share_mail_sent" withParameters:nil];
-            break;
-        default:
-            break;
-    }*/
+     case MFMailComposeResultCancelled:
+     [FlurryAPI logEvent:@"share_mail_cancelled" withParameters:nil];
+     break;
+     case MFMailComposeResultSaved:
+     [FlurryAPI logEvent:@"share_mail_saved" withParameters:nil];
+     break;
+     case MFMailComposeResultFailed:
+     [FlurryAPI logEvent:@"share_mail_failed" withParameters:nil];
+     break;
+     case MFMailComposeResultSent:
+     [FlurryAPI logEvent:@"share_mail_sent" withParameters:nil];
+     break;
+     default:
+     break;
+     }*/
 }
 
 -(void)sendToTwitter {
@@ -689,6 +689,18 @@ void audioRouteChangeListenerCallback (
     } else {
         NSLog(@"Can't find audio file!");
     }
+}
+
+//methods for video demo only
+
+-(void)fakeReading {
+    [[BACController sharedInstance] bacManuallyEnteredWithGender:YES Weight:150 Drinks:(rand() % 10) Hours:(rand() % 6)];
+    [mainViewController.statusBar updateUIForStateChange:ON_READY];
+    //[mainViewController.measureVC updateUIForStateChange:OFF];
+}
+
+-(void)fakeWarming {
+    
 }
 
 

@@ -11,6 +11,9 @@
 
 @implementation MainViewController
 
+@synthesize statusBar, measureVC;
+
+
 
 #define BAC_MAX_MEASURED_VALUE .20
 #define BAC_BAR_HEIGHT 400.0

@@ -29,6 +29,10 @@
 
 -(void)receivedSensorStateChangeNotification:(id)sender {
     int state = [[BACController sharedInstance] currentState];
+    [self updateUIForStateChange:(int)state];
+}
+
+-(void)updateUIForStateChange:(int)state {
     NSLog(@"MeasureView received state change notification. State: %d", state);
     
     if (state == DISCONNECTED) {
