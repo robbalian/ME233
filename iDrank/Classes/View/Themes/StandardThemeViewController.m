@@ -37,6 +37,8 @@
     int state = [[BACController sharedInstance] currentState];
     NSLog(@"MeasureView received state change notification. State: %d", state);
 
+
+    
     if (state == OFF) {
         ticks = 0;
         [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(suspenseTick) userInfo:nil repeats:NO]; 
@@ -68,9 +70,14 @@
 -(void)suspenseTick {
     if (ticks < TOTAL_TICKS) {
         [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(suspenseTick) userInfo:nil repeats:NO];
-    } else {
+        [shareCluster setAlpha:0.0];
+    }
+    
+    if (ticks==TOTAL_TICKS) {
         [self updateUIForStateChange:OFF];
     }
+    
+    
     NSString *bacString = @"";
     double bac = [[BACController sharedInstance] getCurrentBAC];
     

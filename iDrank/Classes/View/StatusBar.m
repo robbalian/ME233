@@ -59,24 +59,26 @@
     
     switch (state) {
         case DISCONNECTED:
-            [coverView setFrame:CGRectMake(49, 7, 251, 38)];
+            [coverView setFrame:CGRectMake(30, coverView.frame.origin.y, 269, coverView.frame.size.height)];
             [statusLabel setText:@"Plug in an iDrank Sensor"];
             break;
         case OFF:
-            [coverView setFrame:CGRectMake(49, 7, 251, 38)];
+            [coverView setFrame:CGRectMake(30, coverView.frame.origin.y, coverView.frame.size.width, coverView.frame.size.height)];
             [statusLabel setText:@"Sensor Off"];
             break;
         case ON_WARMING:
             [statusLabel setText:@"Warming Up..."];
-            [UIView transitionWithView:self.view duration:SENSOR_WARMUP_SECONDS options:UIViewAnimationCurveLinear+UIViewAnimationOptionBeginFromCurrentState animations:^{ 
-                [coverView setFrame:CGRectMake(49+251, 7, 0, 38)];
+            [UIView transitionWithView:self.view duration:SENSOR_WARMUP_SECONDS options:UIViewAnimationCurveLinear animations:^{ 
+                [coverView setFrame:CGRectMake(30+coverView.frame.size.width, coverView.frame.origin.y, 0, coverView.frame.size.height)];
             } completion:nil];
             break;
         case ON_READY:
             [UIView transitionWithView:self.view duration:.1 options:UIViewAnimationCurveLinear+UIViewAnimationOptionBeginFromCurrentState animations:^{ 
-                [coverView setFrame:CGRectMake(49+251, 7, 0, 38)];
+                [coverView setFrame:CGRectMake(30+coverView.frame.size.width, coverView.frame.origin.y, 0, coverView.frame.size.height)];
             } completion:nil];
             [statusLabel setText:@"READY!"];
+            
+            
             //probably do some modal popup
             break;
         case ON_BLOWING_INTO:
@@ -98,7 +100,7 @@
 -(void)warmupSecondsLeft:(double)seconds {
     NSLog(@"%f", seconds);
     double percent = (double)((double)(SENSOR_WARMUP_SECONDS - seconds) / (double)SENSOR_WARMUP_SECONDS);
-    double change = percent*((double)251.0);
+    double change = percent*((double)coverView.frame.size.width);
 }
 
 

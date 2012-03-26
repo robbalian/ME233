@@ -384,7 +384,7 @@
 }
 
 -(void)setState:(int)state {
-    if (sensorState == state) return;
+    //if (sensorState == state) return;
     sensorState = state;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"stateChanged" object:self];
 }

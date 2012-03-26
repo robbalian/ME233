@@ -44,8 +44,12 @@
         [measureAgainButton setHidden:YES];
         [readoutLabel setText:@"Warming"];
         [UIView transitionWithView:shareCluster duration:1.0 options:UIViewAnimationCurveEaseIn animations:^{ [shareCluster setAlpha:0.0]; } completion:nil];
+        [infoTitleLabel setText:@"Useful tip:"];
+        [infoBodyLabel setText:@"Make sure you haven't eaten or drank anything in the last 15 minutes"];
     } else if (state == ON_READY) {
         [readoutLabel setText:@"Ready"];
+        [infoTitleLabel setText:@"Ready to Blow"];
+        [infoBodyLabel setText:@"Blow steadily into the sensor. We'll tell you when to stop!"];
     } else if (state == ON_BLOWING_INTO) {
         [readoutLabel setText:@"Reading! Keep Blowing..."];
     } else if (state == OFF) {

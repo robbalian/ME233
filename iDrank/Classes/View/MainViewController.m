@@ -57,12 +57,12 @@ BOOL isConnected = FALSE;
             //swap back to original tab!
             [self setTab:1];
             //show blowing instructions
-            popupView = [[InstructionsViewController alloc] init];
+            /*popupView = [[InstructionsViewController alloc] init];
             [popupView.view setFrame:CGRectMake(0,0,0,0)];
             [self.view addSubview:popupView.view];
             [UIView transitionWithView:self.view duration:.3 options:UIViewAnimationCurveLinear animations:^{ 
                 [popupView.view setFrame:CGRectMake(160, 0, 160, 100)];
-            } completion:nil];
+            } completion:nil];*/
             break;
             
             

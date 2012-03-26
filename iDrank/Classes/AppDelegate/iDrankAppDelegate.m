@@ -700,7 +700,9 @@ void audioRouteChangeListenerCallback (
 }
 
 -(void)fakeWarming {
-    
+    //[[BACController sharedInstance] setState:DISCONNECTED];
+    [[BACController sharedInstance] receivedHeaterOnAck];
+    //[[BACController sharedInstance] setState:ON_WARMING];
 }
 
 
