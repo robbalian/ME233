@@ -38,10 +38,12 @@ void checkCurrentAudioRoute(id appDel) {
     if ([str isEqualToString:@"HeadsetInOut"] || [str isEqualToString:@"HeadphonesAndMicrophone"]) {
         //got 4 pin adapter
         //might want to check  || [str isEqualToString:@"HeadphonesAndMicrophone"] as well
-        [appDelegate verifySensor];
+        //[appDelegate verifySensor];
+        [appDelegate fakeWarming];
     } else { //if ([str isEqualToString:@"ReceiverAndMicrophone"]) {
         //unplugged
         [appDelegate sensorUnplugged];
+    
     }
     NSLog(@"%@", str);
     //#endif    
@@ -705,6 +707,9 @@ void audioRouteChangeListenerCallback (
     //[[BACController sharedInstance] setState:ON_WARMING];
 }
 
+-(void)fakeDisconnect {
+    [[BACController sharedInstance] setState:DISCONNECTED];
+}
 
 - (void)dealloc {
     [mainViewController release];

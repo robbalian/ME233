@@ -67,6 +67,10 @@
     [fakeButtonCluster setHidden:NO];
 }
 
+-(IBAction)fakeDisconnect:(id)sender {
+    [((iDrankAppDelegate *)[[UIApplication sharedApplication] delegate]) fakeDisconnect];
+}
+
 -(void)suspenseTick {
     if (ticks < TOTAL_TICKS) {
         [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(suspenseTick) userInfo:nil repeats:NO];
@@ -104,6 +108,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self hideFakeButtons:nil];
     // Do any additional setup after loading the view from its nib.
 }
 
