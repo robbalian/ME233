@@ -357,6 +357,9 @@
 -(void)receivedHeaterOffAck {
     NSLog(@"Heater OFF");
     [self setState:OFF];
+    [self setState:ON_WARMING];
+    
+    
     [self writeFileToDocumentDirectory];
 }
 
