@@ -115,7 +115,7 @@
 	recentWidth += width;
 	recentAvrWidth += avgWidth;
 	
-//	NSLog(@"high %d, width %u(avg %u), low %u, high %u, w %u,a %u",high, width/1000, avgWidth/1000, recentLows/1000, recentHighs/1000,recentWidth/1000,recentAvrWidth/1000);
+	//NSLog(@"high %d, width %u(avg %u), low %u, high %u, w %u,a %u",high, width/1000, avgWidth/1000, recentLows/1000, recentHighs/1000,recentWidth/1000,recentAvrWidth/1000);
 	
 	
 	if (state == FSKStart)

@@ -679,11 +679,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/View/MainViewController.m"
-         timestampString = "351480510.841206"
+         timestampString = "354410102.18159"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "212"
-         endingLineNumber = "212"
+         startingLineNumber = "215"
+         endingLineNumber = "215"
          landmarkName = "-themeChanged"
          landmarkType = "5">
       </FileBreakpoint>
@@ -735,12 +735,26 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/Controller/BACController.m"
-         timestampString = "353567149.168817"
+         timestampString = "356068003.811593"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "112"
-         endingLineNumber = "112"
+         startingLineNumber = "116"
+         endingLineNumber = "116"
          landmarkName = "-blowEndedPrematurely"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/View/StatusBar.m"
+         timestampString = "354437868.601456"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "76"
+         endingLineNumber = "76"
+         landmarkName = "-receivedSensorStateChangeNotification:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

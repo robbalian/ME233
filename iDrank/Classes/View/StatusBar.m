@@ -23,7 +23,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedSensorStateChangeNotification:) name:@"stateChanged" object:[BACController sharedInstance]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedLocationChangeNotification:) name:@"locationChanged" object:[LocationController sharedInstance]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedUserChangeNotification:) name:@"userChanged" object:[UserController sharedInstance]];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedWarmTimerTickedNotification:) name:@"warmTimerTicked" object:[BACController sharedInstance]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedSensorDifferenceChangedNotification:) name:@"sensorDifferenceChanged" object:[BACController sharedInstance]];
         //namePlaceLabel.adjustsFontSizeToFitWidth = YES;
                 
         sensorController = [BACController sharedInstance];
@@ -64,13 +64,13 @@
             break;
         case ON_WARMING:
             [statusLabel setText:@"Warming Up..."];
-            [UIView transitionWithView:self.view duration:SENSOR_WARMUP_SECONDS options:UIViewAnimationCurveLinear+UIViewAnimationOptionBeginFromCurrentState animations:^{ 
-                [coverView setFrame:CGRectMake(49+251, 7, 0, 38)];
-            } completion:nil];
+            //[UIView transitionWithView:self.view duration:SENSOR_WARMUP_SECONDS options:UIViewAnimationCurveLinear+UIViewAnimationOptionBeginFromCurrentState animations:^{ 
+            //    [coverView setFrame:CGRectMake(49+251, 7, 0, 38)];
+            //} completion:nil];
             break;
         case ON_READY:
             [UIView transitionWithView:self.view duration:.1 options:UIViewAnimationCurveLinear+UIViewAnimationOptionBeginFromCurrentState animations:^{ 
-                [coverView setFrame:CGRectMake(49+251, 7, 0, 38)];
+                [coverView setFrame:CGRectMake(300, 7, 0, 38)];
             } completion:nil];
             [statusLabel setText:@"READY!"];
             //probably do some modal popup
@@ -86,15 +86,24 @@
     }
 }
 
--(void)receivedWarmTimerTickedNotification:(id)sender {
-    
-    
+-(void)receivedSensorDifferenceChangedNotification:(id)sender {
+    double diff = (double)[[BACController sharedInstance] getSensorDiff];
+    //move cover accordingly...
+    NSLog(@"%d", diff);
+    NSLog(@"Moving slide to: %d", 49+((int)(251/(diff))));
+    [UIView transitionWithView:self.view duration:.1 options:UIViewAnimationCurveLinear+UIViewAnimationOptionBeginFromCurrentState animations:^{ 
+        [coverView setFrame:CGRectMake(49+((int)(251/(diff))), 7, 251, 38)];
+    } completion:nil];
 }
 
 -(void)warmupSecondsLeft:(double)seconds {
     NSLog(@"%f", seconds);
     double percent = (double)((double)(SENSOR_WARMUP_SECONDS - seconds) / (double)SENSOR_WARMUP_SECONDS);
     double change = percent*((double)251.0);
+}
+
+-(void)warmupSensorDifference:(double)diff {
+    
 }
 
 

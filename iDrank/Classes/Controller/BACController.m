@@ -12,11 +12,14 @@
 #define MIN_BLOW_DURATION 5.0
 #define NO_BLOW_DURATION 18.0
 
+#define DETECT_BLOW_MEMORY 4
 #define BLOW_DETECT_THRESHOLD (.01)
 
 #define SENSOR_READINGS_DELAY (.01)
 
-#define TARGET_SENSOR_VALUE 445
+#define TARGET_SENSOR_VALUE 545
+#define WARMING_DETECTION_MEMORY 5
+#define MAX_WARM_DIFFERENCE .6
 
 
 @implementation BACController
@@ -59,7 +62,7 @@
 -(void)sensorUnplugged {
     [self setState:DISCONNECTED];
     if (warmTimer != nil && ![warmTimer isEqual:[NSNull null]] && [warmTimer isValid]) [warmTimer invalidate]; 
-    if (noBlowTimer != nil && ![noBlowTimer isEqual:[NSNull null]] && [noBlowTimer isValid]) [noBlowTimer invalidate]; 
+    if (noBlowTimer != nil && ![noBlowTimer isEqual:[NSNull null]] && [noBlowTimer isValid]) [noBlowTimer invalidate];
     
     
     [readings removeAllObjects];
@@ -108,6 +111,7 @@
 }
 
 -(void)blowEndedPrematurely {
+    //not in use yet
     //display message
     [self stopRequestingSensorData];
     [self setState:ON_READY];
@@ -122,7 +126,7 @@
     //show bac via UI
     
     [self stopRequestingSensorData];
-    if (noBlowTimer != nil && ![noBlowTimer isEqual:[NSNull null]] && [noBlowTimer isValid]) {
+    if (noBlowTimer || [noBlowTimer isValid]) {
         [noBlowTimer invalidate];
         noBlowTimer = nil;
     }
@@ -235,16 +239,16 @@
 }
 
 -(BOOL)detectSensorBlow {
-    if ([readings count] < 2) return NO;
+    if ([readings count] < DETECT_BLOW_MEMORY) return NO;
     //read last X readings
     //is it being used? GO
     int num = 0;
     //ok basically always at this point
-    for (int i=0; i<2; i++) {
+    for (int i=0; i<DETECT_BLOW_MEMORY; i++) {
         //starting with second-to-latest value...
         num += [((NSNumber *)[[readings objectAtIndex:([readings count]-i-2)] objectForKey:@"reading"]) intValue];
     }
-    double average = ((double)num/2.0);
+    double average = ((double)num/(double)DETECT_BLOW_MEMORY);
     double difference = fabs((average - (double)[((NSNumber *)[[readings objectAtIndex:([readings count]-1)] objectForKey:@"reading"]) intValue]) / average);
     
     if (difference > BLOW_DETECT_THRESHOLD) return YES;
@@ -259,8 +263,10 @@
         [delegate warmupSecondsLeft:secondsTillWarm];
     } else {
 
-        if (warmTimer) [warmTimer invalidate];
-        warmTimer = nil;
+        if (warmTimer || [warmTimer isValid]) {
+            [warmTimer invalidate];
+            warmTimer = nil;   
+        }
         [self warmTimerExpired];
     }
 }
@@ -275,7 +281,10 @@
     //ok you didn't blow in time. Shut off sensor to save battery, jerk.
     //[self setState:OFF];
     NSLog(@"No Blow Timer Expired");
-    noBlowTimer = nil;
+    if (noBlowTimer || [noBlowTimer isValid]) {
+        [noBlowTimer invalidate];
+        noBlowTimer = nil;
+    }
     [self stopRequestingSensorData];
     
     [self setState:UNKNOWN];
@@ -304,25 +313,30 @@
     if (data < 100) return;
     
     
-    if (sensorState == ON_WARMING) sensorInitialReading = data; //update this while we're warming so we can get a good diff
-    
+    if (sensorState == ON_WARMING) {
+        [self checkDoneWarming]; 
+        sensorInitialReading = data; //update this while we're warming so we can get a good diff
+    }
     if (sensorState == ON_BLOWING_INTO && sensorInitialReading - data > maxSensorDifference) maxSensorDifference = sensorInitialReading - data;
     NSLog(@"Received Sensor Data: %d", data);
-    
     [self storeReading:data];
-    
-        [self checkDoneWarming];
 }
 
 -(void)checkDoneWarming {
-    if ([readings count] < 3) return;
+    if ([readings count] < WARMING_DETECTION_MEMORY+1) return;
     int num = 0;
-    for (int i=0; i<3; i++) {
+    for (int i=0; i<WARMING_DETECTION_MEMORY; i++) {
         num += [((NSNumber *)[[readings objectAtIndex:([readings count]-i-1)] objectForKey:@"reading"]) intValue];
     }
-    double average = ((double)num/3.0);
-    if (sensorState == ON_WARMING && average > TARGET_SENSOR_VALUE) {
+    double average = ((double)num/((double)WARMING_DETECTION_MEMORY));
+    int lastReading = [((NSNumber *)[[readings objectAtIndex:([readings count]-1)] objectForKey:@"reading"]) intValue];
+    sensorDiff = fabs(average - (double)lastReading);
+    
+    NSLog(@"Checking Warm: Avg: %f Difference: %f", average, fabs(average - lastReading));    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"sensorDifferenceChanged" object:self];
+    if (sensorState == ON_WARMING && fabs((average - lastReading)) < MAX_WARM_DIFFERENCE) {
         //we're going to stop warming prematurely
+        NSLog(@"Reached steady state, stopped warming");
         if (warmTimer && [warmTimer isValid]) [warmTimer invalidate];
         warmTimer = nil;
         [self warmTimerExpired];
@@ -346,7 +360,9 @@
 
 -(void)receivedHeaterOnAck {
     [self setState:ON_WARMING];
-    [self startWarmupTimer];
+    
+    //TODO: do we need this?
+    //[self startWarmupTimer];
     [self requestSensorReadingFromDevice];
     readingStartSeconds = [[NSDate date] timeIntervalSince1970];
 }
@@ -380,6 +396,10 @@
     delegate = del;
 }
 
+-(double)getSensorDiff {
+    return sensorDiff;
+}
+
 -(void)setState:(int)state {
     if (sensorState == state) return;
     sensorState = state;
@@ -390,21 +410,23 @@
 
 - (void) writeFileToDocumentDirectory
 {
-    
     NSString *csvString = @"Seconds, Reading\r\n";
     NSLog(@"Readings dict: %@", readings);
     
     for (NSDictionary *dict in readings) {
         csvString = [csvString stringByAppendingFormat:@"%f,%d\r\n", [(NSNumber *)[dict objectForKey:@"time"] doubleValue], [(NSNumber *)[dict objectForKey:@"reading"] intValue]];
     }
+    NSDateFormatter* formatter = [[[NSDateFormatter alloc] init] autorelease];
+    [formatter setDateFormat:@"MM-dd 'at' HH_mm_ss"];
+    
+    csvString = [csvString stringByAppendingFormat:@",,BAC Reading, Datetime\r\n,,%f,%@", currentBAC, [formatter stringFromDate:[NSDate date]]];
     // Get path to documents directory
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 
                                                          NSUserDomainMask, YES);
     if ([paths count] > 0)
     {
         // Path to save dictionary
-        NSDateFormatter* formatter = [[[NSDateFormatter alloc] init] autorelease];
-        [formatter setDateFormat:@"MM-dd 'at' HH_mm_ss"];
+        
         NSString *fileName = [NSString stringWithFormat:@"%@.csv", [formatter stringFromDate:[NSDate date]]];
         
         NSString  *dictPath = [[paths objectAtIndex:0] 

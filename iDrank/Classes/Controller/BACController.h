@@ -15,7 +15,7 @@
 #define SENSOR_READ_SECONDS 1
 #define SENSOR_CALCULATE_SECONDS 1
 
-#define USING_SIM 1
+//#define USING_SIM 1
 
 typedef enum {
     UNKNOWN = -1,
@@ -53,9 +53,13 @@ typedef enum {
     
     //calibration
     double readingStartSeconds;
+    
+    double sensorDiff;
 }
 
 +(BACController *)sharedInstance;
+
+
 
 -(void)setDelegate:(id)del;
 -(void)storeReading:(int)reading;
@@ -77,7 +81,10 @@ typedef enum {
 
 -(int)currentState;
 
+
 -(void)bacManuallyEnteredWithGender:(BOOL)male Weight:(int)weight Drinks:(int)drinks Hours:(int)hours;
+
+-(double)getSensorDiff;
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;  

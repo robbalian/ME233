@@ -15,7 +15,7 @@
 #include "TargetConditionals.h"
 #endif
 
-#define TIMEOUT_SECONDS (2.0)
+#define TIMEOUT_SECONDS (3.0)
 
 #define VERIFY_PING (0x01)
 #define VERIFY_ACK  (0x02)
