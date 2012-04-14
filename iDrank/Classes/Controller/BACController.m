@@ -91,7 +91,7 @@
     //start no blow timer so we don't keep heater on too long if no one blows
     //noBlowTimer = [[NSTimer scheduledTimerWithTimeInterval:NO_BLOW_DURATION target:self selector:@selector(noBlowTimerExpired) userInfo:nil repeats:NO] retain];
     maxSensorDifference = 0;
-    [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(blowDetected) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(blowDetected) userInfo:nil repeats:NO];
 }
 
 -(void)requestSensorReadingFromDevice {

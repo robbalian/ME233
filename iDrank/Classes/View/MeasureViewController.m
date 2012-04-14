@@ -38,7 +38,7 @@
     if (state == DISCONNECTED) {
         [readoutLabel setText:@""];
         [infoTitleLabel setText:@"While we wait..."];
-        [infoBodyLabel setText:@"Did you know that vodka is a proven cure for ugliness?"];
+        [infoBodyLabel setText:@"Make sure you haven't eaten or drank anything in the last 15 minutes   "];
         [measureAgainButton setHidden:YES];
     } else if (state == ON_WARMING) {
         [measureAgainButton setHidden:YES];

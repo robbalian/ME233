@@ -109,6 +109,7 @@
 {
     [super viewDidLoad];
     [self hideFakeButtons:nil];
+    [shareCluster setHidden:YES];
     // Do any additional setup after loading the view from its nib.
 }
 

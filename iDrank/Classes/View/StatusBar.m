@@ -47,10 +47,6 @@
 -(void)receivedSensorStateChangeNotification:(id)sender {
     int state = [[BACController sharedInstance] currentState];
 //update user instructions
-    [self updateUIForStateChange:state];
-}
-
--(void)updateUIForStateChange:(int)state {
     if (state == DISCONNECTED) {
         [statusIV setImage:[UIImage imageNamed:@"Sensor_disabled.png"]];
     } else {
@@ -59,26 +55,24 @@
     
     switch (state) {
         case DISCONNECTED:
-            [coverView setFrame:CGRectMake(30, coverView.frame.origin.y, 269, coverView.frame.size.height)];
-            [statusLabel setText:@"Plug in an iDrank Sensor"];
+            [coverView setFrame:CGRectMake(30, 7, 281, 38)];
+            [statusLabel setText:@"Connect a Sensor or Enter Drinks Manually"];
             break;
         case OFF:
-            [coverView setFrame:CGRectMake(30, coverView.frame.origin.y, coverView.frame.size.width, coverView.frame.size.height)];
+            [coverView setFrame:CGRectMake(30, 7, 281, 38)];
             [statusLabel setText:@"Sensor Off"];
             break;
         case ON_WARMING:
             [statusLabel setText:@"Warming Up..."];
-            [UIView transitionWithView:self.view duration:SENSOR_WARMUP_SECONDS options:UIViewAnimationCurveLinear animations:^{ 
-                [coverView setFrame:CGRectMake(30+coverView.frame.size.width, coverView.frame.origin.y, 0, coverView.frame.size.height)];
+            [UIView transitionWithView:self.view duration:SENSOR_WARMUP_SECONDS options:UIViewAnimationCurveLinear+UIViewAnimationOptionBeginFromCurrentState animations:^{ 
+                [coverView setFrame:CGRectMake(30+281, 7, 0, 38)];
             } completion:nil];
             break;
         case ON_READY:
             [UIView transitionWithView:self.view duration:.1 options:UIViewAnimationCurveLinear+UIViewAnimationOptionBeginFromCurrentState animations:^{ 
-                [coverView setFrame:CGRectMake(30+coverView.frame.size.width, coverView.frame.origin.y, 0, coverView.frame.size.height)];
+                [coverView setFrame:CGRectMake(30+281, 7, 0, 38)];
             } completion:nil];
             [statusLabel setText:@"READY!"];
-            
-            
             //probably do some modal popup
             break;
         case ON_BLOWING_INTO:
@@ -100,7 +94,7 @@
 -(void)warmupSecondsLeft:(double)seconds {
     NSLog(@"%f", seconds);
     double percent = (double)((double)(SENSOR_WARMUP_SECONDS - seconds) / (double)SENSOR_WARMUP_SECONDS);
-    double change = percent*((double)coverView.frame.size.width);
+    double change = percent*((double)251.0);
 }
 
 

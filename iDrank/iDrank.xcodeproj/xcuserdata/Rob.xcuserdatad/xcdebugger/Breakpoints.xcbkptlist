@@ -740,7 +740,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "76"
          endingLineNumber = "76"
-         landmarkName = "-updateUIForStateChange:"
+         landmarkName = "-receivedSensorStateChangeNotification:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
