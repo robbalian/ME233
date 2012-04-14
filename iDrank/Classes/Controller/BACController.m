@@ -89,8 +89,9 @@
     //NSLog(<#NSString *format, ...#>)
     [self setState:ON_READY];
     //start no blow timer so we don't keep heater on too long if no one blows
-    noBlowTimer = [[NSTimer scheduledTimerWithTimeInterval:NO_BLOW_DURATION target:self selector:@selector(noBlowTimerExpired) userInfo:nil repeats:NO] retain];
+    //noBlowTimer = [[NSTimer scheduledTimerWithTimeInterval:NO_BLOW_DURATION target:self selector:@selector(noBlowTimerExpired) userInfo:nil repeats:NO] retain];
     maxSensorDifference = 0;
+    [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(blowDetected) userInfo:nil repeats:NO];
 }
 
 -(void)requestSensorReadingFromDevice {
@@ -131,8 +132,8 @@
     [((iDrankAppDelegate *)[[UIApplication sharedApplication] delegate]) addBAC:nil];
     NSLog(@"Logging BAC");
     [self setState:UNKNOWN];
-    [fskController device_turnHeaterOff];
-    
+    //[fskController device_turnHeaterOff];
+    [self receivedHeaterOffAck];
 #ifdef NO_DEVICE
     [self setState:OFF];
 #endif
@@ -357,8 +358,8 @@
 -(void)receivedHeaterOffAck {
     NSLog(@"Heater OFF");
     [self setState:OFF];
-    [self setState:ON_WARMING];
     
+    //[self setState:ON_WARMING];
     
     [self writeFileToDocumentDirectory];
 }
