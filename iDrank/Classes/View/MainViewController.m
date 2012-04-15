@@ -7,7 +7,7 @@
 //
 
 #import "MainViewController.h"
-
+#import "DisclaimerViewController.h"
 
 @implementation MainViewController
 
@@ -90,6 +90,8 @@ BOOL isConnected = FALSE;
     
     [self setTab:1];
     [tabBar setSelectedItem:[[tabBar items] objectAtIndex:1]];
+    
+    [self.view addSubview:[[DisclaimerViewController alloc] init].view];
 }
 
 -(IBAction)writeTestCharPushed:(id)sender {
