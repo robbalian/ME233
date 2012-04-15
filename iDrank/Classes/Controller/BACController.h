@@ -77,6 +77,10 @@ typedef enum {
 -(void)stopRequestingSensorData;
 -(void)writeFileToDocumentDirectory;
 
+-(void)startCalibrationLogging;
+-(void)stopCalibrationLogging;
+
+
 -(int)getLatestSensorReading;
 
 -(int)currentState;

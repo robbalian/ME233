@@ -152,7 +152,8 @@
     [readings addObject:readingDict];
     NSLog(@"Stored Reading: %d", reading);
     //if 
-    if (sensorState == ON_READY && [self detectSensorBlow]) [self blowDetected];
+    
+    //if (sensorState == ON_READY && [self detectSensorBlow]) [self blowDetected];
     
     
     
@@ -239,7 +240,7 @@
 }
 
 -(BOOL)detectSensorBlow {
-    if ([readings count] < DETECT_BLOW_MEMORY) return NO;
+    if ([readings count] < DETECT_BLOW_MEMORY+2) return NO;
     //read last X readings
     //is it being used? GO
     int num = 0;
@@ -359,11 +360,11 @@
 }
 
 -(void)receivedHeaterOnAck {
-    [self setState:ON_WARMING];
+    //[self setState:ON_WARMING];
     
     //TODO: do we need this?
     //[self startWarmupTimer];
-    [self requestSensorReadingFromDevice];
+    //[self requestSensorReadingFromDevice];
     readingStartSeconds = [[NSDate date] timeIntervalSince1970];
 }
 
@@ -399,6 +400,20 @@
 -(double)getSensorDiff {
     return sensorDiff;
 }
+
+-(void)startCalibrationLogging {
+    readingStartSeconds = [[NSDate date] timeIntervalSince1970];
+    [readings removeAllObjects];
+    [fskController device_turnHeaterOn];
+    [self setState:ON_READY];
+    [self requestSensorReadingFromDevice];    
+}
+
+-(void)stopCalibrationLogging {
+    [self setState:UNKNOWN];
+    [fskController device_turnHeaterOff];
+}
+
 
 -(void)setState:(int)state {
     if (sensorState == state) return;

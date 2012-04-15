@@ -58,7 +58,7 @@ BOOL isConnected = FALSE;
             [popupView.view setFrame:CGRectMake(0,0,0,0)];
             [self.view addSubview:popupView.view];
             [UIView transitionWithView:self.view duration:.3 options:UIViewAnimationCurveLinear animations:^{ 
-                [popupView.view setFrame:CGRectMake(160, 0, 160, 100)];
+                [popupView.view setFrame:CGRectMake(100, 0, 100, 100)];
             } completion:nil];
             break;
             

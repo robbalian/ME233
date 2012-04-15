@@ -60,6 +60,16 @@
     
 }
 
+-(IBAction)logButtonPressed:(id)sender {
+    if ([[[logButton titleLabel] text] isEqualToString:@"Stop"]) {
+        [logButton setTitle:@"Start" forState:UIControlStateNormal];
+        [[BACController sharedInstance] stopCalibrationLogging];
+    } else {
+        [logButton setTitle:@"Stop" forState:UIControlStateNormal];
+        [[BACController sharedInstance] startCalibrationLogging];
+    }
+}
+
 -(IBAction)testCharIn:(id)sender {
     [[BACController sharedInstance] receivedChar:'ý'];
 }

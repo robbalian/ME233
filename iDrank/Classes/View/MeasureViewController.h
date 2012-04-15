@@ -16,7 +16,8 @@
     IBOutlet UILabel *infoTitleLabel;
     IBOutlet UIButton *measureAgainButton;
     IBOutlet UIView *shareCluster;
-
+    
+    IBOutlet UIButton *logButton;
 }
 
 -(IBAction)testChar:(id)sender;
