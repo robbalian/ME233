@@ -18,7 +18,7 @@
 #define SENSOR_READINGS_DELAY (.01)
 
 #define TARGET_SENSOR_VALUE 545
-#define WARMING_DETECTION_MEMORY 5
+#define WARMING_DETECTION_MEMORY 7
 #define MAX_WARM_DIFFERENCE .6
 
 
@@ -81,7 +81,7 @@
     if (sensorState == DISCONNECTED) {
         NSLog(@"Verifying sensor...");
         [fskController device_verify];
-        verifyRetryTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(verifySensor) userInfo:nil repeats:NO];
+        //verifyRetryTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(verifySensor) userInfo:nil repeats:NO];
     } 
 #endif
 }
