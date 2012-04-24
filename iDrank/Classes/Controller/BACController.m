@@ -410,7 +410,7 @@
 }
 
 -(void)stopCalibrationLogging {
-    [self setState:UNKNOWN];
+     [self setState:UNKNOWN];
     [fskController device_turnHeaterOff];
 }
 
