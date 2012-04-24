@@ -11,6 +11,7 @@
 @interface ReadingsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
     NSMutableArray *results;
     IBOutlet UITableView *tv;
+    
 }
 
 -(void)refreshData;

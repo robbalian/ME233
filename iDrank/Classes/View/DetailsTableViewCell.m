@@ -1,24 +1,20 @@
 //
-//  ReadingsTableViewCell.m
+//  DetailsTableViewCell.m
 //  iDrank
 //
-//  Created by Rob Balian on 1/10/12.
+//  Created by Rob Balian on 4/23/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "ReadingsTableViewCell.h"
+#import "DetailsTableViewCell.h"
 
-
-
-@implementation ReadingsTableViewCell
-
-@synthesize userNameLabel, placeLabel, timeLabel, bacLabel;
+@implementation DetailsTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+                [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     return self;
 }

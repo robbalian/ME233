@@ -9,6 +9,7 @@
 #import "ReadingsViewController.h"
 #import "iDrankAppDelegate.h"
 #import "ReadingsTableViewCell.h"
+#import "DetailsTableViewCell.h"
 
 @implementation ReadingsViewController
 
@@ -38,44 +39,95 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60.0;
+    return ([[results objectAtIndex:[indexPath row]] isKindOfClass:[NSNumber class]]) ? 100 : 60.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ReadingsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
-    if (cell == nil){
-        NSLog(@"New Cell Made");
+    UITableViewCell *cell;
     
-        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"ReadingsTableViewCell" owner:nil options:nil];
-        for (id ob in topLevelObjects) {
-            if ([ob isKindOfClass:[ReadingsTableViewCell class]]) {
-                cell = (ReadingsTableViewCell *)ob;
-                break;
+    if ([[results objectAtIndex:[indexPath row]] isKindOfClass:[NSNumber class]]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"detailsCellID"];
+        if (cell == nil) {
+            NSLog(@"New Details Cell Made");
+            
+            NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"DetailsTableViewCell" owner:self options:nil];
+            for (id ob in topLevelObjects) {
+                if ([ob isKindOfClass:[DetailsTableViewCell class]]) {
+                    cell = (DetailsTableViewCell *)ob;
+                    break;
+                }
             }
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            //cell = [[DetailsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detailsCellID"];
+            return cell;            
         }
-
-        ///cell = (ReadingsTableViewCell *)[[ReadingsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellID"];
-    }
-    
-    BACEvent *event = (BACEvent *)[results objectAtIndex:[indexPath row]];
-    // NSLog(@"%@", event);
-    /*cell.textLabel.text = [NSString stringWithFormat:@"%@ : %.2f", event.name, [event.reading doubleValue]];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ at %@", [self dateDiff:event.time], event.place_name];
-    cell.detailTextLabel.numberOfLines = 2;
-    cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
-    cell.detailTextLabel.textColor = [UIColor whiteColor];
-    */
-    if ([event.place_name isEqualToString:@"unknown"]) {
-        cell.placeLabel.text = @"";
     } else {
-        cell.placeLabel.text = [NSString stringWithFormat:@"@ %@", event.place_name];
-    }
-    cell.timeLabel.text = [NSString stringWithFormat:@"%@", [self dateDiff:event.time]];
-    cell.bacLabel.text = [NSString stringWithFormat:@"%.2f", [event.reading doubleValue]];
-    cell.userNameLabel.text = event.name;
+        
+        cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
+        if (cell == nil){
+            NSLog(@"New Cell Made");
+            
+            NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"ReadingsTableViewCell" owner:self options:nil];
+            for (id ob in topLevelObjects) {
+                if ([ob isKindOfClass:[ReadingsTableViewCell class]]) {
+                    cell = (ReadingsTableViewCell *)ob;
+                    break;
+                }
+            }
+            
+            ///cell = (ReadingsTableViewCell *)[[ReadingsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellID"];
+        }
+        
+        BACEvent *event = (BACEvent *)[results objectAtIndex:[indexPath row]];
+        // NSLog(@"%@", event);
+        /*cell.textLabel.text = [NSString stringWithFormat:@"%@ : %.2f", event.name, [event.reading doubleValue]];
+         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ at %@", [self dateDiff:event.time], event.place_name];
+         cell.detailTextLabel.numberOfLines = 2;
+         cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+         cell.detailTextLabel.textColor = [UIColor whiteColor];
+         */
+        if ([event.place_name isEqualToString:@"unknown"]) {
+            ((ReadingsTableViewCell *)cell).placeLabel.text = @"";
+        } else {
+            ((ReadingsTableViewCell *)cell).placeLabel.text = [NSString stringWithFormat:@"@ %@", event.place_name];
+        }
+        ((ReadingsTableViewCell *)cell).timeLabel.text = [NSString stringWithFormat:@"%@", [self dateDiff:event.time]];
+        ((ReadingsTableViewCell *)cell).bacLabel.text = [NSString stringWithFormat:@"%.2f", [event.reading doubleValue]];
+        ((ReadingsTableViewCell *)cell).userNameLabel.text = event.name;
+        ((ReadingsTableViewCell *)cell).userInteractionEnabled = YES;
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    }    
     
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {       
+    //[[tv cellForRowAtIndexPath:indexPath] setFrame:CGRectMake(0, 0, 320, 100)];
+    
+    //hacky way to determine what's a result row and what's a dropdown row
+    if ([[results objectAtIndex:[indexPath row]] isKindOfClass:[NSNumber class]]) {
+        [self removeDetailRowAtIndex:indexPath.row];
+    } else if (indexPath.row+1 < [results count] && [[results objectAtIndex:([indexPath row]+1)] isKindOfClass:[NSNumber class]]) {
+        [self removeDetailRowAtIndex:indexPath.row+1];
+    } else {
+        NSNumber *num = [[NSNumber alloc] initWithInt:1];
+        [results insertObject:num atIndex:indexPath.row+1];
+        NSIndexPath *ip = [NSIndexPath indexPathForRow:indexPath.row+1 inSection:0];
+        [tv insertRowsAtIndexPaths:[NSArray arrayWithObject:ip] withRowAnimation:UITableViewRowAnimationMiddle];
+    }
+    
+    [[tv cellForRowAtIndexPath:indexPath] setHighlighted:NO];
+}
+
+-(void)removeDetailRowAtIndex:(int)row {
+    DetailsTableViewCell *detailRow = (DetailsTableViewCell *)[results objectAtIndex:row];
+    //[detailRow release];
+    //[detailRow release];
+    [results removeObjectAtIndex:row];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];    
+    [tv deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
 }
 
 -(NSString *)dateDiff:(NSDate *)origDate {
