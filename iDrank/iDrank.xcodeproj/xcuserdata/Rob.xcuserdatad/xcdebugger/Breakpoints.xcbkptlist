@@ -609,11 +609,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/Controller/LocationController.m"
-         timestampString = "347871620.529295"
+         timestampString = "357032546.212199"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "111"
-         endingLineNumber = "111"
+         startingLineNumber = "114"
+         endingLineNumber = "114"
          landmarkName = "-locationManager:didUpdateToLocation:fromLocation:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -665,11 +665,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/View/ReadingsViewController.m"
-         timestampString = "356954960.448272"
+         timestampString = "357034233.479642"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "87"
-         endingLineNumber = "87"
+         startingLineNumber = "117"
+         endingLineNumber = "117"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -768,7 +768,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "69"
          endingLineNumber = "69"
-         landmarkName = "-logButtonPressed:"
+         landmarkName = "-testChar:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -777,39 +777,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/View/ReadingsViewController.m"
-         timestampString = "356942828.251216"
+         timestampString = "357034233.479642"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "49"
-         endingLineNumber = "49"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/View/ReadingsViewController.m"
-         timestampString = "356954960.448272"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "178"
-         endingLineNumber = "178"
-         landmarkName = "-viewDidUnload"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Classes/View/ReadingsViewController.m"
-         timestampString = "356954960.448272"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "110"
-         endingLineNumber = "110"
+         startingLineNumber = "140"
+         endingLineNumber = "140"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>

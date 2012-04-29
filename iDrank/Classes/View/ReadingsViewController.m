@@ -8,10 +8,12 @@
 
 #import "ReadingsViewController.h"
 #import "iDrankAppDelegate.h"
-#import "ReadingsTableViewCell.h"
 #import "DetailsTableViewCell.h"
+#import "DetailsImageTableViewCell.h"
 
 @implementation ReadingsViewController
+
+@synthesize readingsCell;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -19,7 +21,6 @@
     if (self) {
         // Custom initialization
         results = ((iDrankAppDelegate *)[[UIApplication sharedApplication] delegate]).eventArray;
-        
     }
     return self;
 }
@@ -39,27 +40,56 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return ([[results objectAtIndex:[indexPath row]] isKindOfClass:[NSNumber class]]) ? 100 : 60.0;
+    if ([[results objectAtIndex:[indexPath row]] isKindOfClass:[NSNumber class]]) {
+        if ([(NSNumber *)[results objectAtIndex:[indexPath row]] intValue] == 1) {
+            return 100.0;
+        } else {
+            return 375.0;
+        } 
+    } else {
+            return 60.0;
+    }
+    //return ([[results objectAtIndex:[indexPath row]] isKindOfClass:[NSNumber class]]) ? 100 : 60.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell;
     
-    if ([[results objectAtIndex:[indexPath row]] isKindOfClass:[NSNumber class]]) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"detailsCellID"];
-        if (cell == nil) {
-            NSLog(@"New Details Cell Made");
-            
-            NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"DetailsTableViewCell" owner:self options:nil];
-            for (id ob in topLevelObjects) {
-                if ([ob isKindOfClass:[DetailsTableViewCell class]]) {
-                    cell = (DetailsTableViewCell *)ob;
-                    break;
+    id obj = [results objectAtIndex:[indexPath row]];
+    if ([obj isKindOfClass:[NSNumber class]]) {
+        if ([(NSNumber *)obj intValue] == 1) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"detailsCellID"];
+            if (cell == nil) {
+                NSLog(@"New Details Cell Made");
+                
+                NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"DetailsTableViewCell" owner:self options:nil];
+                for (id ob in topLevelObjects) {
+                    if ([ob isKindOfClass:[DetailsTableViewCell class]]) {
+                        cell = (DetailsTableViewCell *)ob;
+                        break;
+                    }
                 }
+                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+                //cell = [[DetailsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detailsCellID"];
+                return cell;            
             }
-            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-            //cell = [[DetailsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detailsCellID"];
-            return cell;            
+        } else {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"detailsImageCellID"];
+            if (cell == nil) {
+                NSLog(@"New ImageDetails Cell Made");
+                
+                NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"DetailsImageTableViewCell" owner:self options:nil];
+                for (id ob in topLevelObjects) {
+                    if ([ob isKindOfClass:[DetailsImageTableViewCell class]]) {
+                        cell = (DetailsImageTableViewCell *)ob;
+                        break;
+                    }
+                }
+                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+                //cell = [[DetailsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detailsCellID"];
+                return cell;            
+            }    
+            
         }
     } else {
         
@@ -111,6 +141,7 @@
     } else if (indexPath.row+1 < [results count] && [[results objectAtIndex:([indexPath row]+1)] isKindOfClass:[NSNumber class]]) {
         [self removeDetailRowAtIndex:indexPath.row+1];
     } else {
+        //int randNum  = rand()%2;
         NSNumber *num = [[NSNumber alloc] initWithInt:1];
         [results insertObject:num atIndex:indexPath.row+1];
         NSIndexPath *ip = [NSIndexPath indexPathForRow:indexPath.row+1 inSection:0];

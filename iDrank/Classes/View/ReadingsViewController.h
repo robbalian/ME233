@@ -7,12 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ReadingsTableViewCell.h"
+
 
 @interface ReadingsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
     NSMutableArray *results;
     IBOutlet UITableView *tv;
     
+    IBOutlet ReadingsTableViewCell *readingsCell;
+    
 }
+
+@property (nonatomic, retain) IBOutlet ReadingsTableViewCell *readingsCell;
 
 -(void)refreshData;
 -(NSString *)dateDiff:(NSDate *)origDate;

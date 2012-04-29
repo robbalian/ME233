@@ -105,6 +105,11 @@
 		D4AF79D814CB4C2C00938043 /* ding.aif in Resources */ = {isa = PBXBuildFile; fileRef = D4AF79D714CB4C2C00938043 /* ding.aif */; };
 		D4AF79DA14CB55C000938043 /* ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D4AF79D914CB55C000938043 /* ding.mp3 */; };
 		D4B172F614C253DD00D41047 /* CollegeThemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B172F414C253DD00D41047 /* CollegeThemeViewController.m */; };
+		D4BC96E51547DAAE00CDAC30 /* DetailsImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BC96E31547DAAE00CDAC30 /* DetailsImageTableViewCell.m */; };
+		D4BC96E61547DAAE00CDAC30 /* DetailsImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4BC96E41547DAAE00CDAC30 /* DetailsImageTableViewCell.xib */; };
+		D4BC96E91547DC7400CDAC30 /* large_background.png in Resources */ = {isa = PBXBuildFile; fileRef = D4BC96E71547DC7400CDAC30 /* large_background.png */; };
+		D4BC96EA1547DC7400CDAC30 /* large_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4BC96E81547DC7400CDAC30 /* large_background@2x.png */; };
+		D4BC96EC1547DD4700CDAC30 /* M3700605-Men_drinking_alcohol_in_a_bar-SPL.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D4BC96EB1547DD4700CDAC30 /* M3700605-Men_drinking_alcohol_in_a_bar-SPL.jpeg */; };
 		D4CE0CED1480A34A00425369 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CE0CEC1480A34A00425369 /* CoreData.framework */; };
 		D4E3687514BFE98700E1E7CE /* StandardThemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E3687314BFE98700E1E7CE /* StandardThemeViewController.m */; };
 		D4E3687614BFE98700E1E7CE /* StandardThemeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E3687414BFE98700E1E7CE /* StandardThemeViewController.xib */; };
@@ -290,6 +295,12 @@
 		D4AF79D914CB55C000938043 /* ding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ding.mp3; sourceTree = "<group>"; };
 		D4B172F314C253DC00D41047 /* CollegeThemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollegeThemeViewController.h; sourceTree = "<group>"; };
 		D4B172F414C253DD00D41047 /* CollegeThemeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollegeThemeViewController.m; sourceTree = "<group>"; };
+		D4BC96E21547DAAE00CDAC30 /* DetailsImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsImageTableViewCell.h; sourceTree = "<group>"; };
+		D4BC96E31547DAAE00CDAC30 /* DetailsImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsImageTableViewCell.m; sourceTree = "<group>"; };
+		D4BC96E41547DAAE00CDAC30 /* DetailsImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsImageTableViewCell.xib; sourceTree = "<group>"; };
+		D4BC96E71547DC7400CDAC30 /* large_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = large_background.png; sourceTree = "<group>"; };
+		D4BC96E81547DC7400CDAC30 /* large_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "large_background@2x.png"; sourceTree = "<group>"; };
+		D4BC96EB1547DD4700CDAC30 /* M3700605-Men_drinking_alcohol_in_a_bar-SPL.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "M3700605-Men_drinking_alcohol_in_a_bar-SPL.jpeg"; sourceTree = "<group>"; };
 		D4CE0CEC1480A34A00425369 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D4E3687214BFE98700E1E7CE /* StandardThemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandardThemeViewController.h; sourceTree = "<group>"; };
 		D4E3687314BFE98700E1E7CE /* StandardThemeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandardThemeViewController.m; sourceTree = "<group>"; };
@@ -531,12 +542,7 @@
 				D44D547814B51526005FCE7C /* StatusBar.m */,
 				D44D547914B51526005FCE7C /* StatusBar.xib */,
 				D44D547A14B51526005FCE7C /* Themes */,
-				D476E4E514BCCC1700BFB38E /* ReadingsTableViewCell.h */,
-				D476E4E614BCCC1700BFB38E /* ReadingsTableViewCell.m */,
-				D476E4E714BCCC1700BFB38E /* ReadingsTableViewCell.xib */,
-				D43F402A15467C59003B7AF8 /* DetailsTableViewCell.h */,
-				D43F402B15467C59003B7AF8 /* DetailsTableViewCell.m */,
-				D43F402C15467C59003B7AF8 /* DetailsTableViewCell.xib */,
+				D4BC96ED1547DE9C00CDAC30 /* TableView Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -596,6 +602,9 @@
 		D476E4FA14BCCFF200BFB38E /* Readings */ = {
 			isa = PBXGroup;
 			children = (
+				D4BC96EB1547DD4700CDAC30 /* M3700605-Men_drinking_alcohol_in_a_bar-SPL.jpeg */,
+				D4BC96E71547DC7400CDAC30 /* large_background.png */,
+				D4BC96E81547DC7400CDAC30 /* large_background@2x.png */,
 				D43F40331546B1AA003B7AF8 /* add_photo.png */,
 				D43F40341546B1AA003B7AF8 /* add_photo@2x.png */,
 				D43F40351546B1AA003B7AF8 /* facebook@2x.png */,
@@ -635,6 +644,22 @@
 				D490140814D54327002FE178 /* status_bar@2x.png */,
 			);
 			path = StatusBar;
+			sourceTree = "<group>";
+		};
+		D4BC96ED1547DE9C00CDAC30 /* TableView Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D476E4E514BCCC1700BFB38E /* ReadingsTableViewCell.h */,
+				D476E4E614BCCC1700BFB38E /* ReadingsTableViewCell.m */,
+				D476E4E714BCCC1700BFB38E /* ReadingsTableViewCell.xib */,
+				D43F402A15467C59003B7AF8 /* DetailsTableViewCell.h */,
+				D43F402B15467C59003B7AF8 /* DetailsTableViewCell.m */,
+				D43F402C15467C59003B7AF8 /* DetailsTableViewCell.xib */,
+				D4BC96E21547DAAE00CDAC30 /* DetailsImageTableViewCell.h */,
+				D4BC96E31547DAAE00CDAC30 /* DetailsImageTableViewCell.m */,
+				D4BC96E41547DAAE00CDAC30 /* DetailsImageTableViewCell.xib */,
+			);
+			name = "TableView Cells";
 			sourceTree = "<group>";
 		};
 		D4E3686114BFE67E00E1E7CE /* Theme_Speedometer */ = {
@@ -851,6 +876,10 @@
 				D43F40381546B1AA003B7AF8 /* add_photo.png in Resources */,
 				D43F40391546B1AA003B7AF8 /* add_photo@2x.png in Resources */,
 				D43F403A1546B1AA003B7AF8 /* facebook@2x.png in Resources */,
+				D4BC96E61547DAAE00CDAC30 /* DetailsImageTableViewCell.xib in Resources */,
+				D4BC96E91547DC7400CDAC30 /* large_background.png in Resources */,
+				D4BC96EA1547DC7400CDAC30 /* large_background@2x.png in Resources */,
+				D4BC96EC1547DD4700CDAC30 /* M3700605-Men_drinking_alcohol_in_a_bar-SPL.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -904,6 +933,7 @@
 				D447110A1519CB9D00694E81 /* ManualEntryPopupViewController.m in Sources */,
 				D447110C1519CB9D00694E81 /* DisclaimerViewController.m in Sources */,
 				D43F402D15467C59003B7AF8 /* DetailsTableViewCell.m in Sources */,
+				D4BC96E51547DAAE00CDAC30 /* DetailsImageTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

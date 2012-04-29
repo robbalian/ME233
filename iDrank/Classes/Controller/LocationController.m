@@ -57,7 +57,9 @@ static LocationController *LCInstance;
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *dict = [[parser objectWithString:[[NSString alloc] initWithData:nearbyLocationsData encoding:NSASCIIStringEncoding] ] retain];
     if ([((NSNumber *)[[dict objectForKey:@"meta"] objectForKey:@"code"]) intValue] == 200) {
-        return [[dict objectForKey:@"response"]objectForKey:@"venues"];
+        if ([[[dict objectForKey:@"response"] objectForKey:@"venues"] count] > 0) {
+            return [[dict objectForKey:@"response"]objectForKey:@"venues"];
+        }
     }
     
     
@@ -95,6 +97,7 @@ static LocationController *LCInstance;
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
     //NSLog(@"CLLocationController: nearby locations loaded!");
     //NSLog(@"Autosetting place to : %@", [[[self getNearbyPlaces] objectAtIndex:0] objectForKey:@"name"]);
+    
     [self setPlaceName:[[[self getNearbyPlaces] objectAtIndex:0] objectForKey:@"name"] ];
     
     //NSLog(@"%@", [[NSString alloc] initWithData:nearbyLocationsData encoding:NSASCIIStringEncoding]);
@@ -107,10 +110,10 @@ static LocationController *LCInstance;
 }
 
 - (void)locationManager:(CLLocationManager *)manager
-didUpdateToLocation:(CLLocation *)newLocation
-fromLocation:(CLLocation *)oldLocation
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation
 {
-   // NSLog(@"Location: %@", [newLocation description]);
+    // NSLog(@"Location: %@", [newLocation description]);
     if (newLocation.horizontalAccuracy < 100.0) {
         if (lastLocation == nil) {
             lastLocation = [newLocation copy];
@@ -123,7 +126,7 @@ fromLocation:(CLLocation *)oldLocation
 }
 
 - (void)locationManager:(CLLocationManager *)manager
-didFailWithError:(NSError *)error
+       didFailWithError:(NSError *)error
 {
 	NSLog(@"Error: %@", [error description]);
 }
