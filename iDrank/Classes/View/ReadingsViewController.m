@@ -217,4 +217,15 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(IBAction)SMS:(id)sender {
+    [(iDrankAppDelegate *)[[UIApplication sharedApplication] delegate] sendToSMS];
+}
+-(IBAction)facebook:(id)sender {
+    [(iDrankAppDelegate *)[[UIApplication sharedApplication] delegate] sendToFacebook];
+}
+-(IBAction)twitter:(id)sender {
+    [(iDrankAppDelegate *)[[UIApplication sharedApplication] delegate] sendToTwitter];
+}
+
+
 @end

@@ -23,6 +23,10 @@
 -(void)refreshData;
 -(NSString *)dateDiff:(NSDate *)origDate;
 
+//share
+-(IBAction)SMS:(id)sender;
+-(IBAction)facebook:(id)sender;
+-(IBAction)twitter:(id)sender;
 
 
 @end

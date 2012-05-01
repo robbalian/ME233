@@ -257,9 +257,9 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">iDrank</string>
-						<object class="NSColor" key="IBUITextColor" id="1045768610">
+						<object class="NSColor" key="IBUITextColor" id="696581506">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC44OTAyMjY0MDMxIDAuMDA5NjU5ODUyMzQxIDAAA</bytes>
+							<bytes key="NSRGB">MSAwLjY5NjU3OTczNDUgMAA</bytes>
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -288,11 +288,12 @@
 						<int key="IBUIContentMode">9</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Plug in an iDrank alcohol sensor or enter your drinks maually to determine your BAC</string>
-						<reference key="IBUITextColor" ref="1045768610"/>
+						<string key="IBUIText">Plug in an iDrank alcohol sensor to measure your BAC</string>
+						<reference key="IBUITextColor" ref="696581506"/>
 						<nil key="IBUIHighlightedColor"/>
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUINumberOfLines">0</int>
+						<int key="IBUITextAlignment">1</int>
 						<int key="IBUILineBreakMode">2</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">1</int>
@@ -306,7 +307,7 @@
 					</object>
 					<object class="IBUIButton" id="808713062">
 						<reference key="NSNextResponder" ref="938684482"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">-2147483356</int>
 						<string key="NSFrame">{{95, 85}, {131, 37}}</string>
 						<reference key="NSSuperview" ref="938684482"/>
 						<reference key="NSWindow"/>
@@ -556,7 +557,6 @@
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="SMSButtonTapped:">id</string>
-						<string key="enterManually:">id</string>
 						<string key="facebookButtonTapped:">id</string>
 						<string key="placeButtonTapped:">id</string>
 						<string key="profileButtonTapped:">id</string>
@@ -566,10 +566,6 @@
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="SMSButtonTapped:">
 							<string key="name">SMSButtonTapped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="enterManually:">
-							<string key="name">enterManually:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="facebookButtonTapped:">
@@ -630,6 +626,36 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">StandardThemeViewController</string>
 					<string key="superclassName">MeasureViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="fakeReading:">id</string>
+						<string key="hideFakeButtons:">id</string>
+						<string key="showFakeButtons:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="fakeReading:">
+							<string key="name">fakeReading:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="hideFakeButtons:">
+							<string key="name">hideFakeButtons:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showFakeButtons:">
+							<string key="name">showFakeButtons:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">fakeButtonCluster</string>
+						<string key="NS.object.0">UIView</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">fakeButtonCluster</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">fakeButtonCluster</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/StandardThemeViewController.h</string>

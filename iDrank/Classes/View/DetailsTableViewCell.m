@@ -7,6 +7,7 @@
 //
 
 #import "DetailsTableViewCell.h"
+#import "iDrankAppDelegate.h"
 
 @implementation DetailsTableViewCell
 
